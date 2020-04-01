@@ -1,0 +1,91 @@
+title = "Post"
+url = "/post/:slug/"
+layout = "noSidebar"
+description = "This is the post page for the side, displaying a full post with categories on the site"
+is_hidden = 0
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = 0
+categoryPage = "Blog"
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "Blog"
+==
+<?php
+function onStart()
+{
+    $this->addCss('assets/css/blogHomepage.css');
+}
+function onEnd()
+{
+    // Optional - set the page title to the post title
+    if (isset($this->post))
+        $this->page->title = $this->post->title;
+}
+?>
+==
+<main class="pt-0">
+    <!--Main layout-->
+    <div class="container">
+        <div class="row">
+
+            <!--Main column-->
+            <div class="col-lg-8">  
+              <h1>{{'blog.title'|__}}</h1>          
+                <hr class="pb-5">     
+                {% set post = blogPost.post %}
+                <h3>{{post.title}}</h3>
+                {% if post.featured_images.count %}
+                    <div class="featured-images text-center">
+                        {% for image in post.featured_images %}
+                            <p>
+                                <img
+                                    data-src="{{ image.filename }}"
+                                    src="{{ image.path }}"
+                                    alt="{{ image.description }}"
+                                    style="max-width: 100%" />
+                            </p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="content">{{ post.content_html|raw }}</div>
+                
+                <p class="info">
+                    Posted
+                    {% if post.categories.count %} in
+                        {% for category in post.categories %}
+                            <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    on {{ post.published_at|date('M d, Y') }}
+                </p>
+
+            </div>                
+            <!--Sidebar-->
+            <div class="col-lg-4">
+                {% if blogCategories.categories|length > 0 %}
+                <div class="widget-wrapper wow fadeIn" data-wow-delay="0.4s">
+                    <h4 class="font-bold dark-grey-text">{{'blog.categories'|__}}:</h4>
+                    <br>
+                    <div class="list-group">
+                        {% for category in blogCategories.categories %}
+                            {% set postCount = category.post_count %}
+                            <a 
+                              class="list-group-item blog-category-list-item"
+                              href="{{ category.url }}"
+                              >                            
+                              {{ category.name }}
+                            </a> 
+                        {% endfor %}
+                    </div>
+                </div>
+                {% else %}
+                    <p>{{'blog.noCategories'|__}}.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!--/.Main layout-->
+</main>

@@ -1,0 +1,33 @@
+[contactForm]
+injectBootstrapAssets = 1
+injectMainScript = 1
+
+[viewBag]
+==
+<form class="flexiContactForm" role="form"
+      data-request="{{ contactForm }}::onMailSent"
+      data-request-update="'{{ contactForm }}::confirm': '.confirm-container'">
+
+    <div class="form-groups container pl-5 pr-5 text-left">
+        <div class="form-group">
+            <input type="text" class="form-control" value=""  name="name" placeholder="{{ 'contact-form.nameInputLabel'|__ }}">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" value="" name="email" placeholder="{{ 'contact-form.emailInputLabel'|__ }}">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" value="" name="subject" placeholder="{{ 'contact-form.subjectInputLabel'|__ }}">
+        </div>
+        <div class="form-group">
+            <label for="body">{{ 'contact-form.messageInputLabel'|__ }}</label>
+            <textarea id="contactFormBody" class="form-control" value="" name="body" cols="10" rows="30" style="height: 300px;"></textarea>
+        </div>
+        {% if contactForm.enableCaptcha %}
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="{{ contactForm.siteKey }}"></div>
+            </div>
+        {% endif %}
+        <button type="submit" class="btn btn-accent">{{ 'contact-form.sendBtnText'|__ }}</button>
+    </div>
+</form>
+<!-- Card -->

@@ -1,0 +1,67 @@
+[viewBag]
+
+[localePicker]
+forceUrl = 0
+
+[staticMenu]
+code = "main-menu"
+==
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar scrolling-navbar fixed-top scrolling-navbar background-primary">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#">{{'top-nav-bar.siteTitle'|__}}</a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+
+            {% if staticMenu.menuItems %}
+            {% set items = staticMenu.menuItems %}
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                {% for item in items %}
+                    <li class="nav-item {{ item.isActive or item.isChildActive ? 'active' : '' }}
+                        {{ item.items ? 'dropdown btn-group' : '' }}"
+                    >
+                        <a class="nav-link {% if item.items %}'dropdown-toggle' {% endif %}"
+                                {% if item.items %} id="dropdownMenu{{ item.title|replace({' ':'-'}) }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{% endif %}
+                        href="{{ item.url }}"
+                        >
+                            {{ item.title }}
+
+                            {% if item.items %}<span class="sr-only">(current)</span>{% endif %}
+                        </a>
+
+                        {% if item.items %}
+                            <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu{{ item.title|replace({' ':'-'}) }}">
+                                {% for child in item.items %}
+                                    <a class="dropdown-item" href="{{ child.url }}">{{ child.title }}</a>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            {% endif %}
+            <!-- Links -->
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">{{'top-nav-bar.language'|__}}</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    {% for code, name in locales %}
+                        <a data-request="onSwitchLocale" data-request-data="locale: '{{ code }}'" class="dropdown-item" href="#">{{ name }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+        </ul>
+        <!-- Links -->
+    </div>
+    <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->

@@ -1,0 +1,22 @@
+description = "Blog"
+
+[localePicker]
+forceUrl = 0
+
+[staticPage]
+useContent = 0
+default = 0
+==
+{variable name="pageTitle" label="Site Title" tab="Page" type="text"}{/variable}
+
+{% partial 'site/head' %}
+{% partial 'site/nav' %}
+<body class="mt-5">
+<div class="container py-5">
+
+    <br>
+    {% page %}
+    
+</div>
+
+{% partial 'site/footer' %}d

@@ -1,0 +1,163 @@
+description = "Default"
+
+[localePicker]
+forceUrl = 0
+
+[staticPage]
+useContent = 0
+default = 0
+==
+<?php
+function onStart()
+{
+    $this->addCss('assets/css/halfpageCarousel.css');
+}
+?>
+==
+{% partial 'site/head' %}
+<body class="mt-5">
+{% partial 'site/nav' %}
+
+<!-- Section: Carousel -->
+{variable name="showCarousel" label="Show Carousel" tab="Top Carousel" type="checkbox"}{/variable}
+{variable name="slideTitle" label="Slide title" tab="Top Carousel" type="text"}{/variable}
+{variable name="slideSubTitle" label="Slide subtitle" tab="Top Carousel" type="text"}{/variable}
+{variable name="slideButtonText" label="Slide button text" tab="Top Carousel" type="text"}{/variable}
+{variable name="slide1Image" label="First slide background image" tab="Top Carousel" type="mediafinder" mode="image"}{/variable}
+{variable name="slide2Image" label="Second slide background image" tab="Top Carousel" type="mediafinder" mode="image"}{/variable}
+{variable name="slide3Image" label="Third slide background image" tab="Top Carousel" type="mediafinder" mode="image"}{/variable}
+
+{% if (showCarousel) %}
+  {% partial 'components/carousel3' 
+    slideTitle=slideTitle 
+    slideSubTitle=slideSubTitle 
+    slideButtonText=slideButtonText 
+    slide1Image=slide1Image
+    slide2Image=slide2Image
+    slide3Image=slide3Image 
+    %}
+{% endif %}
+<!-- Section: Carousel -->
+
+
+<!-- Section: About -->
+{variable name="mainTitle" label="Heading" tab="Main section" type="text"}{/variable}
+{variable name="mainContent" label="Content" tab="Main section" type="richeditor"}{/variable}
+{variable name="mainImage" label="Image" tab="Main section" type="mediafinder" mode="image"}{/variable}
+{variable name="showButton1" label="Show first button" tab="Main section" type="checkbox"}{/variable}
+{variable name="button1Text" label="First button text" tab="Main section" type="text"}{/variable}
+{variable name="button1Link" label="First button link" tab="Main section" type="text"}{/variable}
+{variable name="showButton2" label="Show first button" tab="Main section" type="checkbox" mode="image"}{/variable}
+{variable name="button2Text" label="First button text" tab="Main section" type="text"}{/variable}
+{variable name="button2Link" label="First button link" tab="Main section" type="text"}{/variable}
+
+<div class="container">
+  <section class="section about mb-5" id="about">
+      <!-- Secion heading -->
+      <h1 class="text-center font-bold mt-5 pt-2 mb-3 dark-grey-text wow fadeIn" data-wow-delay="0.2s">
+          <em>{{mainTitle}}</em>
+      </h1>
+      <!-- Section description -->
+      <p class="text-center font-up font-bold grey-text mb-5 pb-4 wow fadeIn" data-wow-delay="0.2s">{{mainSubheading}}</p>
+      <!-- Grid row -->
+      <div class="row">
+          <!-- Column column -->
+          <div class="col-xl-5 mr-auto mb-r col-lg-6 wow fadeIn" data-wow-delay="0.4s">
+              <!-- Image -->
+              <img src="{% if mainImage == '' %}https://mdbootstrap.com/img/Photos/Others/images/53.jpg{% else %}{{ mainImage|media }}{% endif %}" class="img-fluid rounded z-depth-1-half"
+                  alt="My photo">
+          </div>
+          <!-- Column column -->
+          <!-- Grid column column -->
+          <div class="col-xl-6 col-lg-6 wow fadeIn" data-wow-delay="0.4s">
+              <!-- Description -->
+              {{ mainContent|raw }}
+              {% if (showButton1) %}
+                <a target="_blank" href="{{button1Link}}" class="btn btn-outline-accent btn-md">{{button1Text}}
+                  <i class="fa fa-user ml-1"></i>
+                </a>
+              {% endif %}
+              {% if (showButton2) %}
+                <a target="_blank" href="{{button2Link}}" class="btn btn-outline-accent btn-md">{{button2Text}}
+                  <i class="fa fa-chevron-right ml-1"></i>
+                </a>
+              {% endif %}
+          </div>
+          <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+  </section>
+</div>
+<!-- Section: About -->
+
+
+<!-- Section: Contact area -->
+{variable name="showContactArea" label="Show contact us area" tab="Contact area" type="checkbox"}{/variable}
+{variable name="contactAreaTItle" label="Contact area title" tab="Contact area" type="text"}{/variable}
+{variable name="contactAreaSubTItle" label="Contact area subtitle" tab="Contact area" type="text"}{/variable}
+{variable name="contactAreaContent" label="Contact area content" tab="Contact area" type="textarea"}{/variable}
+{variable name="contactAreaButtonText" label="Contact area button text" tab="Contact area" type="text"}{/variable}
+{variable name="contactAreaButtonLink" label="Contact area button link" tab="Contact area" type="text"}{/variable}
+{% if (showContactArea) %}
+<div class="jumbotron text-center mt-5 mb-0 pb-5 blue-grey lighten-5 no-shadow">
+
+  <!-- Title -->
+  <h2 class="card-title h2">{{ contactAreaTItle }}</h2>
+  <!-- Subtitle -->
+  <p class="accent-text my-4 font-weight-bold">{{ contactAreaSubTItle }}</p>
+
+  <!-- Grid row -->
+  <div class="row d-flex justify-content-center">
+
+    <!-- Grid column -->
+    <div class="col-xl-7 pb-2">
+
+      <p class="card-text">{{ contactAreaContent }}</p>
+
+    </div>
+    <!-- Grid column -->
+
+  </div>
+  <!-- Grid row -->
+
+  <hr class="my-4">
+
+  <div class="pt-2">
+    <a target="_blank" href="{{contactAreaButtonLink}}" class="btn btn-outline btn-md">{{contactAreaButtonText}}</a>
+  </div>
+</div>
+{% endif %}
+<!-- Section: Contact area -->
+
+
+<!-- Section: Cascading Card -->
+{variable name="showCard1" label="Show first card" tab="Additional cards" type="checkbox"}{/variable}
+{variable name="card1Image" label="Background image" tab="Additional cards" type="mediafinder" mode="image"}{/variable}
+{variable name="card1Title" label="Card title" tab="Additional cards" type="text"}{/variable}
+{variable name="card1SubTitle" label="Card subtitle" tab="Additional cards" type="text"}{/variable}
+{variable name="card1Content" label="Card content" tab="Additional cards" type="richeditor"}{/variable}
+{variable name="card1ShowButton" label="Show button in card" tab="Additional cards" type="checkbox"}{/variable}
+{variable name="card1ButtonLink" label="Button link" tab="Additional cards" type="text"}{/variable}
+{variable name="card1ButtonText" label="Button text" tab="Additional cards" type="text"}{/variable}
+
+{% if (showCard1) %}
+<div class="container">
+  <br>
+  <br>
+  {% partial 'components/revCascadingCard' 
+    cardImage=card1Image
+    title=card1Title
+    subTitle=card1SubTitle
+    content=card1Content
+    showButton=card1ShowButton
+    buttonLink=card1ButtonLink
+    buttonText=card1ButtonText
+    %}
+</div>
+{% endif %}
+<!-- Section: Cascading Card -->
+
+
+{% component 'staticPage' %}
+
+{% partial 'site/footer' %}

@@ -1,0 +1,4 @@
+title: Reorder points of interest
+modelClass: BL\RegionalInvestment\Models\PointOfInterest
+toolbar:
+    buttons: reorder_toolbar

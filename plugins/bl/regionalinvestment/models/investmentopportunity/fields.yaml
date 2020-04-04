@@ -1,0 +1,121 @@
+fields:
+    published:
+        label: 'Publish details'
+        span: full
+        required: 0
+        type: checkbox
+    name:
+        label: 'Name of investment opportunity'
+        span: full
+        required: 1
+        type: text
+    slug:
+        label: Slug
+        span: full
+        required: 1
+        preset:
+            field: name
+            type: slug
+        type: text
+    short_description:
+        label: 'Short summary'
+        size: large
+        span: full
+        required: 1
+        type: textarea
+    video_id:
+        label: 'Youtube video id'
+        span: auto
+        type: text
+    date_available:
+        label: 'Available since:'
+        mode: datetime
+        span: auto
+        type: datepicker
+    description:
+        label: 'Investment opportunity description'
+        size: large
+        span: full
+        required: 1
+        type: richeditor
+    website:
+        label: 'Website with more details'
+        span: full
+        required: 0
+        type: text
+    email:
+        label: 'Primary contact email'
+        span: auto
+        required: 0
+        type: text
+    phone:
+        label: 'Primary contact phone'
+        span: auto
+        required: 0
+        type: text
+    contact_details:
+        label: 'Other contact details'
+        size: large
+        span: full
+        type: richeditor
+    investment_min:
+        label: 'Minimum Investment'
+        span: auto
+        required: 1
+        type: number
+    investment_max:
+        label: 'Maximum investment'
+        span: auto
+        required: 1
+        type: number
+    show_target:
+        label: 'Show target investment'
+        span: auto
+        type: checkbox
+    investment_target:
+        label: 'Investment target'
+        span: auto
+        type: number
+    sections:
+        label: 'Add more sections'
+        prompt: 'Add new item'
+        span: full
+        type: repeater
+        form:
+            fields:
+                name:
+                    label: 'Section Name'
+                    span: full
+                    type: text
+                description:
+                    label: section_description
+                    size: large
+                    span: full
+                    type: richeditor
+                video_id:
+                    label: 'Youtube video id'
+                    span: full
+                    type: text
+tabs:
+    fields:
+        communities:
+            label: 'Communities this opportunity relates to'
+            nameFrom: name
+            descriptionFrom: description
+            span: auto
+            type: relation
+            tab: Relations
+        regions:
+            label: 'Regions this investment opportunity relates to'
+            nameFrom: name
+            descriptionFrom: description
+            span: auto
+            type: relation
+            tab: Relations
+        business_types:
+            label: 'Type of investment opportunity'
+            nameFrom: name
+            descriptionFrom: description
+            span: full
+            type: relation
+            tab: Relations

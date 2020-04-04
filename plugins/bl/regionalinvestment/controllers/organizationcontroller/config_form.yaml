@@ -1,0 +1,10 @@
+name: Organization
+form: $/bl/regionalinvestment/models/organization/fields.yaml
+modelClass: BL\RegionalInvestment\Models\Organization
+defaultRedirect: bl/regionalinvestment/organizationcontroller
+create:
+    redirect: 'bl/regionalinvestment/organizationcontroller/update/:id'
+    redirectClose: bl/regionalinvestment/organizationcontroller
+update:
+    redirect: bl/regionalinvestment/organizationcontroller
+    redirectClose: bl/regionalinvestment/organizationcontroller

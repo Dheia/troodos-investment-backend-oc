@@ -1,0 +1,4 @@
+title: Reorder business types
+modelClass: BL\RegionalInvestment\Models\BusinessType
+toolbar:
+    buttons: reorder_toolbar

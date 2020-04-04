@@ -1,0 +1,4 @@
+title: Reorder investment opportunities
+modelClass: BL\RegionalInvestment\Models\InvestmentOpportunity
+toolbar:
+    buttons: reorder_toolbar

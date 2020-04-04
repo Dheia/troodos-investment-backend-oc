@@ -1,0 +1,8 @@
+regions:
+    label: Regions in which these organizations operate
+    view:
+        list: $/bl/regionalinvestment/models/region/columns.yaml
+        toolbarButtons: add|create|remove
+    manage:
+        form: $/bl/regionalinvestment/models/region/fields.yaml
+        showCheckboxes: true

@@ -1,0 +1,10 @@
+name: Business type
+form: $/bl/regionalinvestment/models/businesstype/fields.yaml
+modelClass: BL\RegionalInvestment\Models\BusinessType
+defaultRedirect: bl/regionalinvestment/businesstypecontroller
+create:
+    redirect: 'bl/regionalinvestment/businesstypecontroller/update/:id'
+    redirectClose: bl/regionalinvestment/businesstypecontroller
+update:
+    redirect: bl/regionalinvestment/businesstypecontroller
+    redirectClose: bl/regionalinvestment/businesstypecontroller

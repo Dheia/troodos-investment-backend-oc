@@ -1,0 +1,10 @@
+name: Business Entiry
+form: $/bl/regionalinvestment/models/businessentity/fields.yaml
+modelClass: BL\RegionalInvestment\Models\BusinessEntity
+defaultRedirect: bl/regionalinvestment/businessentitycontroller
+create:
+    redirect: "bl/regionalinvestment/businessentitycontroller/update/:id"
+    redirectClose: bl/regionalinvestment/businessentitycontroller
+update:
+    redirect: bl/regionalinvestment/businessentitycontroller
+    redirectClose: bl/regionalinvestment/businessentitycontroller

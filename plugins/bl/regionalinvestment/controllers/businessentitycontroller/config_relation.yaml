@@ -1,0 +1,24 @@
+investment_opportunities:
+    label: Investment opportunities raised by this entity
+    view:
+        list: $/bl/regionalinvestment/models/investmentopportunity/columns.yaml
+        toolbarButtons: add|create|remove
+    manage:
+        form: $/bl/regionalinvestment/models/investmentopportunity/fields.yaml
+        showCheckboxes: true
+business_types:
+    label: Business type
+    view:
+        list: $/bl/regionalinvestment/models/businesstype/columns.yaml
+        toolbarButtons: add|create|remove
+    manage:
+        form: $/bl/regionalinvestment/models/businesstype/fields.yaml
+        showCheckboxes: true
+business_entity_statuses:
+    label: Business entity status
+    view:
+        list: $/bl/regionalinvestment/models/businessentitystatus/columns.yaml
+        toolbarButtons: add|create|remove
+    manage:
+        form: $/bl/regionalinvestment/models/businessentitystatus/fields.yaml
+        showCheckboxes: true

@@ -1,0 +1,10 @@
+name: Community
+form: $/bl/regionalinvestment/models/community/fields.yaml
+modelClass: BL\RegionalInvestment\Models\Community
+defaultRedirect: bl/regionalinvestment/communitycontroller
+create:
+    redirect: "bl/regionalinvestment/communitycontroller/update/:id"
+    redirectClose: bl/regionalinvestment/communitycontroller
+update:
+    redirect: bl/regionalinvestment/communitycontroller
+    redirectClose: bl/regionalinvestment/communitycontroller

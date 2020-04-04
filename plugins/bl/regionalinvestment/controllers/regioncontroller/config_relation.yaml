@@ -1,0 +1,32 @@
+investment_opportunities:
+    label: Investment opportunities within this region
+    view:
+        list: $/bl/regionalinvestment/models/investmentopportunity/columns.yaml
+        toolbarButtons: add|create|remove
+    manage:
+        form: $/bl/regionalinvestment/models/investmentopportunity/fields.yaml
+        showCheckboxes: true
+organizations:
+    label: Organizations related to this region
+    view:
+        list: $/bl/regionalinvestment/models/organization/columns.yaml
+        toolbarButtons: add|create|remove
+    manage:
+        form: $/bl/regionalinvestment/models/organization/fields.yaml
+        showCheckboxes: true
+communities:
+    label: Communities within this region
+    view:
+        list: $/bl/regionalinvestment/models/community/columns.yaml
+        toolbarButtons: add|create|remove
+    manage:
+        form: $/bl/regionalinvestment/models/community/fields.yaml
+        showCheckboxes: true
+points_of_interest:
+    label: Points of interest within this region
+    view:
+        list: $/bl/regionalinvestment/models/pointofinterest/columns.yaml
+        toolbarButtons: add|create|remove
+    manage:
+        form: $/bl/regionalinvestment/models/pointofinterest/fields.yaml
+        showCheckboxes: true

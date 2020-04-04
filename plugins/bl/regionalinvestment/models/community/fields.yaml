@@ -1,0 +1,68 @@
+fields:
+    published:
+        label: 'Publish details'
+        span: full
+        required: 0
+        type: checkbox
+    name:
+        label: 'Community name'
+        span: full
+        required: 1
+        type: text
+    slug:
+        label: Slug
+        span: full
+        required: 1
+        preset:
+            field: name
+            type: slug
+        type: text
+    description:
+        label: Description
+        size: large
+        span: full
+        type: richeditor
+    video_id:
+        label: 'Youtube video id'
+        span: auto
+        type: text
+    website:
+        label: 'External website'
+        span: auto
+        type: text
+    sections:
+        label: 'Additional sections'
+        prompt: 'Add new item'
+        span: full
+        type: repeater
+        form:
+            fields:
+                name:
+                    label: 'Section name'
+                    span: full
+                    type: text
+                video_id:
+                    label: 'Optional: Youtube video id'
+                    span: full
+                    type: text
+                description:
+                    label: 'Section content'
+                    size: large
+                    span: full
+                    type: richeditor
+tabs:
+    fields:
+        region:
+            label: Relation
+            nameFrom: name
+            descriptionFrom: description
+            span: auto
+            type: relation
+            tab: Relationships
+        community_council:
+            label: 'Community council'
+            nameFrom: name
+            descriptionFrom: description
+            span: auto
+            type: relation
+            tab: Relationships

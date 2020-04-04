@@ -1,0 +1,10 @@
+name: Business Entity Status
+form: $/bl/regionalinvestment/models/businessentitystatus/fields.yaml
+modelClass: BL\RegionalInvestment\Models\BusinessEntityStatus
+defaultRedirect: bl/regionalinvestment/businessentitystatuscontroller
+create:
+    redirect: "bl/regionalinvestment/businessentitystatuscontroller/update/:id"
+    redirectClose: bl/regionalinvestment/businessentitystatuscontroller
+update:
+    redirect: bl/regionalinvestment/businessentitystatuscontroller
+    redirectClose: bl/regionalinvestment/businessentitystatuscontroller

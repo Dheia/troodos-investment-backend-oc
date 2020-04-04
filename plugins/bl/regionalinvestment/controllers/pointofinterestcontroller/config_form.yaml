@@ -1,0 +1,10 @@
+name: Point of interest
+form: $/bl/regionalinvestment/models/pointofinterest/fields.yaml
+modelClass: BL\RegionalInvestment\Models\PointOfInterest
+defaultRedirect: bl/regionalinvestment/pointofinterestcontroller
+create:
+    redirect: 'bl/regionalinvestment/pointofinterestcontroller/update/:id'
+    redirectClose: bl/regionalinvestment/pointofinterestcontroller
+update:
+    redirect: bl/regionalinvestment/pointofinterestcontroller
+    redirectClose: bl/regionalinvestment/pointofinterestcontroller

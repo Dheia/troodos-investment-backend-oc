@@ -1,0 +1,4 @@
+title: Reorder Business Entities
+modelClass: BL\RegionalInvestment\Models\BusinessEntity
+toolbar:
+    buttons: reorder_toolbar

@@ -1,0 +1,10 @@
+name: Region
+form: $/bl/regionalinvestment/models/region/fields.yaml
+modelClass: BL\RegionalInvestment\Models\Region
+defaultRedirect: bl/regionalinvestment/regioncontroller
+create:
+    redirect: "bl/regionalinvestment/regioncontroller/update/:id"
+    redirectClose: bl/regionalinvestment/regioncontroller
+update:
+    redirect: bl/regionalinvestment/regioncontroller
+    redirectClose: bl/regionalinvestment/regioncontroller

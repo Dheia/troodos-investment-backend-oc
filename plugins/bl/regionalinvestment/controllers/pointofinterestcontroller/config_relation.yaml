@@ -1,0 +1,17 @@
+region:
+    label: Region within which these points of interest are located
+    view:
+        list: $/bl/regionalinvestment/models/region/columns.yaml
+        form: $/bl/regionalinvestment/models/region/fields.yaml
+        toolbarButtons: add|create|remove
+    manage:
+        form: $/bl/regionalinvestment/models/region/fields.yaml
+        showCheckboxes: true
+communities:
+    label: Communities within which these points of interest are located
+    view:
+        list: $/bl/regionalinvestment/models/community/columns.yaml
+        toolbarButtons: add|create|remove
+    manage:
+        form: $/bl/regionalinvestment/models/community/fields.yaml
+        showCheckboxes: true

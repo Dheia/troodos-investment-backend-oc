@@ -14,12 +14,12 @@ items:
             cssClass: ''
             isExternal: '0'
     -
-        title: Region
+        title: 'Investment platform'
         nesting: '0'
         type: static-page
         url: ''
         code: ''
-        reference: regions
+        reference: investment-platform
         cmsPage: ''
         replace: '0'
         viewBag:
@@ -40,23 +40,14 @@ items:
             cssClass: ''
             isExternal: '0'
     -
-        title: 'Investment platform'
-        nesting: '0'
-        type: static-page
+        title: Blog
+        nesting: ''
+        type: cms-page
         url: ''
         code: ''
-        reference: investment-platform
-        cmsPage: ''
-        replace: '0'
-        viewBag:
-            isHidden: '0'
-            cssClass: ''
-            isExternal: '0'
-    -
-        title: Blog
-        type: cms-page
-        code: ''
         reference: Blog
+        cmsPage: ''
+        replace: ''
         viewBag:
             isHidden: '0'
             cssClass: ''

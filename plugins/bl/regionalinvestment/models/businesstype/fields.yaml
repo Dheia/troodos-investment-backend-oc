@@ -1,0 +1,14 @@
+fields:
+    name:
+        label: "Business type name"
+        span: full
+        required: 1
+        type: text
+    slug:
+        label: Slug
+        span: full
+        required: 1
+        preset:
+            field: name
+            type: slug
+        type: text

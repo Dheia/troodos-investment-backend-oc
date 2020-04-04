@@ -1,0 +1,16 @@
+community:
+    label: Community of this community council
+    view:
+        list: $/bl/regionalinvestment/models/community/columns.yaml
+        toolbarButtons: add|remove
+    manage:
+        form: $/bl/regionalinvestment/models/community/fields.yaml
+        showCheckboxes: true
+region:
+    label: Region this community belongs to
+    view:
+        list: $/bl/regionalinvestment/models/region/columns.yaml
+        toolbarButtons: add|create|remove
+    manage:
+        form: $/bl/regionalinvestment/models/region/fields.yaml
+        showCheckboxes: true

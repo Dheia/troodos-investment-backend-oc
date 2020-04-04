@@ -1,0 +1,26 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    status_id:
+        label: Status
+        type: text
+        searchable: true
+        sortable: true
+    business_type_id:
+        label: 'Business Type'
+        type: text
+        searchable: true
+        sortable: true
+    email:
+        label: Email
+        type: text
+        searchable: true
+        sortable: true
+    phone:
+        label: Phone
+        type: text
+        searchable: true
+        sortable: true

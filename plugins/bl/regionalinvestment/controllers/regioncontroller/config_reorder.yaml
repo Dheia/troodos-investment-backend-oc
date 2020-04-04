@@ -1,0 +1,4 @@
+title: Reorder regions
+modelClass: BL\RegionalInvestment\Models\Region
+toolbar:
+    buttons: reorder_toolbar

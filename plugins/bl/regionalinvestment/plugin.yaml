@@ -1,0 +1,48 @@
+plugin:
+    name: 'bl.regionalinvestment::lang.plugin.name'
+    description: 'bl.regionalinvestment::lang.plugin.description'
+    author: 'BL Blupath Ltd'
+    icon: oc-icon-adjust
+    homepage: ''
+navigation:
+    regional-investment:
+        label: 'Regional Investment'
+        url: bl/regionalinvestment/regioncontroller
+        icon: icon-euro
+        sideMenu:
+            regional-investment-regions:
+                label: Regions
+                url: bl/regionalinvestment/regioncontroller
+                icon: icon-globe
+            regional-investment-communities:
+                label: Communities
+                url: bl/regionalinvestment/communitycontroller
+                icon: icon-home
+            regional-investment-community-councils:
+                label: 'Community Councils'
+                url: bl/regionalinvestment/communitycouncilcontroller
+                icon: icon-group
+            regional-investment-points-of-interest:
+                label: 'Points of interest'
+                url: bl/regionalinvestment/pointofinterestcontroller
+                icon: icon-map-marker
+            regional-investment-organizations:
+                label: Organizations
+                url: bl/regionalinvestment/organizationcontroller
+                icon: icon-building
+            regional-investment-business-entities:
+                label: 'Business entities'
+                url: bl/regionalinvestment/businessentitycontroller
+                icon: icon-simplybuilt
+            regional-investment-business-entity-statuses:
+                label: 'Business statuses'
+                url: bl/regionalinvestment/businessentitystatuscontroller
+                icon: icon-simplybuilt
+            reional-investment-investment-opportunities:
+                label: 'Investment opportunities'
+                url: bl/regionalinvestment/investmentopportunitycontroller
+                icon: icon-dollar
+            regional-investment-business-types:
+                label: 'Business types'
+                url: bl/regionalinvestment/businesstypecontroller
+                icon: icon-dollar

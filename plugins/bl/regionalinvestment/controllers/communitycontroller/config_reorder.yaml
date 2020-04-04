@@ -1,0 +1,4 @@
+title: Reorder communities
+modelClass: BL\RegionalInvestment\Models\Community
+toolbar:
+    buttons: reorder_toolbar

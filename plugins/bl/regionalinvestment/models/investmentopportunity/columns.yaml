@@ -1,0 +1,41 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    published:
+        label: Published
+        type: switch
+        searchable: true
+        sortable: true
+    phone:
+        label: Phone
+        type: text
+        searchable: true
+        sortable: true
+    email:
+        label: Email
+        type: text
+        searchable: true
+        sortable: true
+    investment_min:
+        label: 'Min investment'
+        type: text
+        searchable: true
+        sortable: true
+    investment_max:
+        label: 'Max investment'
+        type: text
+        searchable: true
+        sortable: true
+    investment_target:
+        label: 'Investment target'
+        type: text
+        searchable: true
+        sortable: true
+    date_available:
+        label: 'Date raised'
+        type: date
+        searchable: true
+        sortable: true

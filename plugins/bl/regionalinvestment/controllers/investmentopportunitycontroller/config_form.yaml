@@ -1,0 +1,10 @@
+name: Investment opportunities
+form: $/bl/regionalinvestment/models/investmentopportunity/fields.yaml
+modelClass: BL\RegionalInvestment\Models\InvestmentOpportunity
+defaultRedirect: bl/regionalinvestment/investmentopportunitycontroller
+create:
+    redirect: 'bl/regionalinvestment/investmentopportunitycontroller/update/:id'
+    redirectClose: bl/regionalinvestment/investmentopportunitycontroller
+update:
+    redirect: bl/regionalinvestment/investmentopportunitycontroller
+    redirectClose: bl/regionalinvestment/investmentopportunitycontroller

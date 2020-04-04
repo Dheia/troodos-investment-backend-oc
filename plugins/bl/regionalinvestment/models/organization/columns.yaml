@@ -1,0 +1,26 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    website:
+        label: Website
+        type: text
+        searchable: true
+        sortable: true
+    email:
+        label: Email
+        type: text
+        searchable: true
+        sortable: true
+    phone:
+        label: Phone
+        type: text
+        searchable: true
+        sortable: true
+    published:
+        label: Published
+        type: switch
+        searchable: true
+        sortable: true

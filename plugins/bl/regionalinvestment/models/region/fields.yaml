@@ -25,7 +25,7 @@ fields:
     photo:
         label: Photo
         mode: image
-        imageWidth: '10'
+        imageWidth: '100'
         imageHeight: '100'
         span: auto
         type: mediafinder

@@ -88,13 +88,29 @@ postPage = "post"
 
 
 
-<script src="{{ [
+
+
+    {% if useVue == true %}
+
+    <script src="{{ [
+        'assets/js/jquery-3.1.1.min.js',
+        'assets/js/popper.min.js',
+        'assets/js/bootstrap.min.js',
+        'assets/js/mdb.min.js',
+        'assets/js/vue.js',
+        'assets/js/vue-init.js',
+    ]|theme }}"></script>
+
+    {% else  %}
+
+    <script src="{{ [
         'assets/js/jquery-3.1.1.min.js',
         'assets/js/popper.min.js',
         'assets/js/bootstrap.min.js',
         'assets/js/mdb.min.js'
     ]|theme }}"></script>
 
+    {% endif %}
     {% framework extras %}
     {% scripts %}
 

@@ -46,4 +46,5 @@ class Organization extends Model
     ];
 
     public $translatable = ['name', 'description', 'sections', 'slug', 'contact_details'];
+
 }

@@ -49,4 +49,8 @@ class PointOfInterest extends Model
     ];
 
     public $translatable = ['name', 'description', 'slug'];
+
+    public $attachMany = [
+        'gallery' => 'System\Models\File'
+    ];
 }

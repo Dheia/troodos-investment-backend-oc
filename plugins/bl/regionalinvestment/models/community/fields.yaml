@@ -22,13 +22,20 @@ fields:
         size: large
         span: full
         type: richeditor
+    photo:
+        label: Photo
+        mode: image
+        imageWidth: '100'
+        imageHeight: '100'
+        span: auto
+        type: mediafinder
     video_id:
         label: 'Youtube video id'
         span: auto
         type: text
     website:
         label: 'External website'
-        span: auto
+        span: full
         type: text
     sections:
         label: 'Additional sections'

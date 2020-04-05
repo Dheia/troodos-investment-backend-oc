@@ -17,9 +17,16 @@ fields:
             field: name
             type: slug
         type: text
+    photo:
+        label: 'Primary photo'
+        mode: image
+        imageWidth: '100'
+        imageHeight: '100'
+        span: auto
+        type: mediafinder
     website:
         label: 'Business entity website'
-        span: full
+        span: auto
         required: 0
         type: text
     email:

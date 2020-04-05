@@ -61,4 +61,8 @@ class Community extends Model
         'slug' => 'required|unique:bl_regionalinvestment_communities,slug',
         'website' => 'url'
     ];
+
+    public $attachMany = [
+        'gallery' => 'System\Models\File'
+    ];
 }

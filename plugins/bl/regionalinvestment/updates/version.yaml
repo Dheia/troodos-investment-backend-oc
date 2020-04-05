@@ -204,3 +204,39 @@
 1.0.69:
     - 'Updated table bl_regionalinvestment_investment_opportunities'
     - builder_table_update_bl_regionalinvestment_investment_opportunities_6.php
+1.0.70:
+    - 'Updated table bl_regionalinvestment_business_entities'
+    - builder_table_update_bl_regionalinvestment_business_entities_6.php
+1.0.71:
+    - 'Updated table bl_regionalinvestment_communities'
+    - builder_table_update_bl_regionalinvestment_communities_6.php
+1.0.72:
+    - 'Updated table bl_regionalinvestment_community_councils'
+    - builder_table_update_bl_regionalinvestment_community_councils_7.php
+1.0.73:
+    - 'Updated table bl_regionalinvestment_investment_opportunities'
+    - builder_table_update_bl_regionalinvestment_investment_opportunities_7.php
+1.0.74:
+    - 'Updated table bl_regionalinvestment_organizations'
+    - builder_table_update_bl_regionalinvestment_organizations_7.php
+1.0.75:
+    - 'Updated table bl_regionalinvestment_points_of_interest'
+    - builder_table_update_bl_regionalinvestment_points_of_interest_7.php
+1.0.76:
+    - 'Updated table bl_regionalinvestment_organizations'
+    - builder_table_update_bl_regionalinvestment_organizations_8.php
+1.0.77:
+    - 'Updated table bl_regionalinvestment_investment_opportunities'
+    - builder_table_update_bl_regionalinvestment_investment_opportunities_8.php
+1.0.78:
+    - 'Updated table bl_regionalinvestment_community_councils'
+    - builder_table_update_bl_regionalinvestment_community_councils_8.php
+1.0.79:
+    - 'Updated table bl_regionalinvestment_communities'
+    - builder_table_update_bl_regionalinvestment_communities_7.php
+1.0.80:
+    - 'Updated table bl_regionalinvestment_business_entities'
+    - builder_table_update_bl_regionalinvestment_business_entities_7.php
+1.0.81:
+    - 'Updated table bl_regionalinvestment_regions'
+    - builder_table_update_bl_regionalinvestment_regions_9.php

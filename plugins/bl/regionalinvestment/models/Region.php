@@ -58,4 +58,8 @@ class Region extends Model
         'description' => 'required',
         'website' => 'url'
     ];
+
+    public $attachMany = [
+        'gallery' => 'System\Models\File'
+    ];
 }

@@ -17,9 +17,16 @@ fields:
             field: name
             type: slug
         type: text
+    photo:
+        label: Photo
+        mode: image
+        imageWidth: '100'
+        imageHeight: '100'
+        span: auto
+        type: mediafinder
     website:
         label: 'Organization website'
-        span: full
+        span: auto
         required: 1
         type: text
     email:

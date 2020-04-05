@@ -1,10 +1,10 @@
 fields:
     published:
-        label: "Publish details"
+        label: 'Publish details'
         span: auto
         type: checkbox
     name:
-        label: "Region name"
+        label: 'Region name'
         span: full
         required: 1
         type: text
@@ -18,35 +18,42 @@ fields:
         type: text
     description:
         label: Description
-        size: ""
+        size: ''
         span: full
         required: 1
         type: richeditor
+    photo:
+        label: Photo
+        mode: image
+        imageWidth: '10'
+        imageHeight: '100'
+        span: auto
+        type: mediafinder
     video_id:
-        label: "Youtube video id"
+        label: 'Youtube video id'
         span: auto
         type: text
     website:
-        label: "External website"
-        span: auto
+        label: 'External website'
+        span: full
         type: text
     sections:
-        label: "Additional sections"
-        prompt: "Add new item"
+        label: 'Additional sections'
+        prompt: 'Add new item'
         span: full
         type: repeater
         form:
             fields:
                 name:
-                    label: "Section name"
+                    label: 'Section name'
                     span: full
                     type: text
                 video_id:
-                    label: "Optional: Youtube video id"
+                    label: 'Optional: Youtube video id'
                     span: full
                     type: text
                 description:
-                    label: "Section description"
-                    size: ""
+                    label: 'Section description'
+                    size: ''
                     span: full
                     type: richeditor

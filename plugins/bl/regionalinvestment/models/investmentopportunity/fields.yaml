@@ -38,9 +38,16 @@ fields:
         span: full
         required: 1
         type: richeditor
+    photo:
+        label: Photo
+        mode: image
+        imageWidth: '100'
+        imageHeight: '100'
+        span: auto
+        type: mediafinder
     website:
         label: 'Website with more details'
-        span: full
+        span: auto
         required: 0
         type: text
     email:

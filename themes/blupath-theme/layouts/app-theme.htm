@@ -3,13 +3,16 @@ description = "Theme to power Vue based single page app"
 [localePicker]
 forceUrl = 0
 ==
-{% partial 'site/head' %}
-<body class="mt-5" >
-  <div id="app">
-    {% partial 'site/nav' %}
+{% partial 'site/head' useVue=true %}
+<div id="app">
+  <div class="pt-5">
+    {% partial 'site/nav' useVue=true %}
+    {% partial 'site/sidebarLeft' useVue=true %}
     <br>
     <br>
     <br>
     <span v-if="false">Test</span>
+    {% partial 'site/footer' useVue=true %}
   </div>
-{% partial 'site/footer' useVue=true %}
+</div>
+{% partial 'site/foot' useVue=true %}

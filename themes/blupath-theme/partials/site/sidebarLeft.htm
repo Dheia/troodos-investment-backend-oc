@@ -1,0 +1,64 @@
+[staticMenu]
+code = "main-menu"
+
+[viewBag]
+==
+<nav id="menu">
+    <ul>
+        <li>
+          <span style="width: 24px; max-width: 36px; text-align: center;">
+            <i class="fa fa-home"></i>
+          </span>
+          <a href="/">{{'top-nav-bar.siteTitle'|__}}</a>
+        </li>
+
+        <li>
+          <span>
+            <span style="width: 24px; max-width: 36px; text-align: center;">
+              <i class="fa fa-user"></i>
+            </span>
+            <span style="padding-left: 20px;">Investor pages</span>
+          </span>
+          <ul>
+              <li><a href="/about/history">Register</a></li>
+              <li><a href="/about/history">Login</a></li>
+              <li><a href="/about/history">Profile</a></li>
+              <li><a href="/about/history">Logout</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <span>
+            <span style="width: 24px; max-width: 36px; text-align: center;">
+              <i class="fa fa-euro"></i>
+            </span>
+            <span style="padding-left: 20px;">Investment platform</span>
+          </span>
+          <ul>
+              <li><a href="/about/history">Main page</a></li>
+              <li><a href="/about/history">Regions</a></li>
+              <li><a href="/about/history">Communities</a></li>
+              <li><a href="/about/history">Organizations</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <span>
+            <span style="width: 24px; max-width: 36px; text-align: center;">
+              <i class="fa fa-globe"></i>
+            </span>
+            <span style="padding-left: 20px;">Pages</span>
+          </span>
+          <ul>
+            {% if staticMenu.menuItems %}
+            {% set items = staticMenu.menuItems %}
+              {% for item in items %}
+                <li class=" {{ item.isActive or item.isChildActive ? 'side-nav-active' : '' }}">
+                  <a href="{{ item.url }}">{{ item.title }}</a>
+                </li>
+              {% endfor %}
+            {% endif %}
+          </ul>
+        </li>
+    </ul>
+</nav>

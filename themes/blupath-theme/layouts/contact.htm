@@ -9,50 +9,56 @@ default = 0
 ==
 {% partial 'site/head' %}
 
-<body class="mt-5">
+<body>
+  <div id="app">
+    {% partial 'site/nav' %}
+    {% partial 'site/sidebarLeft' useVue=true %}
+    <div class="pt-5">
 
-{% partial 'site/nav' %}
+      {variable name="cardImage" label="Background image" tab="Contact Form" type="mediafinder" mode="image"}{/variable}
+      {variable name="title" label="Card title" tab="Contact Form" type="text"}{/variable}
+      {variable name="subTitle" label="Card subtitle" tab="Contact Form" type="text"}{/variable}
 
-  {variable name="cardImage" label="Background image" tab="Contact Form" type="mediafinder" mode="image"}{/variable}
-  {variable name="title" label="Card title" tab="Contact Form" type="text"}{/variable}
-  {variable name="subTitle" label="Card subtitle" tab="Contact Form" type="text"}{/variable}
+      <!-- Card -->
+      <div class="card card-cascade wider reverse mb-5">
 
-  <!-- Card -->
-  <div class="card card-cascade wider reverse mb-5">
-
-    <!-- Card image -->
-    <div class="view view-cascade overlay">
-      <img class="card-img-top" src="{% if cardImage == '' %}https://mdbootstrap.com/img/Photos/Others/images/53.jpg{% else %}{{ cardImage|media }}{% endif %}"
-        alt="Card image cap">
-      <a href="#!">
-        <div class="mask rgba-white-slight"></div>
-      </a>
-    </div>
-    <div class="container">
-      <!-- Card content -->
-      <div class="card-body card-body-cascade text-center">
-
-        <!-- Title -->
-        <h4 class="card-title"><strong>{{title}}</strong></h4>
-        <!-- Subtitle -->
-        {% if (subTitle) %}
-          <div class='card-text'>
-            {{subTitle}}
-          </div>
-        {% endif %}
-        <!-- Text -->
-        <div class="confirm-container">
-        <!--This will contain the confirmation when the email is successfully sent-->
+        <!-- Card image -->
+        <div class="view view-cascade overlay">
+          <img class="card-img-top" src="{% if cardImage == '' %}https://mdbootstrap.com/img/Photos/Others/images/53.jpg{% else %}{{ cardImage|media }}{% endif %}"
+            alt="Card image cap">
+          <a href="#!">
+            <div class="mask rgba-white-slight"></div>
+          </a>
         </div>
-        {% partial 'components/contactForm' %}
+        <div class="container">
+          <!-- Card content -->
+          <div class="card-body card-body-cascade text-center">
+
+            <!-- Title -->
+            <h4 class="card-title"><strong>{{title}}</strong></h4>
+            <!-- Subtitle -->
+            {% if (subTitle) %}
+              <div class='card-text'>
+                {{subTitle}}
+              </div>
+            {% endif %}
+            <!-- Text -->
+            <div class="confirm-container">
+            <!--This will contain the confirmation when the email is successfully sent-->
+            </div>
+            {% partial 'components/contactForm' %}
+          </div>
+        </div>
+
       </div>
+
+      {% component 'staticPage' %}
+
+      {variable name="footerTitle" label="Title on footer" tab="Footer" type="text"}{/variable}
+      {variable name="footerSubtitle" label="Subtitle on footer" tab="Footer" type="textarea"}{/variable}
+      {% partial 'site/footer' useVue=false %}
+
     </div>
-
   </div>
-
-{% component 'staticPage' %}
-
-    {variable name="footerTitle" label="Title on footer" tab="Footer" type="text"}{/variable}
-    {variable name="footerSubtitle" label="Subtitle on footer" tab="Footer" type="textarea"}{/variable}
-
-{% partial 'site/footer' useVue=false %}
+</div>
+{% partial 'site/foot' useVue=false %}

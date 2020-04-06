@@ -16,10 +16,15 @@
 
 .navbar {
   background-color: #ffffff !important;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.16) !important;
 }
 
 .navbar a {
   color: #212121 !important;
+}
+
+.side-nav-active a {
+  color: #ff4081 !important;
 }
 
 a.blog-category-list-item {
@@ -75,6 +80,11 @@ ul.post-list {
 
 .btn-accent {
   background-color: #ff4081;
+}
+
+.btn-flat {
+  background-color: transparent;
+  border: none;
 }
 
 .btn-outline-accent {

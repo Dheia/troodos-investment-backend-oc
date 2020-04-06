@@ -7,14 +7,19 @@ forceUrl = 0
 code = "main-menu"
 ==
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar scrolling-navbar fixed-top scrolling-navbar background-primary">
+<nav class="navbar navbar-expand-lg navbar scrolling-navbar fixed-top scrolling-navbar background-primary" fixed>
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">{{'top-nav-bar.siteTitle'|__}}</a>
+    
+    <a href="#menu"><button type="button" aria-label="Side-nav toggle" class="btn-flat mr-3" id="left-nav-toggle"><i class="fa fa-bars ml-1"></i></span></button></a>
+    <a class="navbar-brand" href="/investment-platform">{{'top-nav-bar.siteTitle'|__}}</a>
 
     <!-- Collapse button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div>
+        {% if useVue == true %}
+            <button type="button" aria-label="Search for investment" class="navbar-toggler btn-flat"><i class="fa fa-search ml-1"></i></span></button>
+        {% endif %}
+    </div>
 
     <!-- Collapsible content -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -58,10 +63,10 @@ code = "main-menu"
                     {% endfor %}
                 </div>
             </li>
+            <!-- Collapsible content -->
         </ul>
         <!-- Links -->
     </div>
-    <!-- Collapsible content -->
-
+    <button type="button" aria-label="Search for investment" class="btn-flat d-none d-lg-block"><i class="fa fa-search p-2"></i></span></button>
 </nav>
 <!--/.Navbar-->

@@ -10,13 +10,15 @@ default = 0
 {variable name="pageTitle" label="Site Title" tab="Page" type="text"}{/variable}
 
 {% partial 'site/head' %}
-{% partial 'site/nav' %}
-<body class="mt-5">
-<div class="container py-5">
-
-    <br>
-    {% page %}
-    
+<div id="app">
+    {% partial 'site/nav' %}
+    {% partial 'site/sidebarLeft' useVue=true %}
+    <div class="pt-5">
+        <div class="container py-5">
+            <br>
+            {% page %}
+        </div>
+        {% partial 'site/footer' useVue=false %}
+    </div>
 </div>
-
-{% partial 'site/footer' useVue=false %}d
+{% partial 'site/foot' useVue=false %}

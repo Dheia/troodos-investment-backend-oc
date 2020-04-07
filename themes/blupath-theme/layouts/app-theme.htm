@@ -2,6 +2,9 @@ description = "Theme to power Vue based single page app"
 
 [localePicker]
 forceUrl = 0
+
+[session]
+security = "all"
 ==
 {% partial 'site/head' useVue=true %}
 <div id="app">
@@ -16,3 +19,4 @@ forceUrl = 0
   </div>
 </div>
 {% partial 'site/foot' useVue=true %}
+{% component 'session' %}

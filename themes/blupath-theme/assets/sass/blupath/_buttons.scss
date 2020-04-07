@@ -8,8 +8,9 @@
     background-color: $accent;
 }
 .btn-flat {
-    background-color: transparent;
-    border: none;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 .btn-outline-accent {
     background-color: transparent;

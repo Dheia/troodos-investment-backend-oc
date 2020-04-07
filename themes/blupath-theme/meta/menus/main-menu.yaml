@@ -15,13 +15,9 @@ items:
             isExternal: '0'
     -
         title: 'Investment platform'
-        nesting: '0'
-        type: static-page
-        url: ''
+        type: cms-page
         code: ''
         reference: investment-platform
-        cmsPage: ''
-        replace: '0'
         viewBag:
             isHidden: '0'
             cssClass: ''

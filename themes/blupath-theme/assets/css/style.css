@@ -1,9 +1,21 @@
 .primary-text {
-  color: #0097a7;
+  color: #0097a7 !important;
 }
 
 .accent-text {
   color: #ff4081;
+}
+
+.overlay-text {
+  color: #ffffff !important;
+}
+
+.overlay-text .fa-bars {
+  color: #ffffff !important;
+}
+
+.span {
+  display: inline !important;
 }
 
 .no-shadow {
@@ -83,8 +95,9 @@ ul.post-list {
 }
 
 .btn-flat {
-  background-color: transparent;
-  border: none;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .btn-outline-accent {

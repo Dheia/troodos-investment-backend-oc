@@ -6,6 +6,9 @@ forceUrl = 0
 [staticPage]
 useContent = 0
 default = 0
+
+[session]
+security = "all"
 ==
 {% partial 'site/head' %}
 
@@ -62,3 +65,4 @@ default = 0
   </div>
 </div>
 {% partial 'site/foot' useVue=false %}
+{% component 'session' %}

@@ -1,6 +1,9 @@
 [staticMenu]
 code = "main-menu"
 
+[localePicker]
+forceUrl = 0
+
 [viewBag]
 ==
 <nav id="menu">
@@ -9,21 +12,25 @@ code = "main-menu"
           <span style="width: 24px; max-width: 36px; text-align: center;">
             <i class="fa fa-home"></i>
           </span>
-          <a href="/">{{'top-nav-bar.siteTitle'|__}}</a>
+          <a href="/">{{'common.siteTitle'|__}}</a>
         </li>
 
         <li>
           <span>
             <span style="width: 24px; max-width: 36px; text-align: center;">
-              <i class="fa fa-user"></i>
+              <i class="fa fa-user {% if user %} accent-text {% endif %}"></i>
             </span>
-            <span style="padding-left: 20px;">Investor pages</span>
+            <span style="padding-left: 20px;">{{'side-nav.investor-pages'|__}}</span>
           </span>
           <ul>
-              <li><a href="/about/history">Register</a></li>
-              <li><a href="/about/history">Login</a></li>
-              <li><a href="/about/history">Profile</a></li>
-              <li><a href="/about/history">Logout</a></li>
+            {% if user %}
+              <li><a href="/profile">{{'user.profile'|__}}</a></li>
+              <li><a data-request="onLogout" data-request-data="redirect: '/login'">{{'user.logout'|__}}</a></li>
+            {% else %}
+              <li><a href="/register">{{'user.register'|__}}</a></li>
+              <li><a href="/login">{{'user.login'|__}}</a></li>
+              <li><a href="/forgot-password">{{'user.forgot password'|__}}</a></li>
+            {% endif %}
           </ul>
         </li>
 
@@ -32,13 +39,13 @@ code = "main-menu"
             <span style="width: 24px; max-width: 36px; text-align: center;">
               <i class="fa fa-euro"></i>
             </span>
-            <span style="padding-left: 20px;">Investment platform</span>
+            <span style="padding-left: 20px;">{{'side-nav.investment-platform'|__}}</span>
           </span>
           <ul>
-              <li><a href="/about/history">Main page</a></li>
-              <li><a href="/about/history">Regions</a></li>
-              <li><a href="/about/history">Communities</a></li>
-              <li><a href="/about/history">Organizations</a></li>
+              <li><a href="/about/history">{{'platform.main-page'|__}}</a></li>
+              <li><a href="/about/history">{{'platform.regions'|__}}</a></li>
+              <li><a href="/about/history">{{'platform.communities'|__}}</a></li>
+              <li><a href="/about/history">{{'platform.organizations'|__}}</a></li>
           </ul>
         </li>
 
@@ -47,7 +54,7 @@ code = "main-menu"
             <span style="width: 24px; max-width: 36px; text-align: center;">
               <i class="fa fa-globe"></i>
             </span>
-            <span style="padding-left: 20px;">Pages</span>
+            <span style="padding-left: 20px;">{{'side-nav.pages'|__}}</span>
           </span>
           <ul>
             {% if staticMenu.menuItems %}
@@ -60,5 +67,21 @@ code = "main-menu"
             {% endif %}
           </ul>
         </li>
+
+        <li>
+          <span>
+            <span style="width: 24px; max-width: 36px; text-align: center;">
+              <i class="fa fa-flag"></i>
+            </span>
+            <span style="padding-left: 20px;">{{'common.language'|__}}</span>
+          </span>
+          <ul>
+            {% for code, name in locales %}
+                <li><a data-request="onSwitchLocale" data-request-data="locale: '{{ code }}'" href="#">{{ name }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+
+
     </ul>
 </nav>

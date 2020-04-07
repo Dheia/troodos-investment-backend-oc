@@ -1,0 +1,93 @@
+[viewBag]
+
+[account]
+redirect = "RegistrationConfirmation"
+paramCode = "/login/:code?"
+activationPage = "Login"
+forceSecure = 0
+==
+<div class="row flex-center">
+    <div class="col-md-3 overlay-text" data-wow-delay="0.4s">
+        <h2><strong>{{regHeading1}}</strong></h2>
+        <p>{{regText1}}</p>
+        <br>
+        <h2><strong>{{regHeading2}}</strong></h2>
+        <p>{{regText2}}</p>
+        <br>
+        <h2><strong>{{regHeading3}}</strong></h2>
+        <p>{{regText3}}</p>
+    </div>
+    <div class="col-md-5" data-wow-delay="0.4s">
+        <!-- Card -->
+        <div class="card">
+        <!-- Card content -->
+            <div class="card-body">
+
+                <!-- Title -->
+                <h2 class="card-title span">{{'user.register'|__}}</h2> <h4 class="span">| <a class="primary-text" href="{{loginPath}}">{{'user.login'|__}}</a></h4> 
+                <hr>
+                <!-- Text -->
+                {% if canRegister %}
+            
+                {{ form_ajax('onRegister') }}
+            
+                    <div class="form-group">
+                        <input
+                            name="name"
+                            type="text"
+                            class="form-control"
+                            id="registerName"
+                            placeholder="{{'user.enterName'|__}}" />
+                    </div>
+            
+                    <div class="form-group">
+                        <input
+                            name="email"
+                            type="email"
+                            class="form-control"
+                            id="registerEmail"
+                            placeholder="{{'user.enterEmail'|__}}" />
+                    </div>
+            
+                    {% if loginAttribute == "username" %}
+                        <div class="form-group">
+                            <input
+                                name="username"
+                                type="text"
+                                class="form-control"
+                                id="registerUsername"
+                                placeholder="{{'user.enterUsername'|__}}" />
+                        </div>
+                    {% endif %}
+            
+                    <div class="form-group">
+                        <input
+                            name="password"
+                            type="password"
+                            class="form-control"
+                            id="registerPassword"
+                            placeholder="{{'user.choosePassword'|__}}" />
+                    </div>
+            
+                    <button type="submit" class="btn btn-primary">{{'user.register'|__}}</button>
+            
+                {{ form_close() }}
+            {% else %}
+                <!-- Registration is disabled. -->
+            {% endif %}
+
+            </div>
+        </div>
+        <!-- Card -->
+    </div>
+</div>
+{% flash %}
+    <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">{{ message }}</div>
+{% endflash %}
+<script>
+    $(window).on('ajaxErrorMessage', function(event, message){
+        // This will stop the default alert() message
+        event.preventDefault();
+
+    })
+</script>

@@ -7,22 +7,19 @@ forceUrl = 0
 code = "main-menu"
 ==
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar scrolling-navbar fixed-top scrolling-navbar background-primary" fixed>
+    {% if transparentNavbar == true %}
+        <nav class="navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+    {% else %}
+        <nav class="navbar navbar-expand-lg navbar scrolling-navbar fixed-top scrolling-navbar background-primary">
+    {% endif %}
 
     <!-- Navbar brand -->
     
-    <a href="#menu"><button type="button" aria-label="Side-nav toggle" class="btn-flat mr-3" id="left-nav-toggle"><i class="fa fa-bars ml-1"></i></span></button></a>
-    <a class="navbar-brand" href="/investment-platform">{{'top-nav-bar.siteTitle'|__}}</a>
-
-    <!-- Collapse button -->
-    <div>
-        {% if useVue == true %}
-            <button type="button" aria-label="Search for investment" class="navbar-toggler btn-flat"><i class="fa fa-search ml-1"></i></span></button>
-        {% endif %}
-    </div>
+    <a class="{% if transparentNavbar == true %} overlay-text ml-1 {% endif %}" href="#menu"><button type="button" aria-label="Side-nav toggle" class="btn-flat mr-3" id="left-nav-toggle"><i class="fa fa-bars ml-1"></i></span></button></a>
+    <a class="navbar-brand" href="/investment-platform">{{'common.siteTitle'|__}}</a>
 
     <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="float: right; width: 50%;">
         <ul class="navbar-nav ml-auto">
 
             {% if staticMenu.menuItems %}
@@ -33,7 +30,7 @@ code = "main-menu"
                     <li class="nav-item {{ item.isActive or item.isChildActive ? 'active' : '' }}
                         {{ item.items ? 'dropdown btn-group' : '' }}"
                     >
-                        <a class="nav-link {% if item.items %}'dropdown-toggle' {% endif %}"
+                        <a class="{% if transparentNavbar == true %} overlay-text {% endif %} nav-link {% if item.items %}'dropdown-toggle' {% endif %}"
                                 {% if item.items %} id="dropdownMenu{{ item.title|replace({' ':'-'}) }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{% endif %}
                         href="{{ item.url }}"
                         >
@@ -45,7 +42,7 @@ code = "main-menu"
                         {% if item.items %}
                             <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu{{ item.title|replace({' ':'-'}) }}">
                                 {% for child in item.items %}
-                                    <a class="dropdown-item" href="{{ child.url }}">{{ child.title }}</a>
+                                    <a class="{% if transparentNavbar == true %} overlay-text {% endif %} dropdown-item" href="{{ child.url }}">{{ child.title }}</a>
                                 {% endfor %}
                             </div>
                         {% endif %}
@@ -55,11 +52,11 @@ code = "main-menu"
             <!-- Links -->
 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">{{'top-nav-bar.language'|__}}</a>
-                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                <a class="nav-link dropdown-toggle {% if transparentNavbar == true %} overlay-text {% endif %}" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">{{'common.language'|__}}</a>
+                    <div class="dropdown-menu dropdown-primary" {% if transparentNavbar == true %} style="background-color: transparent; border: none;" {% endif %} aria-labelledby="navbarDropdownMenuLink">
                     {% for code, name in locales %}
-                        <a data-request="onSwitchLocale" data-request-data="locale: '{{ code }}'" class="dropdown-item" href="#">{{ name }}</a>
+                        <a data-request="onSwitchLocale" data-request-data="locale: '{{ code }}'" class="dropdown-item {% if transparentNavbar == true %} overlay-text {% endif %}" href="#">{{ name }}</a>
                     {% endfor %}
                 </div>
             </li>
@@ -67,6 +64,5 @@ code = "main-menu"
         </ul>
         <!-- Links -->
     </div>
-    <button type="button" aria-label="Search for investment" class="btn-flat d-none d-lg-block"><i class="fa fa-search p-2"></i></span></button>
 </nav>
 <!--/.Navbar-->

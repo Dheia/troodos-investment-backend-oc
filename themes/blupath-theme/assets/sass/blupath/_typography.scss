@@ -1,6 +1,15 @@
 .primary-text {
-    color: $primary-dark;
+    color: $primary-dark !important;
 }
 .accent-text {
     color: $accent;
+}
+.overlay-text {
+    color: $white !important;
+}
+.overlay-text .fa-bars {
+    color: $white !important;
+}
+.span {
+    display: inline !important;
 }

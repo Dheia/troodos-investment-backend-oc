@@ -1,0 +1,37 @@
+title = "Activation Successful"
+url = "/activation-successful/:code"
+layout = "Registration"
+description = "Your account has been activated"
+is_hidden = 0
+
+[viewBag]
+localeTitle[el] = "Επιτυχής Ενεργοποίηση"
+localeUrl[el] = "/activation-successful"
+
+[account]
+redirect = "login"
+paramCode = ":code"
+forceSecure = 0
+
+[session]
+security = "guest"
+redirect = "investment-platform"
+==
+<div class="row flex-center">
+    <div class="col-md-4" data-wow-delay="0.4s">
+        <!-- Card -->
+        <div class="card">
+        <!-- Card content -->
+            <div class="card-body">
+
+                <!-- Title -->
+                <h2 class="card-title span">{{'user.activationSuccessTitle'|__}}</h2> 
+                <hr>
+                <!-- Text -->
+                <p>{{'user.activationSuccessMessage'|__}}</p>    
+                <a class="btn btn-primary" href="/login">{{'user.login'|__}}</a>
+            </div>
+        </div>
+        <!-- Card -->
+    </div>
+</div>{% component 'session' %}

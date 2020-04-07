@@ -6,6 +6,9 @@ forceUrl = 0
 [staticPage]
 useContent = 0
 default = 0
+
+[session]
+security = "all"
 ==
 <?php
 function onStart()
@@ -164,4 +167,4 @@ function onStart()
     {% partial 'site/footer' useVue=false %}
   </div>
 </div>
-{% partial 'site/foot' useVue=false %}
+{% partial 'site/foot' useVue=false %}{% component 'session' %}

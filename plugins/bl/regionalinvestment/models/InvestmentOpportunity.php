@@ -2,7 +2,10 @@
 
 namespace BL\RegionalInvestment\Models;
 
+use Illuminate\Support\Facades\App;
 use Model;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Model
@@ -57,10 +60,42 @@ class InvestmentOpportunity extends Model
         'website' => 'url'
     ];
 
-    public $translatable = ['name', 'short_description', 'description', 'sections', 'slug', 'contact_details'];
+    public $translatable = ['name', 'short_description', 'description', 'sections', 'contact_details'];
     protected $jsonable = ['sections'];
 
     public $attachMany = [
         'gallery' => 'System\Models\File'
     ];
+
+    public static function getLocalized()
+    {
+        $opportunities = Cache::rememberForever("all.Opportunities" . App::getLocale(), function () {
+            return self::with('business_types')->with('business_entity')->where('published', 1)->get()->toArray();
+        });
+        return collect($opportunities);
+    }
+
+    public static function getLocalizedByCommunity($community_id)
+    {
+        $opportunities = self::getLocalized();
+        $ids = DB::table('bl_regionalinvestment_community_investment_opportunity')
+            ->where('community_id', $community_id)
+            ->pluck('investment_opportunity_id');
+        return $opportunities->whereIn('id', $ids);
+    }
+
+    public static function getLocalizedByRegion($region_id)
+    {
+        $opportunities = self::getLocalized();
+        $ids = DB::table('bl_regionalinvestment_investment_opportunity_region')
+            ->where('region_id', $region_id)
+            ->pluck('investment_opportunity_id');
+        return $opportunities->whereIn('id', $ids);
+    }
+
+    public function afterSave()
+    {
+        Cache::forget("all.Opportunitiesen");
+        Cache::forget("all.Opportunitiesel");
+    }
 }

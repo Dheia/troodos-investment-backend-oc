@@ -3,7 +3,9 @@
 namespace BL\RegionalInvestment\Controllers;
 
 use Backend\Classes\Controller;
+use BL\RegionalInvestment\Models\Region;
 use BackendMenu;
+use RainLab\Translate\Classes\Translator;
 
 class RegionController extends Controller
 {
@@ -23,5 +25,12 @@ class RegionController extends Controller
     {
         parent::__construct();
         BackendMenu::setContext('BL.RegionalInvestment', 'regional-investment', 'regional-investment-regions');
+    }
+
+    public function api_get()
+    {
+        $translator = Translator::instance();
+        $activeLocale = $translator->getLocale();
+        return $activeLocale;
     }
 }

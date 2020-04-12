@@ -1,6 +1,137 @@
 title = "Investment platform"
-url = "/investment-platform"
+url = "/investment-platform/:type?/:name?"
 layout = "app-theme"
 description = "The single page investment platform application"
 is_hidden = 0
 ==
+<?php
+
+    use BL\RegionalInvestment\Models\Region;
+    use BL\RegionalInvestment\Models\Community;
+    use BL\RegionalInvestment\Models\InvestmentOpportunity;
+    use BL\RegionalInvestment\Models\Organization;
+    use BL\RegionalInvestment\Models\PointOfInterest;
+    
+    function onStart(){
+      $type = $this->param('type');
+      $name = $this->param('name');
+      $primary = false;
+
+      if($type =='region'){
+        $featured = Region::where('slug', $name)->first();
+        $communities = $featured ? Community::getLocalized()->where('region_id', $featured->id) : [];
+        $organizations = $featured ? Organization::getLocalizedByRegion($featured->id) : [];
+        $opportunities = $featured ? InvestmentOpportunity::getLocalizedByRegion($featured->id) : [];
+        $pointsOfInterest = $featured ? PointOfInterest::getLocalized()->where('region_id', $featured->id) : [];
+        $regions = [];
+      } elseif( $type =='community') {
+        $featured = Community::where('slug', $name)->first();
+        $communities = [];
+        $organizations = $featured ? Organization::getLocalizedByRegion($featured->region->id) : [];
+        $opportunities = $featured ? InvestmentOpportunity::getLocalizedByCommunity($featured->id) : [];
+        $pointsOfInterest = $featured ? PointOfInterest::getLocalizedByCommunity($featured->id) : [];
+        $regions = [];
+      } elseif( $type =='pointOfInterest') {
+        $featured = PointOfInterest::where('slug', $name)->first();
+        $communities = [];
+        $organizations = [];
+        $opportunities = [];
+        $pointsOfInterest = [];
+        $regions = [];
+      } elseif( $type =='organization') {
+        $featured = Organization::where('slug', $name)->first();
+        $communities = Community::getLocalized();;
+        $organizations = Organization::getLocalized();
+        $opportunities = [];
+        $pointsOfInterest = PointOfInterest::getLocalized();
+        $regions = Region::getLocalized()->where('primary', 0);
+      } elseif( $type =='opportunity') {
+        $featured = InvestmentOpportunity::with('business_entity')->with('business_types')->where('slug', $name)->first();
+        $communities = [];
+        $organizations = [];
+        $opportunities = [];
+        $pointsOfInterest = [];
+        $regions = [];
+      } else {
+        $type = 'platform';
+        $featured = Region::getLocalized()->where('primary', 1)->first();
+        $communities = Community::getLocalized();
+        $organizations =  Organization::getLocalized();
+        $opportunities = InvestmentOpportunity::getLocalized();
+        $pointsOfInterest = PointOfInterest::getLocalized();
+        $regions = Region::getLocalized()->where('primary', 0);
+        $primary = true;
+      }
+
+      $this['type'] = $type;
+      $this['name'] = $name;
+      $this['featured'] = $featured;
+      $this['communities'] = $communities;
+      $this['opportunities'] = $opportunities;
+      $this['organizations'] = $organizations;
+      $this['pointsOfInterest'] = $pointsOfInterest;
+      $this['regions'] = $regions;
+      $this['primary'] = $primary;
+    }
+?>
+==
+<input type="hidden" name="locale" value="{{activeLocale}}" ref="locale">
+  <div class="platform-content">
+    {% partial 'site/nav' useVue=true twoBarNav=true featured=featured type=type %}
+    {% partial 'site/sidebarLeft' useVue=true %}
+    {% partial 'site/searchBar' useVue=true %}
+    {% if featured %}
+
+      <div v-if="tab=='featured'">
+        {% partial 'platform/featured' featured=featured type=type %}
+      </div>
+      <div v-if="tab=='opportunities' && view=='list'">
+        <a class="btn-floating btn-lg btn-default" @click="switchView">
+          <i v-if="view=='list'" class="fa fa-map"></i>
+          <i v-if="view=='map'" class="fa fa-list"></i>
+        </a>
+        {% partial 'platform/opportunitiesList' %}
+      </div>
+      <div v-if="tab=='regions' && view=='list'">
+        <a class="btn-floating btn-lg btn-default" @click="switchView">
+          <i v-if="view=='list'" class="fa fa-map"></i>
+          <i v-if="view=='map'" class="fa fa-list"></i>
+        </a>
+        {% partial 'platform/regionsList' regions=regions type=type %}
+      </div>
+      <div v-if="tab=='communities' && view=='list'">
+        <a class="btn-floating btn-lg btn-default" @click="switchView">
+          <i v-if="view=='list'" class="fa fa-map"></i>
+          <i v-if="view=='map'" class="fa fa-list"></i>
+        </a>
+        {% partial 'platform/communitiesList' communities=communities type=type %}
+      </div>
+      <div v-if="tab=='pointsOfInterest' && view=='list'">
+        <a class="btn-floating btn-lg btn-default" @click="switchView">
+          <i v-if="view=='list'" class="fa fa-map"></i>
+          <i v-if="view=='map'" class="fa fa-list"></i>
+        </a>
+        {% partial 'platform/pointsOfInterestList' pointsOfInterest=pointsOfInterest type=type %}
+      </div>
+      <div v-if="tab=='organizations'">
+        {% partial 'platform/organizationsList' organizations=organizations type=type %}
+      </div>
+
+      <div v-if="view=='map' && (tab=='regions' || tab=='opportunities' || tab=='communities' || tab=='pointsOfInterest')">
+        <a class="btn-floating btn-lg btn-default" @click="switchView">
+          <i v-if="view=='list'" class="fa fa-map"></i>
+          <i v-if="view=='map'" class="fa fa-list"></i>
+        </a>
+        <img src="/themes/blupath-theme/assets/images/map_background.jpg" />
+      </div>
+
+
+    {% else %}
+      <div class="container mt-5">
+        <h1>{{'errors.whoopsWrongPath'|__}}</h1>
+        <hr>
+        <p>{{'errors.incorrectPath'|__}}</p>
+      </div>
+    {% endif %}
+    {% partial 'site/footer' useVue=true %}
+  </div>

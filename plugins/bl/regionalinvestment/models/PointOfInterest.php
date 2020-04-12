@@ -2,6 +2,9 @@
 
 namespace BL\RegionalInvestment\Models;
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Model;
 use October\Rain\Database\Traits\Sortable;
 
@@ -48,9 +51,32 @@ class PointOfInterest extends Model
         'website' => 'url'
     ];
 
-    public $translatable = ['name', 'description', 'slug'];
+    public $translatable = ['name', 'description'];
 
     public $attachMany = [
         'gallery' => 'System\Models\File'
     ];
+
+    public static function getLocalized()
+    {
+        $pointsOfInterest = Cache::rememberForever("all.PointsOfInterest" . App::getLocale(), function () {
+            return self::where('published', 1)->get()->toArray();
+        });
+        return collect($pointsOfInterest);
+    }
+
+    public static function getLocalizedByCommunity($community_id)
+    {
+        $pointsOfInterest = self::getLocalized();
+        $ids = DB::table('bl_regionalinvestment_community_point_of_interest')
+            ->where('community_id', $community_id)
+            ->pluck('point_of_interest_id');
+        return $pointsOfInterest->whereIn('id', $ids);
+    }
+
+    public function afterSave()
+    {
+        Cache::forget("all.PointsOfInteresten");
+        Cache::forget("all.PointsOfInterestel");
+    }
 }

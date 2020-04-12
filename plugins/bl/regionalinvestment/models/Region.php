@@ -2,6 +2,8 @@
 
 namespace BL\RegionalInvestment\Models;
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cache;
 use Model;
 use October\Rain\Database\Traits\Sortable;
 
@@ -18,7 +20,7 @@ class Region extends Model
      * Remove this line if timestamps are defined in the database table.
      */
     public $timestamps = false;
-    protected $jsonable = ['sections'];
+    protected $jsonable = ['sections', 'photos'];
     public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
 
 
@@ -47,7 +49,8 @@ class Region extends Model
         'points_of_interest' =>  'BL\RegionalInvestment\Models\PointOfInterest',
     ];
 
-    public $translatable = ['name', 'description', 'sections', 'slug'];
+    public $translatable = ['name', 'description', 'sections'];
+    public $fillable = ['primary'];
 
     /**
      * @var array Validation rules
@@ -62,4 +65,38 @@ class Region extends Model
     public $attachMany = [
         'gallery' => 'System\Models\File'
     ];
+
+    public static function getLocalized()
+    {
+        $regions = Cache::rememberForever("all.Regions" . App::getLocale(), function () {
+            return self::where('published', 1)->get()->toArray();
+        });
+        return collect($regions);
+    }
+
+    public function beforeSave()
+    {
+        //Ensure only 1 primary
+        $regions = self::where('primary', 1)->get();
+        if ($this->primary == 1) {
+            if ($regions) {
+                self::where('primary', 1)->update(['primary' => 0]);
+            }
+        }
+        return $this;
+    }
+
+    public function afterSave()
+    {
+        //Ensure only 1 primary
+        $regions = self::where('primary', 1)->get();
+        if ($regions->count() == 0) {
+            $this->primary = 1;
+            $this->save();
+        }
+        return $this;
+
+        Cache::forget("all.Regionsen");
+        Cache::forget("all.Regionsel");
+    }
 }

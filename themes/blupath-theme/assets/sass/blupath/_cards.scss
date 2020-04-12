@@ -33,3 +33,31 @@
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
         0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
+.card-no-shadow {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+.horizontal-card {
+    .card-img-top {
+        height: 250px;
+        background-size: cover;
+        display: block !important;
+    }
+    .card-body {
+        display: block !important;
+    }
+    @media (min-width: 992px) {
+        .card-img-top {
+            height: auto;
+            width: 70%;
+        }
+        .card-body {
+            width: 28%;
+        }
+    }
+}
+@media (min-width: 992px) {
+    .horizontal-card {
+        flex-direction: row !important;
+    }
+}

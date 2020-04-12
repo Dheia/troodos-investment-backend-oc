@@ -4,6 +4,8 @@ namespace BL\RegionalInvestment\Models;
 
 use Model;
 use October\Rain\Database\Traits\Sortable;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\App;
 
 /**
  * Model
@@ -51,7 +53,7 @@ class Community extends Model
         ]
     ];
 
-    public $translatable = ['name', 'description', 'sections', 'slug'];
+    public $translatable = ['name', 'description', 'sections'];
 
     /**
      * @var array Validation rules
@@ -65,4 +67,18 @@ class Community extends Model
     public $attachMany = [
         'gallery' => 'System\Models\File'
     ];
+
+    public static function getLocalized()
+    {
+        $communities = Cache::rememberForever("all.Communities" . App::getLocale(), function () {
+            return self::with('community_council')->where('published', 1)->get()->toArray();
+        });
+        return collect($communities);
+    }
+
+    public function afterSave()
+    {
+        Cache::forget("all.Communitiesen");
+        Cache::forget("all.Communitiesel");
+    }
 }

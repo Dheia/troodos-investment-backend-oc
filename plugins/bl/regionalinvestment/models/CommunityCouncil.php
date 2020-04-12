@@ -41,4 +41,10 @@ class CommunityCouncil extends Model
         'email' => 'email',
         'website' => 'url'
     ];
+
+    public function afterSave()
+    {
+        Cache::forget("all.Communitiesen");
+        Cache::forget("all.Communitiesel");
+    }
 }

@@ -7,18 +7,20 @@ forceUrl = 0
 code = "main-menu"
 ==
 <!--Navbar-->
-    {% if transparentNavbar == true %}
-        <nav class="navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
-    {% else %}
-        <nav class="navbar navbar-expand-lg navbar scrolling-navbar fixed-top scrolling-navbar background-primary">
-    {% endif %}
+{% if transparentNavbar == true %}
+    <nav class="navbar-expand-lg navbar-dark fixed-top scrolling-navbar" style="display: block;">
+{% else %}
+    <nav class="navbar navbar-expand-lg navbar scrolling-navbar fixed-top scrolling-navbar background-primary" style="display: block;">
+{% endif %}
 
     <!-- Navbar brand -->
     
     <a class="{% if transparentNavbar == true %} overlay-text ml-1 {% endif %}" href="#menu"><button type="button" aria-label="Side-nav toggle" class="btn-flat mr-3" id="left-nav-toggle"><i class="fa fa-bars ml-1"></i></span></button></a>
-    <a class="navbar-brand" href="/investment-platform">{{'common.siteTitle'|__}}</a>
+    <a class="navbar-brand mr-0" href="{{ 'investment-platform'|page({ type: '', name: ''}) }}">{{'common.siteTitle'|__}}</a>
+    {% if (featured) %}\ {{featured.name}} {% endif %}
 
     <!-- Collapsible content -->
+    {% if true %}
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="float: right; width: 50%;">
         <ul class="navbar-nav ml-auto">
 
@@ -60,9 +62,18 @@ code = "main-menu"
                     {% endfor %}
                 </div>
             </li>
+            <button v-if="tab=='opportunities'" type="button" class="btn-flat mr-2" data-toggle="modal" data-target="#search-modal"><i class="fa fa-search ml-1"></i></span></button>
+            {% partial 'platform/investmentSearch' %}
             <!-- Collapsible content -->
         </ul>
         <!-- Links -->
     </div>
+    {% endif %}
+
+    {% if twoBarNav==true %}
+        <div>
+            {% partial 'site/navTabs' featured=featured type=type %}
+        </div>
+    {% endif %}
 </nav>
 <!--/.Navbar-->

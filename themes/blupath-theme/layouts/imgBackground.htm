@@ -1,0 +1,89 @@
+description = "Full image start page layout"
+
+[localePicker]
+forceUrl = 0
+
+[staticPage]
+useContent = 0
+default = 0
+==
+{% partial 'site/head' %}
+<div id="app">
+    {% partial 'site/nav' transparentNavbar=true %}
+    {% partial 'site/sidebarLeft' useVue=true %}
+
+    {variable name="backgroundImage" label="Background Image" tab="Content" type="mediafinder" mode="image"}{/variable}
+ 
+    {variable name="showSectionOne" label="Show first content block" tab="First section" type="checkbox"}{/variable}
+    {variable name="sectionOneTitle" label="First section title" tab="First section" type="text"}{/variable}
+    {variable name="sectionOneDescription" label="First section description" tab="First section" type="textarea"}{/variable}
+    {variable name="sectionOneButton" label="Show button in first section" tab="First section" type="checkbox"}{/variable}
+    {variable name="sectionOneButtonTitle" label="Text in first section button" tab="First section" type="text"}{/variable}
+    {variable name="sectionOneButtonLink" label="Link in first section button" tab="First section" type="text"}{/variable}
+    
+    {variable name="showSectionTwo" label="Show second content block" tab="Second section" type="checkbox"}{/variable}
+    {variable name="sectionTwoTitle" label="Second section title" tab="Second section" type="text"}{/variable}
+    {variable name="sectionTwoDescription" label="Second section description" tab="Second section" type="textarea"}{/variable}
+    {variable name="sectionTwoButton" label="Show button in second section" tab="Second section" type="checkbox"}{/variable}
+    {variable name="sectionTwoButtonTitle" label="Text in second section button" tab="Second section" type="text"}{/variable}
+    {variable name="sectionTwoButtonLink" label="Link in second section button" tab="Second section" type="text"}{/variable}
+
+    {variable name="showSectionThree" label="Show third content block" tab="Third section" type="checkbox"}{/variable}
+    {variable name="sectionThreeTitle" label="Third section title" tab="Third section" type="text"}{/variable}
+    {variable name="sectionThreeDescription" label="Third section description" tab="Third section" type="textarea"}{/variable}
+    {variable name="sectionThreeButton" label="Show buttons in third section" tab="Third section" type="checkbox"}{/variable}
+    {variable name="sectionThreeButton1Title" label="Text in third section button 1" tab="Third section" type="text"}{/variable}
+    {variable name="sectionThreeButton1Link" label="Link in third section button 1" tab="Third section" type="text"}{/variable}
+    {variable name="sectionThreeButton2Title" label="Text in third section button 2" tab="Third section" type="text"}{/variable}
+    {variable name="sectionThreeButton2Link" label="Link in third section button 2" tab="Third section" type="text"}{/variable}
+
+    <div class="hm-black-light"
+        style="background: url('{{backgroundImage|media}}')
+                no-repeat top center fixed; background-size: cover;">
+        <div class="full-bg-img">
+            <div class="container">
+                <div class="row flex-center">
+                    <div class="col-md-7 text-center" data-wow-delay="0.4s" style="color: white !important;">
+                        <!-- Card -->
+                        {% if showSectionOne %}
+                            <h2>{{sectionOneTitle}}</h2>
+                            <p>{{sectionOneDescription}}</p>
+                            {% if sectionOneButton %}
+                                <a href="{{sectionOneButtonLink}}" class="btn btn-outline-white" >
+                                    {{sectionOneButtonTitle}}
+                                </a>
+                            {% endif %}
+                            <hr style="border-top: 1px solid white;">
+                        {% endif %}
+
+                        {% if showSectionTwo %}
+                            <h2>{{sectionTwoTitle}}</h2>
+                            <p>{{sectionTwoDescription}}</p>
+                            {% if sectionTwoButton %}
+                                <a href="{{sectionTwoButtonLink}}" class="btn btn-outline-white" >
+                                    {{sectionTwoButtonTitle}}
+                                </a>
+                            {% endif %}
+                            <hr style="border-top: 1px solid white;">
+                        {% endif %}
+
+                        {% if showSectionThree %}
+                            <h2>{{sectionThreeTitle}}</h2>
+                            <p>{{sectionThreeDescription}}</p>
+                            {% if sectionThreeButton %}
+                                <a href="{{sectionThreeButton1Link}}" class="btn btn-outline-white" >
+                                    {{sectionThreeButton1Title}}
+                                </a>
+                                <a href="{{sectionThreeButton2Link}}" class="btn btn-outline-white" >
+                                    {{sectionThreeButton2Title}}
+                                </a>
+                            {% endif %}
+                        {% endif %}
+
+                    </div>
+                </div>{% component 'session' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% partial 'site/foot' useVue=false %}

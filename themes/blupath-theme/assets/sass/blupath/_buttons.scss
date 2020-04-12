@@ -20,6 +20,14 @@
         color: $accent !important;
     }
 }
+.btn-outline-white {
+    background-color: transparent;
+    border: 1px solid $white;
+    color: $white !important;
+    i {
+        color: $white !important;
+    }
+}
 .btn-outline-primary {
     background-color: transparent;
     border: 1px solid $primary;
@@ -58,4 +66,38 @@
 .btn-floating.btn-lg {
     width: 61.1px;
     height: 61.1px;
+}
+.btn-floating.btn-lg i {
+    font-size: 1.625rem;
+    line-height: 61.1px;
+}
+.btn-floating i {
+    display: inline-block;
+    width: inherit;
+    color: #fff;
+    text-align: center;
+}
+.btn-floating i {
+    font-size: 1.25rem;
+    line-height: 47px;
+}
+.btn-floating {
+    position: absolute;
+    top: 135;
+    z-index: 1;
+    display: inline-block;
+    padding: 0;
+    margin: 10px;
+    overflow: hidden;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18),
+        0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18),
+        0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    width: 47px;
+    height: 47px;
 }

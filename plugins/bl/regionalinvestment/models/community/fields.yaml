@@ -48,10 +48,15 @@ fields:
                     label: 'Section name'
                     span: full
                     type: text
-                video_id:
-                    label: 'Optional: Youtube video id'
+                slug:
+                    label: Slug
                     span: full
                     type: text
+                photo:
+                    label: 'Section photo'
+                    mode: file
+                    span: full
+                    type: mediafinder
                 description:
                     label: 'Section content'
                     size: large

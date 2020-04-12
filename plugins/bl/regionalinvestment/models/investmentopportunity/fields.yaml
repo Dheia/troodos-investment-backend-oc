@@ -94,15 +94,20 @@ fields:
                     label: 'Section Name'
                     span: full
                     type: text
+                slug:
+                    label: 'Section slug'
+                    span: full
+                    type: text
+                photo:
+                    label: 'Section photo'
+                    mode: file
+                    span: full
+                    type: mediafinder
                 description:
                     label: section_description
                     size: large
                     span: full
                     type: richeditor
-                video_id:
-                    label: 'Youtube video id'
-                    span: full
-                    type: text
 tabs:
     fields:
         communities:
@@ -123,6 +128,13 @@ tabs:
             label: 'Type of investment opportunity'
             nameFrom: name
             descriptionFrom: description
-            span: full
+            span: auto
+            type: relation
+            tab: Relations
+        business_entity:
+            label: 'Business entity that has raised this opportunity'
+            nameFrom: name
+            descriptionFrom: description
+            span: auto
             type: relation
             tab: Relations

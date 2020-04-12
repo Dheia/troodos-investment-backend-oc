@@ -5,6 +5,12 @@
         color: $black !important;
     }
 }
+navbar-expand-lg {
+    display: block;
+}
 .side-nav-active a {
     color: $accent !important;
+}
+.navbar-tabs {
+    margin-top: 25px;
 }

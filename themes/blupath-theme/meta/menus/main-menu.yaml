@@ -1,23 +1,25 @@
 name: 'Main menu'
 items:
     -
-        title: Home
-        nesting: '0'
-        type: static-page
+        title: 'Investment platform'
+        nesting: ''
+        type: cms-page
         url: ''
         code: ''
-        reference: home
+        reference: investment-platform
         cmsPage: ''
-        replace: '0'
+        replace: ''
         viewBag:
             isHidden: '0'
             cssClass: ''
             isExternal: '0'
     -
-        title: 'Investment platform'
-        type: cms-page
+        title: About
+        nesting: '0'
+        type: static-page
         code: ''
-        reference: investment-platform
+        reference: home
+        replace: '0'
         viewBag:
             isHidden: '0'
             cssClass: ''

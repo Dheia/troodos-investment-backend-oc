@@ -62,8 +62,10 @@ code = "main-menu"
                     {% endfor %}
                 </div>
             </li>
-            <button v-if="tab=='opportunities'" type="button" class="btn-flat mr-2" data-toggle="modal" data-target="#search-modal"><i class="fa fa-search ml-1"></i></span></button>
-            {% partial 'platform/investmentSearch' %}
+            {% if twoBarNav==true %}
+                <button v-if="tab=='opportunities'" type="button" class="btn-flat mr-2" data-toggle="modal" data-target="#search-modal"><i class="fa fa-search ml-1"></i></span></button>
+                {% partial 'platform/investmentSearch' %}
+            {% endif %}
             <!-- Collapsible content -->
         </ul>
         <!-- Links -->

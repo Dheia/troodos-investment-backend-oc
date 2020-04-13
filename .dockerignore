@@ -6,3 +6,12 @@ vendor
 storage/framework/cache/**
 storage/framework/sessions/**
 storage/framework/views/**
+storage/framework/config.php
+storage/framework/routes.php
+storage/framework/compiled.php
+storage/framework/services.php
+storage/framework/classes.php
+storage/framework/packages.php
+storage/framework/events.scanned.php
+storage/framework/routes.scanned.php
+themes/zanor-zanor-mdb-loaded

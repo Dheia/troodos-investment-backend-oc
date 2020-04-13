@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'debug' => true,
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'url' => 'http://cultural.test',
+    'url' => env('APP_URL', 'http://cultural.test'),
 
     /*
     |--------------------------------------------------------------------------
@@ -107,7 +107,7 @@ return [
     |
     */
 
-    'key' => 'Hc7fTDVngLEbemDD0B07cVe2mar5aTA2',
+    'key' => env('APP_KEY', ''),
 
     'cipher' => 'AES-256-CBC',
 

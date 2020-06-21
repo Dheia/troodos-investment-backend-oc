@@ -2,6 +2,7 @@
 
 namespace BL\RegionalInvestment\Models;
 
+use Illuminate\Support\Facades\Cache;
 use Model;
 use October\Rain\Database\Traits\Sortable;
 
@@ -25,11 +26,13 @@ class CommunityCouncil extends Model
      */
     public $table = 'bl_regionalinvestment_community_councils';
 
-    public $belongsTo = [
+    public $hasOne = [
         'community' => 'BL\RegionalInvestment\Models\Community'
     ];
 
     public $translatable = ['name', 'description', 'sections', 'slug', 'contact_details'];
+
+    protected $fillable = ['community_id'];
 
     /**
      * @var array Validation rules

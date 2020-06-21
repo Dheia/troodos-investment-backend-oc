@@ -1,11 +1,11 @@
 fields:
     published:
-        label: 'Publish details'
+        label: "Publish details"
         span: full
         required: 0
         type: checkbox
     name:
-        label: 'Community name'
+        label: "Community name"
         span: full
         required: 1
         type: text
@@ -25,27 +25,27 @@ fields:
     photo:
         label: Photo
         mode: image
-        imageWidth: '100'
-        imageHeight: '100'
+        imageWidth: "100"
+        imageHeight: "100"
         span: auto
         type: mediafinder
     video_id:
-        label: 'Youtube video id'
+        label: "Youtube video id"
         span: auto
         type: text
     website:
-        label: 'External website'
+        label: "External website"
         span: full
         type: text
     sections:
-        label: 'Additional sections'
-        prompt: 'Add new item'
+        label: "Additional sections"
+        prompt: "Add new item"
         span: full
         type: repeater
         form:
             fields:
                 name:
-                    label: 'Section name'
+                    label: "Section name"
                     span: full
                     type: text
                 slug:
@@ -53,12 +53,12 @@ fields:
                     span: full
                     type: text
                 photo:
-                    label: 'Section photo'
+                    label: "Section photo"
                     mode: file
                     span: full
                     type: mediafinder
                 description:
-                    label: 'Section content'
+                    label: "Section content"
                     size: large
                     span: full
                     type: richeditor
@@ -66,13 +66,6 @@ tabs:
     fields:
         region:
             label: Relation
-            nameFrom: name
-            descriptionFrom: description
-            span: auto
-            type: relation
-            tab: Relationships
-        community_council:
-            label: 'Community council'
             nameFrom: name
             descriptionFrom: description
             span: auto

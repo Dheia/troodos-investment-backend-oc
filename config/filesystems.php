@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => env('DEFAULT_FILESYSTEM', 'local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'cloud' => 's3',
+    'cloud' => env('DEFAULT_CLOUD_FILESYSTEM', 's3'),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,19 +51,28 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key'    => 'your-key',
-            'secret' => 'your-secret',
-            'region' => 'your-region',
-            'bucket' => 'your-bucket',
+            'key'    => env('S3_KEY', ''),
+            'secret' => env('S3_SECRET', ''),
+            'region' => env('S3_REGION', ''),
+            'bucket' => env('S3_BUCKET', ''),
+        ],
+
+        'digital-ocean' => [
+            'driver'   => 'do_spaces',
+            'endpoint' => env('DO_ENDPOINT', ''),
+            'key'      => env('DO_KEY', ''),
+            'secret'   => env('DO_SECRET', ''),
+            'region'   => env('DO_REGION', ''),
+            'space'   => env('DO_SPACE', '')
         ],
 
         'rackspace' => [
             'driver'    => 'rackspace',
-            'username'  => 'your-username',
-            'key'       => 'your-key',
-            'container' => 'your-container',
-            'endpoint'  => 'https://identity.api.rackspacecloud.com/v2.0/',
-            'region'    => 'IAD',
+            'username'  => env('RACKSPACE_USERNAME', ''),
+            'key'       => env('RACKSPACE_KEY', ''),
+            'container' => env('RACKSPACE_CONTAINER', ''),
+            'endpoint'  => env('RACKSPACE_ENDPOINT', ''),
+            'region'    => env('RACKSPACE_REGION', ''),
         ],
 
     ],

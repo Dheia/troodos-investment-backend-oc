@@ -303,16 +303,16 @@ return [
     'storage' => [
 
         'uploads' => [
-            'disk'            => 'local',
-            'folder'          => 'uploads',
-            'path'            => '/storage/app/uploads',
+            'disk'            => env('DEFAULT_FILESYSTEM', 'local'),
+            'folder'          => env('DEFAULT_UPLOADS_FOLDER', 'uploads'),
+            'path'            => env('DEFAULT_FILESYSTEM_PATH', '/storage/app/') . env('DEFAULT_UPLOADS_FOLDER', 'uploads'),
             'temporaryUrlTTL' => 3600,
         ],
 
         'media' => [
-            'disk'   => 'local',
-            'folder' => 'media',
-            'path'   => '/storage/app/media',
+            'disk'   => env('DEFAULT_FILESYSTEM', 'local'),
+            'folder' => env('DEFAULT_MEDIA_FOLDER', 'media'),
+            'path'   => env('DEFAULT_FILESYSTEM_PATH', '/storage/app/') . env('DEFAULT_MEDIA_FOLDER', 'media'),
         ],
 
     ],

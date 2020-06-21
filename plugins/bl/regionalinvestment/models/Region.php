@@ -4,6 +4,7 @@ namespace BL\RegionalInvestment\Models;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Model;
 use October\Rain\Database\Traits\Sortable;
 
@@ -80,7 +81,7 @@ class Region extends Model
         $regions = self::where('primary', 1)->get();
         if ($this->primary == 1) {
             if ($regions) {
-                self::where('primary', 1)->update(['primary' => 0]);
+                DB::table('bl_regionalinvestment_regions')->where('primary', 1)->update(['primary' => 0]);
             }
         }
         return $this;
@@ -91,11 +92,8 @@ class Region extends Model
         //Ensure only 1 primary
         $regions = self::where('primary', 1)->get();
         if ($regions->count() == 0) {
-            $this->primary = 1;
-            $this->save();
+            DB::table('bl_regionalinvestment_regions')->where('id', $this->id)->update(['primary' => 1]);
         }
-        return $this;
-
         Cache::forget("all.Regionsen");
         Cache::forget("all.Regionsel");
     }

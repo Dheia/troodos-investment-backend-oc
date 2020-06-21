@@ -32,8 +32,6 @@ class Community extends Model
         'region' => 'BL\RegionalInvestment\Models\Region'
     ];
 
-    protected $fillable = ['fdsa'];
-
     public $hasOne = [
         'community_council' => 'BL\RegionalInvestment\Models\CommunityCouncil'
     ];

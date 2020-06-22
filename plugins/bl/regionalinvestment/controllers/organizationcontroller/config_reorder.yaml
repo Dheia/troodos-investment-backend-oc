@@ -1,4 +1,0 @@
-title: Reorder organizations
-modelClass: BL\RegionalInvestment\Models\Organization
-toolbar:
-    buttons: reorder_toolbar

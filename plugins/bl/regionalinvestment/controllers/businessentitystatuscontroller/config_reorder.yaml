@@ -1,4 +1,0 @@
-title: Reorder business entity statuses
-modelClass: BL\RegionalInvestment\Models\BusinessEntityStatus
-toolbar:
-    buttons: reorder_toolbar

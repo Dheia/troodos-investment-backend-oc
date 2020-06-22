@@ -1,5 +1,8 @@
-<?php namespace BL\RegionalInvestment\Updates;
+<?php
 
+namespace BL\RegionalInvestment\Updates;
+
+use Illuminate\Support\Facades\DB;
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
@@ -7,16 +10,31 @@ class BuilderTableCreateBlRegionalinvestmentCommunityPointOfInterest extends Mig
 {
     public function up()
     {
-        Schema::create('bl_regionalinvestment_community_point_of_interest', function($table)
-        {
-            $table->engine = 'InnoDB';
-            $table->bigInteger('community_id')->unsigned();
-            $table->bigInteger('point_of_interest_id')->unsigned();
-        });
+        if (!Schema::hasTable('bl_regionalinvestment_community_p_o_i')) {
+            Schema::create('bl_regionalinvestment_community_p_o_i', function ($table) {
+                $table->engine = 'InnoDB';
+                $table->bigInteger('c_id')->unsigned();
+                $table->bigInteger('p_o_i_id')->unsigned();
+            });
+            if (Schema::hasTable('bl_regionalinvestment_communities')) {
+                Schema::table('bl_regionalinvestment_community_p_o_i', function ($table) {
+                    $table->foreign('c_id')->references('id')->on('bl_regionalinvestment_communities')->onDelete('cascade')->onUpdate('cascade');
+                });
+            }
+            if (Schema::hasTable('bl_regionalinvestment_points_of_interest')) {
+                Schema::table('bl_regionalinvestment_community_p_o_i', function ($table) {
+                    $table->foreign('p_o_i_id')->references('id')->on('bl_regionalinvestment_points_of_interest')->onDelete('cascade')->onUpdate('cascade');
+                });
+            }
+        }
     }
-    
+
     public function down()
     {
-        Schema::dropIfExists('bl_regionalinvestment_community_point_of_interest');
+        if (Schema::hasTable('bl_regionalinvestment_community_p_o_i')) {
+            DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+            Schema::dropIfExists('bl_regionalinvestment_community_p_o_i');
+            DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        }
     }
 }

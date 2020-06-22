@@ -28,14 +28,10 @@ class BusinessType extends Model
     public $belongsToMany = [
         'investment_opportunities' => [
             'BL\RegionalInvestment\Models\InvestmentOpportunity',
-            'table'    => 'bl_regionalinvestment_business_entities_business_entity_status',
-            'key'      => 'business_type_id',
-            'otherKey' => 'investment_opportunity_id'
+            'table'    => 'bl_regionalinvestment_business_type_i_o',
+            'key'      => 'b_t_id',
+            'otherKey' => 'i_o_id'
         ]
-    ];
-
-    public $hasMany = [
-        'business_entities' => 'BL\RegionalInvestment\Models\BusinessEntity'
     ];
 
     /**

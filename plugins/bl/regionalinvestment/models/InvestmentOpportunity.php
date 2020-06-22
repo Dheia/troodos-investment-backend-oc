@@ -21,28 +21,24 @@ class InvestmentOpportunity extends Model
     public $table = 'bl_regionalinvestment_investment_opportunities';
     public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
 
-    public $belongsTo = [
-        'business_entity' => 'BL\RegionalInvestment\Models\BusinessEntity'
-    ];
-
     public $belongsToMany = [
         'communities' => [
             'BL\RegionalInvestment\Models\Community',
-            'table'    => 'bl_regionalinvestment_community_investment_opportunity',
-            'key'      => 'investment_opportunity_id',
-            'otherKey' => 'community_id'
+            'table'    => 'bl_regionalinvestment_community_i_o',
+            'key'      => 'i_o_id',
+            'otherKey' => 'c_id'
         ],
         'regions' => [
             'BL\RegionalInvestment\Models\Region',
-            'table'    => 'bl_regionalinvestment_investment_opportunity_region',
-            'key'      => 'investment_opportunity_id',
-            'otherKey' => 'region_id'
+            'table'    => 'bl_regionalinvestment_i_o_region',
+            'key'      => 'i_o_id',
+            'otherKey' => 'r_id'
         ],
         'business_types' => [
             'BL\RegionalInvestment\Models\BusinessType',
-            'table'    => 'bl_regionalinvestment_business_type_investment_opportunity',
-            'key'      => 'investment_opportunity_id',
-            'otherKey' => 'business_type_id'
+            'table'    => 'bl_regionalinvestment_business_type_i_o',
+            'key'      => 'i_o_id',
+            'otherKey' => 'b_t_id'
         ]
     ];
 
@@ -53,8 +49,7 @@ class InvestmentOpportunity extends Model
         'name' => 'required',
         'slug' => 'required|unique:bl_regionalinvestment_investment_opportunities,slug',
         'short_description' => 'required|max:512',
-        'investment_min' => 'required',
-        'investment_max' => 'required',
+        'investment_target' => 'required',
         'description' => 'required',
         'email' => 'email',
         'website' => 'url'
@@ -70,7 +65,7 @@ class InvestmentOpportunity extends Model
     public static function getLocalized()
     {
         $opportunities = Cache::rememberForever("all.Opportunities" . App::getLocale(), function () {
-            return self::with('business_types')->with('business_entity')->where('published', 1)->get()->toArray();
+            return self::with('business_types')->where('published', 1)->get()->toArray();
         });
         return collect($opportunities);
     }
@@ -78,18 +73,18 @@ class InvestmentOpportunity extends Model
     public static function getLocalizedByCommunity($community_id)
     {
         $opportunities = self::getLocalized();
-        $ids = DB::table('bl_regionalinvestment_community_investment_opportunity')
-            ->where('community_id', $community_id)
-            ->pluck('investment_opportunity_id');
+        $ids = DB::table('bl_regionalinvestment_community_i_o')
+            ->where('c_id', $community_id)
+            ->pluck('i_o_id');
         return $opportunities->whereIn('id', $ids);
     }
 
     public static function getLocalizedByRegion($region_id)
     {
         $opportunities = self::getLocalized();
-        $ids = DB::table('bl_regionalinvestment_investment_opportunity_region')
-            ->where('region_id', $region_id)
-            ->pluck('investment_opportunity_id');
+        $ids = DB::table('bl_regionalinvestment_i_o_region')
+            ->where('r_id', $region_id)
+            ->pluck('i_o_id');
         return $opportunities->whereIn('id', $ids);
     }
 

@@ -1,8 +1,0 @@
-business_entities:
-    label: Business entities that belong to this status
-    view:
-        list: $/bl/regionalinvestment/models/businessentity/columns.yaml
-        toolbarButtons: add|create|remove
-    manage:
-        form: $/bl/regionalinvestment/models/businessentity/fields.yaml
-        showCheckboxes: true

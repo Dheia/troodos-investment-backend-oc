@@ -1,0 +1,17 @@
+region:
+    label: Region
+    view:
+        list: $/bl/regionalinvestment/models/region/columns.yaml
+        form: $/bl/regionalinvestment/models/region/fields.yaml
+        toolbarButtons: add|create|remove
+    manage:
+        form: $/bl/regionalinvestment/models/region/fields.yaml
+        showCheckboxes: true
+communities:
+    label: Community
+    view:
+        list: $/bl/regionalinvestment/models/community/columns.yaml
+        toolbarButtons: add|create|remove
+    manage:
+        form: $/bl/regionalinvestment/models/community/fields.yaml
+        showCheckboxes: true

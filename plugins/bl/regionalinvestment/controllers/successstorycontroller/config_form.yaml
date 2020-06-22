@@ -1,0 +1,10 @@
+name: Success Story
+form: $/bl/regionalinvestment/models/successstory/fields.yaml
+modelClass: BL\RegionalInvestment\Models\SuccessStory
+defaultRedirect: bl/regionalinvestment/successstorycontroller
+create:
+    redirect: "bl/regionalinvestment/successstorycontroller/update/:id"
+    redirectClose: bl/regionalinvestment/successstorycontroller
+update:
+    redirect: bl/regionalinvestment/successstorycontroller
+    redirectClose: bl/regionalinvestment/successstorycontroller

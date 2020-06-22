@@ -1,4 +1,0 @@
-title: Reorder community councils
-modelClass: BL\RegionalInvestment\Models\CommunityCouncil
-toolbar:
-    buttons: reorder_toolbar

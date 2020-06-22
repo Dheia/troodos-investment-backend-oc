@@ -32,22 +32,18 @@ class Community extends Model
         'region' => 'BL\RegionalInvestment\Models\Region'
     ];
 
-    public $hasOne = [
-        'community_council' => 'BL\RegionalInvestment\Models\CommunityCouncil'
-    ];
-
     public $belongsToMany = [
         'investment_oppotunities' => [
             'BL\RegionalInvestment\Models\InvestmentOpportunity',
-            'table'    => 'bl_regionalinvestment_community_investment_opportunity',
-            'key'      => 'community_id',
-            'otherKey' => 'investment_opportunity_id'
+            'table'    => 'bl_regionalinvestment_community_i_o',
+            'key'      => 'c_id',
+            'otherKey' => 'i_o_id'
         ],
         'points_of_interest' => [
             'BL\RegionalInvestment\Models\PointOfInterest',
-            'table'    => 'bl_regionalinvestment_community_point_of_interest',
-            'key'      => 'community_id',
-            'otherKey' => 'point_of_interest_id'
+            'table'    => 'bl_regionalinvestment_community_p_o_i',
+            'key'      => 'c_id',
+            'otherKey' => 'p_o_i_id'
         ]
     ];
 
@@ -69,7 +65,7 @@ class Community extends Model
     public static function getLocalized()
     {
         $communities = Cache::rememberForever("all.Communities" . App::getLocale(), function () {
-            return self::with('community_council')->where('published', 1)->get()->toArray();
+            return self::where('published', 1)->get()->toArray();
         });
         return collect($communities);
     }

@@ -6,11 +6,3 @@ investment_opportunities:
     manage:
         form: $/bl/regionalinvestment/models/investmentopportunity/fields.yaml
         showCheckboxes: true
-business_entities:
-    label: Business entities that are of this business type
-    view:
-        list: $/bl/regionalinvestment/models/businessentity/columns.yaml
-        toolbarButtons: add|create|remove
-    manage:
-        form: $/bl/regionalinvestment/models/businessentity/fields.yaml
-        showCheckboxes: true

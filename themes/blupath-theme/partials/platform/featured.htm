@@ -3,7 +3,7 @@
   <div class="view view-cascade overlay card-no-shadow">
     <img class="card-img-top card-no-shadow" 
       style="width: 100%; max-height: 650px; object-fit: cover;"
-      src="{% if featured.photo == '' %}https://mdbootstrap.com/img/Photos/Others/images/53.jpg{% else %}{{ featured.photo|media }}{% endif %}"
+      src="{{ featured.photo|media }}"
       alt="Card image cap">
     <a href="#!">
       <div class="mask rgba-white-slight"></div>
@@ -19,25 +19,17 @@
       <hr>
       {% for business_type in featured.business_types %}
         {{ business_type.name }}
-        <hr>
       {% endfor %}
 
-      {% if featured.business_entity %}
-        <strong>{{featured.business_entity.name}}</strong>
-        <br>
-      {% endif %}
-      {% if featured.investment_min %}
-        <strong>{{'investment.investmentMin'|__}}</strong> €{{featured.investment_min}}
-        <br>
-      {% endif %}
-      {% if featured.investment_max %}
-        <strong>{{'investment.investmentMax'|__}}</strong> €{{featured.investment_max}}
-        <br>
-      {% endif %}
       {% if featured.investment_target %}
         <strong>{{'investment.investmentTarget'|__}}</strong> €{{featured.investment_target}}
         <br>
       {% endif %}
+
+      {% if featured.video_id %}
+        {% partial 'components/youtube' id=featured.video_id %}
+      {% endif %}
+      
       <hr>
 
       <!-- Subtitle -->
@@ -56,7 +48,7 @@
       {% set x = 1 %}
       {% set y = 1 %}
 
-      {% if featured.sections or featured.video_id or featured.photos %}
+      {% if featured.sections or featured.photos %}
         <ul class="nav nav-tabs" id="featuredTabs" role="tablist">
           {% if featured.sections %}
             {% for section in featured.sections %}
@@ -76,22 +68,6 @@
             {% endfor %}
           {% endif %}
 
-          {% if featured.video_id %}
-            <li class="nav-featured">
-              <a 
-                class="nav-link {% if x == 1 %} active {% endif %}" 
-                id="video-tab" 
-                data-toggle="tab" 
-                href="#video" 
-                role="tab" 
-                aria-controls="video" 
-                aria-selected="true">
-                {{'common.video'|__}}
-              </a>
-            </li>
-            {% set x = x + 1 %}
-          {% endif %}
-
           {% if featured.photos %}
             <li class="nav-featured">
               <a 
@@ -108,42 +84,10 @@
             {% set x = x + 1 %}
           {% endif %}
 
-          {% if (type=='community' and featured.community_council) %}
-            <li class="nav-featured">
-              <a 
-                class="nav-link {% if x == 1 %} active {% endif %}" 
-                id="community-council-tab" 
-                data-toggle="tab" 
-                href="#community-council" 
-                role="tab" 
-                aria-controls="community-council" 
-                aria-selected="true">
-                {{'common.communityCouncil'|__}}
-              </a>
-            </li>
-            {% set x = x + 1 %}
-          {% endif %}
-
-          {% if (type=='opportunity' and featured.business_entity) %}
-            <li class="nav-featured">
-              <a 
-                class="nav-link {% if x == 1 %} active {% endif %}" 
-                id="business-entity-tab" 
-                data-toggle="tab" 
-                href="#business-entity" 
-                role="tab" 
-                aria-controls="business-entity" 
-                aria-selected="true">
-                {{featured.business_entity.name}}
-              </a>
-            </li>
-            {% set x = x + 1 %}
-          {% endif %}
-
         </ul>
       {% endif %}
 
-      {% if featured.sections or featured.video_id or featured.photos %}
+      {% if featured.sections or featured.photos %}
         <div class="tab-content" id="myTabContent">
           {% if featured.sections %}
             {% for section in featured.sections %}
@@ -156,17 +100,6 @@
               </div>
               {% set y = y + 1 %}
             {% endfor %}
-          {% endif %}
-
-          {% if featured.video_id %}
-            <div 
-              class="tab-pane fade show {% if y == 1 %} active {% endif %}" 
-              id="video" 
-              role="tabpanel" 
-              aria-labelledby="video-tab">
-              {% partial 'components/youtube' id=featured.video_id %}
-            </div>
-            {% set y = y + 1 %}
           {% endif %}
 
           {% if featured.photos %}
@@ -185,28 +118,6 @@
                 {% endfor %}
                 </div>
               </div>
-            </div>
-            {% set y = y + 1 %}
-          {% endif %}
-
-          {% if (type=='community' and featured.community_council) %}
-            <div 
-              class="tab-pane text-left fade show {% if y == 1 %} active {% endif %}" 
-              id="community-council" 
-              role="tabpanel" 
-              aria-labelledby="community-council-tab">
-              {% partial 'platform/community-council' council=featured.community_council %}
-            </div>
-            {% set y = y + 1 %}
-          {% endif %}
-
-          {% if (type=='opportunity' and featured.business_entity) %}
-            <div 
-              class="tab-pane text-left fade show {% if y == 1 %} active {% endif %}" 
-              id="business-entity" 
-              role="tabpanel" 
-              aria-labelledby="business-entity-tab">
-              {% partial 'platform/community-council' council=featured.business_entity %}
             </div>
             {% set y = y + 1 %}
           {% endif %}

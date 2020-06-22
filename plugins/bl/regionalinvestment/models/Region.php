@@ -33,16 +33,10 @@ class Region extends Model
     public $belongsToMany = [
         'investment_oppotunities' => [
             'BL\RegionalInvestment\Models\InvestmentOpportunity',
-            'table'    => 'bl_regionalinvestment_investment_opportunity_region',
-            'key'      => 'region_id',
-            'otherKey' => 'investment_opportunity_id'
+            'table'    => 'bl_regionalinvestment_i_o_region',
+            'key'      => 'r_id',
+            'otherKey' => 'i_o_id'
         ],
-        'organizations' => [
-            'BL\RegionalInvestment\Models\Organization',
-            'table'    => 'bl_regionalinvestment_organization_region',
-            'key'      => 'region_id',
-            'otherKey' => 'organization_id'
-        ]
     ];
 
     public $hasMany = [

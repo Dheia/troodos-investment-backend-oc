@@ -41,14 +41,14 @@ fields:
 tabs:
     fields:
         region:
-            label: "Region in which this point of interest is based"
+            label: "Region in which this success story is based"
             nameFrom: name
             descriptionFrom: description
             span: auto
             type: relation
             tab: Relationships
         communities:
-            label: "Communities in which this point of interest is based"
+            label: "Communities in which this success story is based"
             span: auto
             type: partial
             path: field_communities

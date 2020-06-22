@@ -7,35 +7,23 @@ forceUrl = 0
 [viewBag]
 ==
   <?php
-    use BL\RegionalInvestment\Models\Region;
     use BL\RegionalInvestment\Models\Community;
-    use BL\RegionalInvestment\Models\Organization;
     use BL\RegionalInvestment\Models\InvestmentOpportunity;
     
     function onStart(){
-      $this['regions'] = Region::getLocalized()->where('primary', false);
       $this['communities'] = Community::getLocalized();
-      $this['organizations'] = Organization::getLocalized();
       $this['opportunities'] = InvestmentOpportunity::getLocalized();
     }
   ?>
 ==
 <nav id="menu" class="hidden">
     <ul>
-        <li>
-          <span style="width: 24px; max-width: 36px; text-align: center;">
-            <i class="fa fa-home"></i>
-          </span>
+        <li class="list-icon list-home">
           <a href="/">{{'common.home'|__}}</a>
         </li>
 
-        <li>
-          <span>
-            <span style="width: 24px; max-width: 36px; text-align: center;">
-              <i class="fa fa-user {% if user %} accent-text {% endif %}"></i>
-            </span>
-            <span style="padding-left: 20px;">{{'side-nav.investor-pages'|__}}</span>
-          </span>
+        <li class="list-icon list-user">
+          <span>{{'side-nav.investor-pages'|__}}</span>
           <ul>
             {% if user %}
               <li><a href="/profile">{{'user.profile'|__}}</a></li>
@@ -48,33 +36,14 @@ forceUrl = 0
           </ul>
         </li>
 
-        <li>
-          <span>
-            <span style="width: 24px; max-width: 36px; text-align: center;">
-              <i class="fa fa-euro"></i>
-            </span>
-            <span style="padding-left: 20px;">{{'side-nav.investment-platform'|__}}</span>
-          </span>
+        <li class="list-icon list-euro">
+          <span>{{'side-nav.investment-platform'|__}}</span>
           <ul>
               <li><a href="/investment-platform">{{'platform.main-page'|__}}</a></li>
-              <li><span style="padding-left: 20px;">{{'platform.regions'|__}}</span>
-                <ul>
-                {% for region in regions %}
-                  <li><a href="{{ 'investment-platform'|page({ type: 'region', name: region.slug}) }}">{{region.name}}</a></li>
-                {% endfor %}
-                </ul>
-              </li>
               <li><span style="padding-left: 20px;">{{'platform.communities'|__}}</span>
                 <ul>
                   {% for community in communities %}
                     <li><a href="{{ 'investment-platform'|page({ type: 'community', name: community.slug}) }}/">{{community.name}}</a></li>
-                  {% endfor %}
-                </ul>
-              </li>
-              <li><span style="padding-left: 20px;">{{'platform.organizations'|__}}</span>
-                <ul>
-                  {% for organization in organizations %}
-                    <li><a href="{{ 'investment-platform'|page({ type: 'organization', name: organization.slug }) }}">{{organization.name}}</a></li>
                   {% endfor %}
                 </ul>
               </li>
@@ -88,13 +57,8 @@ forceUrl = 0
           </ul>
         </li>
 
-        <li>
-          <span>
-            <span style="width: 24px; max-width: 36px; text-align: center;">
-              <i class="fa fa-globe"></i>
-            </span>
-            <span style="padding-left: 20px;">{{'side-nav.pages'|__}}</span>
-          </span>
+        <li class="list-icon list-pages">
+          <span>{{'side-nav.pages'|__}}</span>
           <ul>
             {% if staticMenu.menuItems %}
             {% set items = staticMenu.menuItems %}
@@ -107,13 +71,8 @@ forceUrl = 0
           </ul>
         </li>
 
-        <li>
-          <span>
-            <span style="width: 24px; max-width: 36px; text-align: center;">
-              <i class="fa fa-flag"></i>
-            </span>
-            <span style="padding-left: 20px;">{{'common.language'|__}}</span>
-          </span>
+        <li class="list-icon list-languages">
+          <span>{{'common.language'|__}}</span>
           <ul>
             {% for code, name in locales %}
                 <li><a data-request="onSwitchLocale" data-request-data="locale: '{{ code }}'" href="#">{{ name }}</a></li>

@@ -11,7 +11,7 @@ use October\Rain\Database\Traits\Sortable;
 /**
  * Model
  */
-class PointOfInterest extends Model
+class SuccessStory extends Model
 {
     use \October\Rain\Database\Traits\Validation;
     use Sortable;
@@ -26,7 +26,7 @@ class PointOfInterest extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'bl_regionalinvestment_points_of_interest';
+    public $table = 'bl_regionalinvestment_success_stories';
 
     public $belongsTo = [
         'region' => 'BL\RegionalInvestment\Models\Region'
@@ -35,8 +35,8 @@ class PointOfInterest extends Model
     public $belongsToMany = [
         'communities' => [
             'BL\RegionalInvestment\Models\Community',
-            'table'    => 'bl_regionalinvestment_community_p_o_i',
-            'key'      => 'p_o_i_id',
+            'table'    => 'bl_regionalinvestment_community_s_s',
+            'key'      => 's_s_id',
             'otherKey' => 'c_id'
         ]
     ];
@@ -46,7 +46,7 @@ class PointOfInterest extends Model
      */
     public $rules = [
         'name' => 'required',
-        'slug' => 'required|unique:bl_regionalinvestment_points_of_interest,slug',
+        'slug' => 'required|unique:bl_regionalinvestment_success_stories,slug',
         'description' => 'required',
         'website' => 'url'
     ];
@@ -59,7 +59,7 @@ class PointOfInterest extends Model
 
     public static function getLocalized()
     {
-        $pointsOfInterest = Cache::rememberForever("all.PointsOfInterest" . App::getLocale(), function () {
+        $pointsOfInterest = Cache::rememberForever("all.SuccessStories" . App::getLocale(), function () {
             return self::where('published', 1)->get()->toArray();
         });
         return collect($pointsOfInterest);
@@ -68,15 +68,15 @@ class PointOfInterest extends Model
     public static function getLocalizedByCommunity($community_id)
     {
         $pointsOfInterest = self::getLocalized();
-        $ids = DB::table('bl_regionalinvestment_community_p_o_i')
+        $ids = DB::table('bl_regionalinvestment_community_s_s')
             ->where('c_id', $community_id)
-            ->pluck('p_o_i_id');
+            ->pluck('s_s_id');
         return $pointsOfInterest->whereIn('id', $ids);
     }
 
     public function afterSave()
     {
-        Cache::forget("all.PointsOfInteresten");
-        Cache::forget("all.PointsOfInterestel");
+        Cache::forget("all.SuccessStoriesen");
+        Cache::forget("all.SuccessStoriesel");
     }
 }

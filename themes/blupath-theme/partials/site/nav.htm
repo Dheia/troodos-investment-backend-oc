@@ -15,29 +15,45 @@ code = "main-menu"
 
     <!-- Navbar brand -->
     
-    <a class="{% if transparentNavbar == true %} overlay-text ml-1 {% endif %}" href="#menu"><button type="button" aria-label="Side-nav toggle" class="btn-flat mr-3" id="left-nav-toggle"><i class="fa fa-bars ml-1"></i></span></button></a>
-    <a class="navbar-brand mr-0" href="{{ 'investment-platform'|page({ type: '', name: ''}) }}">{{'common.siteTitle'|__}}</a>
+    <a 
+        class="{% if transparentNavbar == true %} overlay-text ml-1 {% endif %}" href="#menu"
+        >
+        <button 
+            type="button" 
+            aria-label="Side-nav toggle" 
+            class="btn-flat mr-3" 
+            id="left-nav-toggle"
+            >
+            <i class="fa fa-bars ml-1"></i>
+        </button>
+    </a>
+    <a 
+        class="navbar-brand mr-0" 
+        href="{{ 'investment-platform'|page({ type: '', name: ''}) }}"
+        >
+        {{'common.siteTitle'|__}}
+    </a>
+
     {% if (featured) %}\ {{featured.name}} {% endif %}
 
     <!-- Collapsible content -->
     {% if true %}
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="float: right; width: 50%;">
+    <div 
+        class="collapse navbar-collapse" 
+        id="navbarSupportedContent" 
+        style="float: right; width: 50%;"
+        >
         <ul class="navbar-nav ml-auto">
 
+            <ul class="navbar-nav mr-auto">
             {% if staticMenu.menuItems %}
             {% set items = staticMenu.menuItems %}
             <!-- Links -->
-            <ul class="navbar-nav mr-auto">
                 {% for item in items %}
-                    <li class="nav-item {{ item.isActive or item.isChildActive ? 'active' : '' }}
-                        {{ item.items ? 'dropdown btn-group' : '' }}"
-                    >
-                        <a class="{% if transparentNavbar == true %} overlay-text {% endif %} nav-link {% if item.items %}'dropdown-toggle' {% endif %}"
-                                {% if item.items %} id="dropdownMenu{{ item.title|replace({' ':'-'}) }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{% endif %}
-                        href="{{ item.url }}"
-                        >
+                    <li class="nav-item {{ item.isActive or item.isChildActive ? 'active' : '' }} {{ item.items ? 'dropdown btn-group' : '' }}" >
+                        <a class="{% if transparentNavbar == true %} overlay-text {% endif %} nav-link {% if item.items %}'dropdown-toggle' {% endif %}" {% if item.items %} id="dropdownMenu{{ item.title|replace({' ':'-'}) }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{% endif %} href="{{ item.url }}" >
+                            
                             {{ item.title }}
-
                             {% if item.items %}<span class="sr-only">(current)</span>{% endif %}
                         </a>
 
@@ -62,8 +78,17 @@ code = "main-menu"
                     {% endfor %}
                 </div>
             </li>
+
+            <!-- Search button -->
             {% if twoBarNav==true %}
-                <button v-if="tab=='opportunities'" type="button" class="btn-flat mr-2" data-toggle="modal" data-target="#search-modal"><i class="fa fa-search ml-1"></i></span></button>
+                <button 
+                    v-if="tab=='opportunities'" 
+                    type="button" 
+                    class="btn-flat mr-2" 
+                    data-toggle="modal" 
+                    data-target="#search-modal">
+                        <i class="fa fa-search ml-1"></i>
+                </button>
                 {% partial 'platform/investmentSearch' %}
             {% endif %}
             <!-- Collapsible content -->

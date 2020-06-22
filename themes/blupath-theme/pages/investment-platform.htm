@@ -9,57 +9,32 @@ is_hidden = 0
     use BL\RegionalInvestment\Models\Region;
     use BL\RegionalInvestment\Models\Community;
     use BL\RegionalInvestment\Models\InvestmentOpportunity;
-    use BL\RegionalInvestment\Models\Organization;
+    use BL\RegionalInvestment\Models\SuccessStory;
     use BL\RegionalInvestment\Models\PointOfInterest;
     
     function onStart(){
       $type = $this->param('type');
       $name = $this->param('name');
+
+      $communities = Community::getLocalized();
+      $successStories =  SuccessStory::getLocalized();
+      $opportunities = InvestmentOpportunity::getLocalized();
+      $pointsOfInterest = PointOfInterest::getLocalized();
       $primary = false;
 
       if($type =='region'){
         $featured = Region::where('slug', $name)->first();
-        $communities = $featured ? Community::getLocalized()->where('region_id', $featured->id) : [];
-        $organizations = $featured ? Organization::getLocalizedByRegion($featured->id) : [];
-        $opportunities = $featured ? InvestmentOpportunity::getLocalizedByRegion($featured->id) : [];
-        $pointsOfInterest = $featured ? PointOfInterest::getLocalized()->where('region_id', $featured->id) : [];
-        $regions = [];
       } elseif( $type =='community') {
         $featured = Community::where('slug', $name)->first();
-        $communities = [];
-        $organizations = $featured ? Organization::getLocalizedByRegion($featured->region->id) : [];
-        $opportunities = $featured ? InvestmentOpportunity::getLocalizedByCommunity($featured->id) : [];
-        $pointsOfInterest = $featured ? PointOfInterest::getLocalizedByCommunity($featured->id) : [];
-        $regions = [];
       } elseif( $type =='pointOfInterest') {
         $featured = PointOfInterest::where('slug', $name)->first();
-        $communities = [];
-        $organizations = [];
-        $opportunities = [];
-        $pointsOfInterest = [];
-        $regions = [];
-      } elseif( $type =='organization') {
+      } elseif( $type =='successStory') {
         $featured = Organization::where('slug', $name)->first();
-        $communities = Community::getLocalized();;
-        $organizations = Organization::getLocalized();
-        $opportunities = [];
-        $pointsOfInterest = PointOfInterest::getLocalized();
-        $regions = Region::getLocalized()->where('primary', 0);
       } elseif( $type =='opportunity') {
         $featured = InvestmentOpportunity::with('business_entity')->with('business_types')->where('slug', $name)->first();
-        $communities = [];
-        $organizations = [];
-        $opportunities = [];
-        $pointsOfInterest = [];
-        $regions = [];
       } else {
         $type = 'platform';
         $featured = Region::getLocalized()->where('primary', 1)->first();
-        $communities = Community::getLocalized();
-        $organizations =  Organization::getLocalized();
-        $opportunities = InvestmentOpportunity::getLocalized();
-        $pointsOfInterest = PointOfInterest::getLocalized();
-        $regions = Region::getLocalized()->where('primary', 0);
         $primary = true;
       }
 
@@ -68,9 +43,8 @@ is_hidden = 0
       $this['featured'] = $featured;
       $this['communities'] = $communities;
       $this['opportunities'] = $opportunities;
-      $this['organizations'] = $organizations;
+      $this['successStories'] = $successStories;
       $this['pointsOfInterest'] = $pointsOfInterest;
-      $this['regions'] = $regions;
       $this['primary'] = $primary;
     }
 ?>
@@ -113,8 +87,8 @@ is_hidden = 0
         </a>
         {% partial 'platform/pointsOfInterestList' pointsOfInterest=pointsOfInterest type=type %}
       </div>
-      <div v-if="tab=='organizations'">
-        {% partial 'platform/organizationsList' organizations=organizations type=type %}
+      <div v-if="tab=='successStories'">
+        {% partial 'platform/successStoriesList' successStories=successStories type=type %}
       </div>
 
       <div v-if="view=='map' && (tab=='regions' || tab=='opportunities' || tab=='communities' || tab=='pointsOfInterest')">
@@ -124,7 +98,6 @@ is_hidden = 0
         </a>
         <img src="/themes/blupath-theme/assets/images/map_background.jpg" />
       </div>
-
 
     {% else %}
       <div class="container mt-5">

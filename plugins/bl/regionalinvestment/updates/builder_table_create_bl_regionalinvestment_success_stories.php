@@ -6,12 +6,12 @@ use Illuminate\Support\Facades\DB;
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
-class BuilderTableCreateBlRegionalinvestmentPointsOfInterest extends Migration
+class BuilderTableCreateBlRegionalinvestmentSuccessStories extends Migration
 {
     public function up()
     {
-        if (!Schema::hasTable('bl_regionalinvestment_points_of_interest')) {
-            Schema::create('bl_regionalinvestment_points_of_interest', function ($table) {
+        if (!Schema::hasTable('bl_regionalinvestment_success_stories')) {
+            Schema::create('bl_regionalinvestment_success_stories', function ($table) {
                 $table->engine = 'InnoDB';
                 $table->bigIncrements('id')->unsigned();
                 $table->bigInteger('region_id')->nullable()->unsigned();
@@ -26,7 +26,7 @@ class BuilderTableCreateBlRegionalinvestmentPointsOfInterest extends Migration
                 $table->integer('sort_order')->nullable()->unsigned();
             });
             if (Schema::hasTable('bl_regionalinvestment_regions')) {
-                Schema::table('bl_regionalinvestment_points_of_interest', function ($table) {
+                Schema::table('bl_regionalinvestment_success_stories', function ($table) {
                     $table->foreign('region_id')->references('id')->on('bl_regionalinvestment_regions')->onDelete('set null')->onUpdate('cascade');
                 });
             }
@@ -35,9 +35,9 @@ class BuilderTableCreateBlRegionalinvestmentPointsOfInterest extends Migration
 
     public function down()
     {
-        if (Schema::hasTable('bl_regionalinvestment_points_of_interest')) {
+        if (Schema::hasTable('bl_regionalinvestment_success_stories')) {
             DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-            Schema::dropIfExists('bl_regionalinvestment_points_of_interest');
+            Schema::dropIfExists('bl_regionalinvestment_success_stories');
             DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         }
     }

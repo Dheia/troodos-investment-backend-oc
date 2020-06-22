@@ -1,13 +1,12 @@
 <!--Main layout-->
 <div class="container mt-5">
     <div class="row">
-
         <!--Main column-->
         <div class="col-lg-12">  
-            <h1>{{'tabs.communities'|__}}</h1>          
+            <h1>{{'tabs.successStories'|__}}</h1>          
             <hr class="pb-5">     
-            {% for community in communities %}
-              {% partial 'components/horizontalCard' item=community type='community' %}
+            {% for successStory in successStories %}
+              {% partial 'components/horizontalCard' item=successStory type='successStory' modal=true %}
             {% endfor %}
         </div>
     </div>

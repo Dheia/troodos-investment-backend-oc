@@ -1,0 +1,4 @@
+title: Reorder success stories
+modelClass: BL\RegionalInvestment\Models\SuccessStory
+toolbar:
+    buttons: reorder_toolbar

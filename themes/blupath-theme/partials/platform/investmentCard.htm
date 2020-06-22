@@ -11,18 +11,6 @@
     <h4 class="card-title"><a>{{item.name}}</a></h4>
     <!-- Text -->
     <div class="card-text">
-      {% if item.business_entity %}
-        <strong>{{item.business_entity.name}}</strong>
-        <br>
-      {% endif %}
-      {% if item.investment_min %}
-        <strong>{{'investment.investmentMin'|__}}</strong> €{{item.investment_min}}
-        <br>
-      {% endif %}
-      {% if item.investment_max %}
-        <strong>{{'investment.investmentMax'|__}}</strong> €{{item.investment_max}}
-        <br>
-      {% endif %}
       {% if item.investment_target %}
         <strong>{{'investment.investmentTarget'|__}}</strong> €{{item.investment_target}}
         <br>
@@ -63,20 +51,8 @@
         <img src="{{item.photo|media}}" style="width: 100%;" class="mb-2"/>
         {% endif %}
         <div style="font-size: 0.9em">
-          <h5>
-          {% if item.business_entity %}
-            {{item.business_entity.name}}: 
-          {% endif %}
-          {{item.name}}</h5>
+          <h5>{{item.name}}</h5>
           <div class="card-text">
-            {% if item.investment_min %}
-              <strong>{{'investment.investmentMin'|__}}</strong> €{{item.investment_min}}
-              <br>
-            {% endif %}
-            {% if item.investment_max %}
-              <strong>{{'investment.investmentMax'|__}}</strong> €{{item.investment_max}}
-              <br>
-            {% endif %}
             {% if item.investment_target %}
               <strong>{{'investment.investmentTarget'|__}}</strong> €{{item.investment_target}}
               <br>

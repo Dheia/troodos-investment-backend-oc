@@ -31,7 +31,7 @@ is_hidden = 0
       } elseif( $type =='successStory') {
         $featured = Organization::where('slug', $name)->first();
       } elseif( $type =='opportunity') {
-        $featured = InvestmentOpportunity::with('business_entity')->with('business_types')->where('slug', $name)->first();
+        $featured = InvestmentOpportunity::with('business_types')->where('slug', $name)->first();
       } else {
         $type = 'platform';
         $featured = Region::getLocalized()->where('primary', 1)->first();

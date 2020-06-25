@@ -37,6 +37,18 @@ fields:
         label: "External website"
         span: full
         type: text
+    photos:
+        label: "Photo gallery"
+        prompt: "Add new item"
+        span: full
+        type: repeater
+        form:
+            fields:
+                photos:
+                    label: "Gallery photo"
+                    mode: file
+                    span: full
+                    type: mediafinder
     sections:
         label: "Additional sections"
         prompt: "Add new item"

@@ -20,7 +20,7 @@ class Community extends Model
      * Remove this line if timestamps are defined in the database table.
      */
     public $timestamps = false;
-    protected $jsonable = ['sections'];
+    protected $jsonable = ['sections', 'photos'];
     public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
 
     /**

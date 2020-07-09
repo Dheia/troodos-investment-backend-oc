@@ -56,7 +56,7 @@ class InvestmentOpportunity extends Model
     ];
 
     public $translatable = ['name', 'short_description', 'description', 'sections', 'contact_details'];
-    protected $jsonable = ['sections'];
+    protected $jsonable = ['sections', 'photos'];
 
     public $attachMany = [
         'gallery' => 'System\Models\File'

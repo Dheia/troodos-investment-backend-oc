@@ -1,35 +1,38 @@
 1.0.1:
-    - "Initialize plugin."
+    - 'Initialize plugin.'
 1.0.2:
-    - "Created table bl_regionalinvestment_regions"
+    - 'Created table bl_regionalinvestment_regions'
     - builder_table_create_bl_regionalinvestment_regions.php
 1.0.3:
-    - "Created table bl_regionalinvestment_communities"
+    - 'Created table bl_regionalinvestment_communities'
     - builder_table_create_bl_regionalinvestment_communities.php
 1.0.4:
-    - "Created table bl_regionalinvestment_points_of_interest"
+    - 'Created table bl_regionalinvestment_points_of_interest'
     - builder_table_create_bl_regionalinvestment_points_of_interest.php
 1.0.5:
-    - "Created table bl_regionalinvestment_business_types"
+    - 'Created table bl_regionalinvestment_business_types'
     - builder_table_create_bl_regionalinvestment_business_types.php
 1.0.6:
-    - "Created table bl_regionalinvestment_investment_opportunities"
+    - 'Created table bl_regionalinvestment_investment_opportunities'
     - builder_table_create_bl_regionalinvestment_investment_opportunities.php
 1.0.7:
-    - "Created table bl_regionalinvestment_investment_opportunity_region"
+    - 'Created table bl_regionalinvestment_investment_opportunity_region'
     - builder_table_create_bl_regionalinvestment_investment_opportunity_region.php
 1.0.8:
-    - "Created table bl_regionalinvestment_community_investment_opportunity"
+    - 'Created table bl_regionalinvestment_community_investment_opportunity'
     - builder_table_create_bl_regionalinvestment_community_investment_opportunity.php
 1.0.9:
-    - "Created table bl_regionalinvestment_community_point_of_interest"
+    - 'Created table bl_regionalinvestment_community_point_of_interest'
     - builder_table_create_bl_regionalinvestment_community_point_of_interest.php
 1.0.10:
-    - "Created table bl_regionalinvestment_business_type_investment_opportunity"
+    - 'Created table bl_regionalinvestment_business_type_investment_opportunity'
     - builder_table_create_bl_regionalinvestment_business_type_investment_opportunity.php
 1.0.11:
-    - "Created table builder_table_create_bl_regionalinvestment_success_stories"
+    - 'Created table builder_table_create_bl_regionalinvestment_success_stories'
     - builder_table_create_bl_regionalinvestment_success_stories.php
 1.0.12:
-    - "Created table builder_table_create_bl_regionalinvestment_community_success_story"
+    - 'Created table builder_table_create_bl_regionalinvestment_community_success_story'
     - builder_table_create_bl_regionalinvestment_community_success_story.php
+1.0.13:
+    - 'Updated table bl_regionalinvestment_investment_opportunities'
+    - builder_table_update_bl_regionalinvestment_investment_opportunities.php

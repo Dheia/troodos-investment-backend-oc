@@ -98,6 +98,19 @@ fields:
                     size: large
                     span: full
                     type: richeditor
+    category:
+        label: "bl.regionalinvestment::lang.categories.name"
+        span: left
+        type: relation
+        tab: "bl.regionalinvestment::lang.categories.comment"
+    tags:
+        label: "bl.regionalinvestment::lang.parameters.tags"
+        mode: relation
+        separator: comma
+        customTags: true
+        span: left
+        type: taglist
+        nameFrom: name
 tabs:
     fields:
         communities:

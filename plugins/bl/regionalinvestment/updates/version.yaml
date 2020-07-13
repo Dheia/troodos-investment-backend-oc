@@ -36,3 +36,8 @@
 1.0.13:
     - 'builder_table_update_bl_regionalinvestment_regions_add_category_id'
     - builder_table_update_bl_regionalinvestment_regions_add_category_id.php
+1.0.14:
+    - 'builder_table_update_bl_regionalinvestment_communities_add_category_id'
+    - builder_table_update_bl_regionalinvestment_communities_add_category_id.php
+    - 'builder_table_update_bl_regionalinvestment_investment_opportunities_add_category_id'
+    - builder_table_update_bl_regionalinvestment_investment_opportunities_add_category_id.php

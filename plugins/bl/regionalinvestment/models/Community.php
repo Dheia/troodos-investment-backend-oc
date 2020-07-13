@@ -21,7 +21,10 @@ class Community extends Model
      */
     public $timestamps = false;
     protected $jsonable = ['sections'];
-    public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
+    public $implement = [
+        'RainLab.Translate.Behaviors.TranslatableModel',
+        '@BL.CategoriesTags.Behaviors.HasTagsAndCategoriesModel',
+    ];
 
     /**
      * @var string The database table used by the model.

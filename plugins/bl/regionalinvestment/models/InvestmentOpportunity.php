@@ -19,7 +19,10 @@ class InvestmentOpportunity extends Model
      * @var string The database table used by the model.
      */
     public $table = 'bl_regionalinvestment_investment_opportunities';
-    public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
+    public $implement = [
+        'RainLab.Translate.Behaviors.TranslatableModel',
+        '@BL.CategoriesTags.Behaviors.HasTagsAndCategoriesModel',
+    ];
 
     public $belongsToMany = [
         'communities' => [

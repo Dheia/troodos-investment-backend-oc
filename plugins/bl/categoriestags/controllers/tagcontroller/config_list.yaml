@@ -1,0 +1,12 @@
+list: $/bl/categoriestags/models/tag/columns.yaml
+modelClass: BL\categoriestags\Models\Tag
+title: "bl.categoriestags::lang.tag.record"
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'bl/categoriestags/tagcontroller/update/:id'

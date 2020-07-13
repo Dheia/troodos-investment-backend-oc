@@ -1,0 +1,20 @@
+plugin:
+    name: 'bl.categoriestags::lang.plugin.name'
+    description: 'bl.categoriestags::lang.plugin.description'
+    author: 'BL Blupath Ltd'
+    icon: oc-icon-adjust
+    homepage: ''
+navigation:
+    categories-tags-main-menu-item:
+        label: 'bl.categoriestags::lang.plugin.name'
+        url: bl/categoriestags/categorycontroller
+        icon: icon-adjust
+        sideMenu:
+            categories-side-menu-item:
+                label: 'bl.categoriestags::lang.category.names'
+                url: bl/categoriestags/categorycontroller
+                icon: icon-circle-o
+            tags-side-menu-item:
+                label: 'bl.categoriestags::lang.tag.names'
+                url: bl/categoriestags/tagcontroller
+                icon: icon-circle

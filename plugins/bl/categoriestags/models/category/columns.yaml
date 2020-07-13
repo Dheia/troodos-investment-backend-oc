@@ -1,0 +1,6 @@
+columns:
+    name:
+        label: "bl.categoriestags::lang.columns.name"
+        type: text
+        searchable: true
+        sortable: true

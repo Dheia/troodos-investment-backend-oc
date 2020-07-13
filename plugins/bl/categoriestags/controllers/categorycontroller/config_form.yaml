@@ -1,0 +1,10 @@
+name: "bl.categoriestags::lang.category.record"
+form: $/bl/categoriestags/models/category/fields.yaml
+modelClass: BL\categoriestags\Models\Category
+defaultRedirect: bl/categoriestags/categorycontroller
+create:
+    redirect: 'bl/categoriestags/categorycontroller/update/:id'
+    redirectClose: bl/categoriestags/categorycontroller
+update:
+    redirect: bl/categoriestags/categorycontroller
+    redirectClose: bl/categoriestags/categorycontroller

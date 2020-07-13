@@ -33,3 +33,6 @@
 1.0.12:
     - "Created table builder_table_create_bl_regionalinvestment_community_success_story"
     - builder_table_create_bl_regionalinvestment_community_success_story.php
+1.0.13:
+    - 'builder_table_update_bl_regionalinvestment_regions_add_category_id'
+    - builder_table_update_bl_regionalinvestment_regions_add_category_id.php

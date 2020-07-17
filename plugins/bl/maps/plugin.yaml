@@ -1,0 +1,20 @@
+plugin:
+    name: 'bl.maps::lang.plugin.name'
+    description: 'bl.maps::lang.plugin.description'
+    author: 'BL Blupath Ltd'
+    icon: oc-icon-info
+    homepage: ''
+navigation:
+    maps-main-menu-item:
+        label: 'bl.maps::lang.maps.menu.maps'
+        url: bl/maps/mapscontroller
+        icon: icon-map
+        sideMenu:
+            maps-side-menu-item:
+                label: 'bl.maps::lang.maps.menu.maps'
+                url: bl/maps/mapscontroller
+                icon: icon-map
+#permissions:
+#    create_page_types:
+#        tab: Guides
+#        label: 'Create page types'

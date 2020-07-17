@@ -1,0 +1,9 @@
+<div class="map-popup row">
+    <div class="col-12">
+    <h4>{{ marker.title }}</h4>
+    {{ marker.description|raw }}
+    <p class="mt-2">
+        <a href="{{ marker.markerUrl }}">{{"Click here"|_}}</a>
+    </p>
+    </div>
+</div>

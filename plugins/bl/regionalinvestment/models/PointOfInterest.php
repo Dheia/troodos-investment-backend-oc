@@ -21,7 +21,10 @@ class PointOfInterest extends Model
      * Remove this line if timestamps are defined in the database table.
      */
     public $timestamps = false;
-    public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
+    public $implement = [
+        'RainLab.Translate.Behaviors.TranslatableModel',
+        'Bl.Maps.Behaviors.PositionableOnMapModel'
+    ];
 
     /**
      * @var string The database table used by the model.

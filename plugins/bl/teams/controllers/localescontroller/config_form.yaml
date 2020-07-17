@@ -1,0 +1,12 @@
+name: "bl.teams::lang.locales.name"
+form: $/bl/teams/models/locale/fields.yaml
+modelClass: bl\Teams\Models\Locale
+defaultRedirect: bl/teams/localescontroller
+create:
+    title: "bl.teams::lang.locales.new"
+    redirect: "bl/teams/localescontroller/update/:id"
+    redirectClose: bl/teams/localescontroller
+update:
+    title: "bl.teams::lang.locales.update"
+    redirect: bl/teams/localescontroller
+    redirectClose: bl/teams/localescontroller

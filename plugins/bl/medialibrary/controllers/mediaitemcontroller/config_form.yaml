@@ -1,0 +1,10 @@
+name: 'bl.medialibrary::lang.mediaitems.name'
+form: $/bl/medialibrary/models/mediaitem/fields.yaml
+modelClass: BL\MediaLibrary\Models\MediaItem
+defaultRedirect: bl/medialibrary/mediaitemcontroller
+create:
+    redirect: 'bl/medialibrary/mediaitemcontroller/update/:id'
+    redirectClose: bl/medialibrary/mediaitemcontroller
+update:
+    redirect: bl/medialibrary/mediaitemcontroller
+    redirectClose: bl/medialibrary/mediaitemcontroller

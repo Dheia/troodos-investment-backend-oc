@@ -22,6 +22,7 @@ class InvestmentOpportunity extends Model
     public $implement = [
         'RainLab.Translate.Behaviors.TranslatableModel',
         '@BL.CategoriesTags.Behaviors.HasTagsAndCategoriesModel',
+        'Bl.Maps.Behaviors.PositionableOnMapModel'
     ];
 
     public $belongsToMany = [

@@ -13,4 +13,7 @@
         'tags' => 'Tags',
         'category' => 'Category',
     ],
+    'tabs' => [
+        'map' => 'Position on map',
+    ],
 ];

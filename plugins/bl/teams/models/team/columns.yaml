@@ -1,0 +1,18 @@
+columns:
+    name:
+        label: "bl.teams::lang.teams.label"
+        type: text
+        searchable: true
+        sortable: true
+    active:
+        label: "bl.teams::lang.teams.active"
+        type: partial
+        path: ~/plugins/bl/teams/models/team/_is_active_team.htm
+        searchable: true
+        sortable: true
+    role:
+        label: "bl.teams::lang.teams.role"
+        type: partial
+        path: ~/plugins/bl/teams/models/team/_user_role.htm
+        searchable: true
+        sortable: true

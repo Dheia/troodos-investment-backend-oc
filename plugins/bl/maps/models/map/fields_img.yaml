@@ -1,0 +1,28 @@
+tabs:
+    fields:
+        name:
+            label: "bl.maps::lang.maps.field.name"
+            span: auto
+            type: text
+            tab: "bl.maps::lang.maps.tabs.map_details"
+        image:
+            label: "bl.maps::lang.maps.fields.image"
+            comment: "bl.maps::lang.maps.fields.image_comment"
+            span: full
+            type: partial
+            path: field_image
+            tab: "bl.maps::lang.maps.tabs.map_details"
+        image_preview:
+            type: partial
+            path: field_image_preview
+            tab: "bl.maps::lang.maps.tabs.map_details"
+        # hidden using css: plugins/bl/maps/assets/css/style.css
+        zoom:
+            label: "bl.maps::lang.maps.field.zoom"
+            span: left
+            type: text
+            default: 1
+            tab: "bl.maps::lang.maps.tabs.map_details"
+        _items:
+            tab: "bl.maps::lang.maps.tabs.map_items"
+            type: mapmarkers

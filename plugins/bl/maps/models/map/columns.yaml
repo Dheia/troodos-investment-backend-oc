@@ -1,0 +1,11 @@
+columns:
+    name:
+        label: "bl.maps::lang.maps.columns.name"
+        type: text
+        searchable: true
+        sortable: true
+    type:
+        label: "bl.maps::lang.maps.columns.type"
+        type: text
+        searchable: true
+        sortable: true

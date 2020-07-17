@@ -1,0 +1,6 @@
+columns:
+    name:
+        label: "bl.medialibrary::lang.medialibraries.label"
+        type: text
+        searchable: true
+        sortable: true

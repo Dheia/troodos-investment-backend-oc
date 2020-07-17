@@ -1,0 +1,26 @@
+plugin:
+    name: 'bl.medialibrary::lang.plugin.name'
+    description: 'bl.medialibrary::lang.plugin.description'
+    author: 'BL Blupath Ltd'
+    icon: oc-icon-file-picture-o
+    homepage: ''
+navigation:
+    media-library-main-menu-item:
+        label: 'Media Library'
+        url: bl/medialibrary/medialibrarycontroller
+        icon: icon-photo
+        permissions:
+            - view_media_library
+        sideMenu:
+            media-gallery-side-menu-item:
+                label: 'Media libraries'
+                url: bl/medialibrary/medialibrarycontroller
+                icon: icon-picture-o
+            media-item-side-menu-item:
+                label: 'Media items'
+                url: bl/medialibrary/mediaitemcontroller
+                icon: icon-file-photo-o
+permissions:
+    view_media_library:
+        tab: 'Media Library'
+        label: 'View the media libary interface'

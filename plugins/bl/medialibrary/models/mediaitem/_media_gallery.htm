@@ -1,0 +1,12 @@
+<?php
+
+use BL\MediaLibrary\Models\MediaLibrary;
+
+$media_library = MediaLibrary::where('id', $record->attachment_id)->first();
+if($media_library){
+  echo $media_library->name;  
+}else{
+  echo e(trans('bl.medialibrary::lang.options.unknown'));;
+}
+?>
+

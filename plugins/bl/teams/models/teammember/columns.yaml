@@ -1,0 +1,13 @@
+columns:
+    user_id:
+        label: "bl.teams::lang.teammembers.user"
+        type: text
+        searchable: true
+        sortable: true
+        select: email
+        relation: user
+    role:
+        label: "bl.teams::lang.teammembers.role"
+        type: text
+        searchable: true
+        sortable: true

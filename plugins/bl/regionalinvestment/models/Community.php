@@ -24,6 +24,7 @@ class Community extends Model
     public $implement = [
         'RainLab.Translate.Behaviors.TranslatableModel',
         '@BL.CategoriesTags.Behaviors.HasTagsAndCategoriesModel',
+        'Bl.Maps.Behaviors.PositionableOnMapModel'
     ];
 
     /**

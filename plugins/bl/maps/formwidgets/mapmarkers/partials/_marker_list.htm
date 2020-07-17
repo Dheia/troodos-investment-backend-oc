@@ -1,0 +1,14 @@
+
+    <div class="layout">
+        <!-- Main area - list -->
+        <div data-control="item-list">
+            <div class="control-scrollpad">
+                <div class="scroll-wrapper"> <!-- This element is required for the scrollpad control -->
+                    <div id="marker-list" >
+                        <?= $this->makePartial('item-list', ['items' => $items]) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

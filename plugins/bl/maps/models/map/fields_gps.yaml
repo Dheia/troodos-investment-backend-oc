@@ -1,0 +1,40 @@
+tabs:
+    fields:
+        name:
+            label: "bl.maps::lang.maps.field.name"
+            span: left
+            type: text
+            comment: "bl.maps::lang.maps.field.namecomment"
+            tab: "bl.maps::lang.maps.tabs.map_details"
+        map:
+            type: partial
+            path: $/bl/maps/controllers/mapscontroller/_field_map.htm
+            span: full
+            label: "bl.maps::lang.maps.field.gpsmap"
+            comment: "bl.maps::lang.maps.field.gpsmapcomment"
+            tab: "bl.maps::lang.maps.tabs.map_details"
+        # hidden using css: plugins/bl/maps/assets/css/style.css
+        coord_x:
+            label: "bl.maps::lang.maps.field.coord_x_gps"
+            span: left
+            type: text
+            tab: "bl.maps::lang.maps.tabs.map_details"
+        # hidden using css: plugins/bl/maps/assets/css/style.css
+        coord_y:
+            label: "bl.maps::lang.maps.field.coord_y_gps"
+            span: left
+            type: text
+            tab: "bl.maps::lang.maps.tabs.map_details"
+        # hidden using css: plugins/bl/maps/assets/css/style.css
+        zoom:
+            label: "bl.maps::lang.maps.field.zoom"
+            span: left
+            type: text
+            default: 2
+            tab: "bl.maps::lang.maps.tabs.map_details"
+        _items:
+            tab: "bl.maps::lang.maps.tabs.map_items"
+            type: mapmarkers
+
+
+

@@ -1,6 +1,7 @@
 <div class="form-group  text-field span-right">
     <label for="marker_description"><?= e(trans('bl.maps::lang.maps.field.description')) ?></label>
 
+    <?php if (count($listEnabledLocales) > 1): ?>
     <div id="MLTextarea-formName-marker_description" data-control="multilingual" data-default-locale="<?= $defaultLocale ?>"
          data-placeholder-field="#marker_description" class="field-multilingual field-multilingual-textarea dropdown">
 
@@ -37,5 +38,13 @@
             </li>
         </ul>
     </div>
-
+    <?php else: ?>
+        <textarea
+            name="[marker_description]"
+            id="marker_description"
+            class="form-control field-textarea size-large"
+            autocomplete="off"
+            data-control="marker_description"
+        ></textarea>
+    <?php endif ?>
 </div>

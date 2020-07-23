@@ -179,7 +179,7 @@ class PositionableOnMapModel extends ExtensionBase
         // Also update translatable attributes for translatable fields
         if (isset($this->positionableAttributes[$mapId]['translations'])) {
             $translations = $this->positionableAttributes[$mapId]['translations'];
-            if ($translations) {
+            if ($translations && count($translations) > 0) {
                 foreach ($translations['title'] as $translation) {
                     $marker->setAttributeTranslated('title', $translation['value'], $translation['locale']);
                 }

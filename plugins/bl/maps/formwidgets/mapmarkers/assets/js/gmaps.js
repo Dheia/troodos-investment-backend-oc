@@ -336,8 +336,10 @@ function updateActiveMarkerProperties() {
         $('[name$="[marker_title]"]').each(function (index, item) {
             var locale = $(this).attr('data-locale-value')
             var val = $(this).val();
-            markerTitleTranslations.push({locale: locale, value: val})
-            if (locale === defaultLocaleCode) {
+            if (locale) {
+                markerTitleTranslations.push({locale: locale, value: val})
+            }
+            if (!locale || locale === defaultLocaleCode) {
                 activeMarker.title = val;
             }
         })
@@ -347,20 +349,21 @@ function updateActiveMarkerProperties() {
         $('[name$="[marker_description]"]').each(function (index, item) {
             var locale = $(this).attr('data-locale-value')
             var val = $(this).val();
-            markerDescriptionTranslations.push({
-                locale: locale,
-                value: val
-            })
-            if (locale === defaultLocaleCode) {
+            if (locale) {
+                markerDescriptionTranslations.push({
+                    locale: locale,
+                    value: val
+                })
+            }
+            if (!locale || locale === defaultLocaleCode) {
                 activeMarker.description = val;
             }
-
         })
         translations.description = markerDescriptionTranslations
 
         activeMarker.translationsEdited = translations;
 
-        $('[data-id="' + activeMarker.id + '"]').find('.item-title').text(markerTitleTranslations.find(x => x.locale === defaultLocaleCode).value)
+        $('[data-id="' + activeMarker.id + '"]').find('.item-title').text(markerTitleTranslations.length > 0 ? markerTitleTranslations.find(x => x.locale === defaultLocaleCode).value : activeMarker.title);
     }
 
 

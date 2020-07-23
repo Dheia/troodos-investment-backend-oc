@@ -3,6 +3,7 @@
 namespace Bl\Maps\FormWidgets;
 
 use Backend\Classes\FormWidgetBase;
+use BackendAuth;
 use BL\Maps\Models\Map;
 use BL\Maps\Models\Position;
 use Exception;
@@ -39,8 +40,11 @@ class MapMarkers extends FormWidgetBase
             $this->vars['maps'] = Map::where('team_id', $this->model->team_id)->get();
         else
             $this->vars['maps'] = Map::all();
-        $this->vars['defaultLocale'] = Locale::getDefault()->code;
-        $this->vars['listEnabledLocales'] = Locale::listEnabled();
+        $teamId = BackendAuth::getUser()->team_id;
+        $defaultLocale = Locale::where(['is_default' => 1, 'team_id' => $teamId])->first();
+        $listEnabled = Locale::where(['is_enabled' => 1, 'team_id' => $teamId])->order()->pluck('name', 'code')->all();
+        $this->vars['defaultLocale'] = $defaultLocale->code;
+        $this->vars['listEnabledLocales'] = $listEnabled;
     }
 
 

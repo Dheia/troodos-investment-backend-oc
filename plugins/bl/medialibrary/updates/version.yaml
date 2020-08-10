@@ -1,6 +1,0 @@
-1.0.1:
-    - "Initialize plugin."
-1.0.2:
-    - "Initial functionality complete"
-    - builder_table_create_bl_medialibrary_media_library.php
-    - builder_table_system_files_add_full_path.php

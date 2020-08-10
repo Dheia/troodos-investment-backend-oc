@@ -26,19 +26,13 @@ class Map extends Model
 
     public $implement = [
         'RainLab.Translate.Behaviors.TranslatableModel',
-//        'Bl.Guides.Behaviors.DomainProtectedModel',
-        '@BL.Teams.Behaviors.TeamOwnedModel'
     ];
 
-    public $belongsTo = [
-        'image' => ['BL\MediaLibrary\Models\MediaItem', 'key' => 'image_id'],
-    ];
+    public $belongsTo = [];
 
-    public $belongsToMany = [
-    ];
+    public $belongsToMany = [];
 
-    public $hasMany = [
-    ];
+    public $hasMany = [];
 
     /**
      * @var array Validation rules

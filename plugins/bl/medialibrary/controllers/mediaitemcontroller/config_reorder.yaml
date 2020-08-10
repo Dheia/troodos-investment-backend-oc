@@ -1,4 +1,0 @@
-title: 'bl.medialibrary::lang.mediaitems.name'
-modelClass: BL\MediaLibrary\Models\MediaItem
-toolbar:
-    buttons: reorder_toolbar

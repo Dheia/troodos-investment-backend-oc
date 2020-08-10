@@ -20,13 +20,11 @@ class Tag extends Model
      */
     public $timestamps = false;
 
-    public $implement = ['@BL.Teams.Behaviors.TeamOwnedModel'];
-
     /**
      * @var string The database table used by the model.
      */
     public $table = 'bl_categoriestags_tags';
-    protected $fillable = ['name', 'team_id', 'slug'];
+    protected $fillable = ['name', 'slug'];
 
     /**
      * @var array Validation rules
@@ -35,15 +33,7 @@ class Tag extends Model
         'name' => 'required',
     ];
 
-    public $morphedByMany = [
-        'items'  => ['BL\CHDB\Models\Item', 'name' => 'tagable'],
-        'mediaitems' => ['BL\MediaLibrary\Models\MediaItem', 'name' => 'tagable']
-    ];
-
-    public function scopeMediaTag($query)
-    {
-        return $query->has('mediaitems')->get();
-    }
+    public $morphedByMany = [];
 
     public function beforeSave()
     {

@@ -1,4 +1,6 @@
-<?php namespace BL\Maps\Models;
+<?php
+
+namespace BL\Maps\Models;
 
 use Model;
 

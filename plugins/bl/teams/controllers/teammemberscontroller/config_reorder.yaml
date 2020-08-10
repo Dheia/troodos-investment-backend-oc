@@ -1,4 +1,0 @@
-title: "bl.teams::lang.teammembers.name"
-modelClass: BL\Teams\Models\TeamMember
-toolbar:
-    buttons: reorder_toolbar

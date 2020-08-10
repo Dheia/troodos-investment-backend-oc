@@ -1,4 +1,0 @@
-title: "bl.teams::lang.locales.name"
-modelClass: BL\Teams\Models\Locale
-toolbar:
-    buttons: reorder_toolbar

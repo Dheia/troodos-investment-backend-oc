@@ -13,7 +13,7 @@ class Category extends Model
     use \October\Rain\Database\Traits\Validation;
     use \October\Rain\Database\Traits\Sortable;
 
-    public $implement = ['RainLab.Translate.Behaviors.TranslatableModel', '@BL.Teams.Behaviors.TeamOwnedModel'];
+    public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
 
     public $translatable = ['name'];
 
@@ -38,7 +38,6 @@ class Category extends Model
     public $hasOne = [
         'item' => 'BL\CHDB\Models\Item',
         'file' => 'System\Models\File',
-        'mediaitem' => 'BL\MediaLibrary\Models\MediaItem'
     ];
 
     public function beforeSave()

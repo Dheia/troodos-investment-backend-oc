@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DEFAULT_FILESYSTEM', 'local'),
+    'default' => env('DEFAULT_FILESYSTEM', 'digital-ocean'),
 
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'cloud' => env('DEFAULT_CLOUD_FILESYSTEM', 's3'),
+    'cloud' => env('DEFAULT_CLOUD_FILESYSTEM', 'digital-ocean'),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,10 +51,10 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key'    => env('S3_KEY', ''),
-            'secret' => env('S3_SECRET', ''),
-            'region' => env('S3_REGION', ''),
-            'bucket' => env('S3_BUCKET', ''),
+            'key'    => env('S3_KEY', 'digital-ocean'),
+            'secret' => env('S3_SECRET', 'digital-ocean'),
+            'region' => env('S3_REGION', 'digital-ocean'),
+            'bucket' => env('S3_BUCKET', 'digital-ocean'),
         ],
 
         'digital-ocean' => [

@@ -303,16 +303,18 @@ return [
     'storage' => [
 
         'uploads' => [
-            'disk'            => env('DEFAULT_FILESYSTEM', 'local'),
+            'disk'            => env('DEFAULT_FILESYSTEM', 'digital-ocean'),
             'folder'          => env('DEFAULT_UPLOADS_FOLDER', 'uploads'),
-            'path'            => env('DEFAULT_FILESYSTEM_PATH', '/storage/app/') . env('DEFAULT_UPLOADS_FOLDER', 'uploads'),
+            'path'            => env('DEFAULT_FILESYSTEM_PATH', 'https://ris.sfo2.digitaloceanspaces.com/troodos/') . env('DEFAULT_UPLOADS_FOLDER',
+                    'uploads'
+                ),
             'temporaryUrlTTL' => 3600,
         ],
 
         'media' => [
-            'disk'   => env('DEFAULT_FILESYSTEM', 'local'),
+            'disk'   => env('DEFAULT_FILESYSTEM', 'digital-ocean'),
             'folder' => env('DEFAULT_MEDIA_FOLDER', 'media'),
-            'path'   => env('DEFAULT_FILESYSTEM_PATH', '/storage/app/') . env('DEFAULT_MEDIA_FOLDER', 'media'),
+            'path'   => env('DEFAULT_FILESYSTEM_PATH', 'https://ris.sfo2.digitaloceanspaces.com/troodos/') . env('DEFAULT_MEDIA_FOLDER', 'media'),
         ],
 
     ],

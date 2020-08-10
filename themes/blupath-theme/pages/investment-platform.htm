@@ -3,6 +3,22 @@ url = "/investment-platform/:type?/:name?"
 layout = "app-theme"
 description = "The single page investment platform application"
 is_hidden = 0
+
+[communitiesList]
+
+[successStoriesList]
+
+[pointsOfInterestList]
+
+[opportunitiesList]
+
+[investmentCard]
+
+[investmentSearch]
+
+[regionsList]
+
+[featured]
 ==
 <?php
 
@@ -57,38 +73,38 @@ is_hidden = 0
     {% if featured %}
 
       <div v-if="tab=='featured'">
-        {% partial 'platform/featured' featured=featured type=type %}
+        {% component 'featured' featured=featured type=type %}
       </div>
       <div v-if="tab=='opportunities' && view=='list'">
         <a class="btn-floating btn-lg btn-default" @click="switchView">
           <i v-if="view=='list'" class="fa fa-map"></i>
           <i v-if="view=='map'" class="fa fa-list"></i>
         </a>
-        {% partial 'platform/opportunitiesList' %}
+        {% component 'opportunitiesList' opportunities=opportunities type=type %}
       </div>
       <div v-if="tab=='regions' && view=='list'">
         <a class="btn-floating btn-lg btn-default" @click="switchView">
           <i v-if="view=='list'" class="fa fa-map"></i>
           <i v-if="view=='map'" class="fa fa-list"></i>
         </a>
-        {% partial 'platform/regionsList' regions=regions type=type %}
+        {% component 'regionsList' regions=regions type=type %}
       </div>
       <div v-if="tab=='communities' && view=='list'">
         <a class="btn-floating btn-lg btn-default" @click="switchView">
           <i v-if="view=='list'" class="fa fa-map"></i>
           <i v-if="view=='map'" class="fa fa-list"></i>
         </a>
-        {% partial 'platform/communitiesList' communities=communities type=type %}
+        {% component 'communitiesList' communities=communities type=type %}
       </div>
       <div v-if="tab=='pointsOfInterest' && view=='list'">
         <a class="btn-floating btn-lg btn-default" @click="switchView">
           <i v-if="view=='list'" class="fa fa-map"></i>
           <i v-if="view=='map'" class="fa fa-list"></i>
         </a>
-        {% partial 'platform/pointsOfInterestList' pointsOfInterest=pointsOfInterest type=type %}
+        {% component 'pointsOfInterestList' pointsOfInterest=pointsOfInterest type=type %}
       </div>
       <div v-if="tab=='successStories'">
-        {% partial 'platform/successStoriesList' successStories=successStories type=type %}
+        {% component 'successStoriesList' successStories=successStories type=type %}
       </div>
 
       <div v-if="view=='map' && (tab=='regions' || tab=='opportunities' || tab=='communities' || tab=='pointsOfInterest')">

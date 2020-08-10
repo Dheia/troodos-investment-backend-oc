@@ -1,0 +1,10 @@
+name: "bl.teams::lang.teammembers.name"
+form: $/bl/teams/models/teammember/fields.yaml
+modelClass: BL\Teams\Models\TeamMember
+defaultRedirect: bl/teams/teammemberscontroller
+create:
+    redirect: "bl/teams/teammemberscontroller/update/:id"
+    redirectClose: bl/teams/teammemberscontroller
+update:
+    redirect: bl/teams/teammemberscontroller
+    redirectClose: bl/teams/teammemberscontroller

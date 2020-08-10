@@ -1,0 +1,36 @@
+<label><?= e(trans('bl.maps::lang.maps.other_markers')) ?></label>
+<table class="table data">
+    <col />
+    <col width="130px" />
+    <col width="130px" />
+
+    <tbody class="icons clickable">
+        <?php if (count($items) > 0 ): ?>
+
+            <?php foreach ($items as $item):
+            ?>
+                <tr data-type="marker-item"
+                    data-id="<?= $item->id ?>"
+                    data-title="<?= $item->title ?>"
+                    class="<?= $item->active ? 'selected' : '' ?>"
+                    tabindex="0"
+                >
+                    <td>
+                        <div class="item-title no-wrap-text">
+                            <?= e($item->title) ?>
+
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            <?php endforeach ?>
+        <?php endif ?>
+    </tbody>
+</table>
+
+<?php if (count($items) == 0): ?>
+    <p class="no-data">
+        <?= e(trans('bl.maps::lang.maps.no_markers_found')) ?>
+    </p>
+<?php endif ?>

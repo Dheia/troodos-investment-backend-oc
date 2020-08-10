@@ -1,0 +1,10 @@
+name: bl.maps::lang.maps.name
+form: $/bl/maps/models/map/fields.yaml
+modelClass: BL\Maps\Models\Map
+defaultRedirect: bl/maps/mapscontroller
+create:
+    redirect: "bl/maps/mapscontroller/update/:id"
+    redirectClose: bl/maps/mapscontroller
+update:
+    redirect: bl/maps/mapscontroller
+    redirectClose: bl/maps/mapscontroller

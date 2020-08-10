@@ -22,7 +22,11 @@ class Region extends Model
      */
     public $timestamps = false;
     protected $jsonable = ['sections', 'photos'];
-    public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
+    public $implement = [
+        'RainLab.Translate.Behaviors.TranslatableModel',
+        '@BL.CategoriesTags.Behaviors.HasTagsAndCategoriesModel',
+        'Bl.Maps.Behaviors.PositionableOnMapModel'
+        ];
 
 
     /**

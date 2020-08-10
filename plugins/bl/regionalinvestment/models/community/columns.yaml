@@ -9,3 +9,17 @@ columns:
         type: switch
         searchable: true
         sortable: true
+    category_name:
+        label: "bl.regionalinvestment::lang.parameters.category"
+        type: text
+        searchable: false
+        sortable: true
+        select: name
+        relation: category
+    tag_names:
+        label: "bl.regionalinvestment::lang.parameters.tags"
+        type: text
+        searchable: true
+        sortable: true
+        select: name
+        relation: tags

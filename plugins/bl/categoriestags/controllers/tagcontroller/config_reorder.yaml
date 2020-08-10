@@ -1,0 +1,4 @@
+title: "bl.categoriestags::lang.tag.record"
+modelClass: BL\categoriestags\Models\Tag
+toolbar:
+    buttons: reorder_toolbar

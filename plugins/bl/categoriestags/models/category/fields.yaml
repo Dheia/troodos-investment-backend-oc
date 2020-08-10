@@ -1,0 +1,6 @@
+fields:
+    name:
+        label: "bl.categoriestags::lang.parameters.category"
+        span: full
+        required: 1
+        type: text

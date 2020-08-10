@@ -1,0 +1,38 @@
+<div
+    data-control="map-markers"
+    class="layout"
+    data-alias="<?= $this->alias ?>"
+    tabindex="0"
+>
+
+    <div class="layout-row">
+        <div class="layout">
+
+            <div class="layout-row" id="map-list-c">
+                <?php if (!isset($model_id)): ?>
+                <label><?= e(trans('bl.maps::lang.maps.parent_not_ready')) ?></label>
+                <?php else: ?>
+                <label for="map_list"><?= e(trans('bl.maps::lang.maps.names')) ?></label>
+                <select
+                    id="map_list"
+                    name="map_list" data-control="map_list"
+                    class="form-control custom-select select-no-search"
+                >
+                    <option><?= e(trans('bl.maps::lang.maps.select_map')) ?></option>
+                    <?php foreach ($maps as $map): ?>
+                    <option
+                        value="<?= $map['id'] ?>"
+                    ><?= e($map['name']) ?></option>
+                    <?php endforeach ?>
+                </select>
+                <?php endif ?>
+            </div>
+
+            <?= $this->makePartial('map_form') ?>
+
+            <div class="layout-row" id="marker-list">
+            </div>
+        </div>
+    </div>
+
+</div>

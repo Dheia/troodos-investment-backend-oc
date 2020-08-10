@@ -1,0 +1,14 @@
+fields:
+    name:
+        label: "bl.categoriestags::lang.parameters.tag_name"
+        span: full
+        required: 1
+        type: text
+    slug:
+        label: "bl.categoriestags::lang.parameters.slug"
+        span: full
+        required: 1
+        preset:
+            field: name
+            type: slug
+        type: text

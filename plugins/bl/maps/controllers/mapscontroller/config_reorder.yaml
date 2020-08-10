@@ -1,0 +1,4 @@
+title: bl.maps::lang.maps.name
+modelClass: BL\Maps\Models\Map
+toolbar:
+    buttons: reorder_toolbar

@@ -1,0 +1,11 @@
+<form data-request="onLogin" data-request-flash>
+
+  <input type="email" id="email" name="email" class="form-control" placeholder="{{'auth.email'|__}}">
+  <span class="error">{{errors.first('email')}}</span>
+
+  <input type="password" id="password" name="password" class="form-control" placeholder="{{'auth.password'|__}}">
+  <span class="error">{{errors.first('password')}}</span>
+
+  <!-- Sign in button -->
+  <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">{{ 'auth.login'|__ }}</button>
+</form>

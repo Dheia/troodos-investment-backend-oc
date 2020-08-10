@@ -1,0 +1,4 @@
+title: "bl.medialibrary::lang.medialibraries.name"
+modelClass: BL\MediaLibrary\Models\MediaLibrary
+toolbar:
+    buttons: reorder_toolbar

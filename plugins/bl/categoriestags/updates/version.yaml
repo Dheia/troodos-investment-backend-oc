@@ -1,0 +1,11 @@
+1.0.1:
+    - "Initialize plugin."
+1.0.2:
+    - "Created tables"
+    - builder_table_create_bl_categoriestags_categories.php
+    - builder_table_create_bl_categoriestags_tags.php
+    - builder_table_create_bl_categoriestags_tagables.php
+1.0.3:
+    - "Add category ids"
+    - builder_table_system_files_add_category_id.php
+    - builder_table_update_bl_chdb_items_add_category_id.php

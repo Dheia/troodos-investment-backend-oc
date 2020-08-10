@@ -1,0 +1,40 @@
+<?= $this->makePartial('input_title_translatable') ?>
+
+<?= $this->makePartial('textarea_description_translatable') ?>
+
+<div class="form-group  text-field span-left">
+    <label for="marker_coord_x"><?= e(trans('bl.maps::lang.maps.field.coord_x_gps')) ?></label>
+    <input
+        type="text"
+        name="marker_coord_x"
+        id="marker_coord_x"
+        class="form-control"
+        autocomplete="off"
+        data-control="marker_coord_x"
+    />
+</div>
+
+<div class="form-group  text-field span-left">
+    <label for="marker_coord_y"><?= e(trans('bl.maps::lang.maps.field.coord_y_gps')) ?></label>
+    <input
+        type="text"
+        name="marker_coord_y"
+        id="marker_coord_y"
+        class="form-control"
+        autocomplete="off"
+        data-control="marker_coord_y"
+    />
+</div>
+
+<div class="form-group  text-field span-left">
+    <label for="marker_external_url"><?= e(trans('bl.maps::lang.maps.field.external_url')) ?></label>
+    <input
+        type="text"
+        name="marker_external_url"
+        id="marker_external_url"
+        class="form-control"
+        autocomplete="off"
+        data-control="marker_external_url"
+    />
+</div>
+

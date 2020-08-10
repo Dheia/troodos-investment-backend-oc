@@ -1,0 +1,25 @@
+<form data-request="onRegister" data-request-flash>
+
+  <input type="text" id="first_name" name="first_name" class="form-control" placeholder="{{'auth.first_name'|__}}">
+  <span class="error">{{errors.first('first_name')}}</span>
+
+  <input type="text" id="last_name" name="last_name" class="form-control" placeholder="{{'auth.last_name'|__}}">
+  <span class="error">{{errors.first('last_name')}}</span>
+
+  <input type="text" id="name" name="name" class="form-control" placeholder="{{'auth.team_name'|__}}">
+  <span class="error">{{errors.first('name')}}</span>
+
+  <input type="email" id="email" name="email" class="form-control" placeholder="{{'auth.email'|__}}">
+  <span class="error">{{errors.first('email')}}</span>
+
+  <input type="password" id="password" name="password" class="form-control" placeholder="{{'auth.password'|__}}">
+  <span class="error">{{errors.first('password')}}</span>
+
+  <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="{{'auth.confirm_password'|__}}">
+  <span class="error">{{errors.first('password_confirmation')}}</span>
+
+  <label class="custom-control-label text-dark-light" for="defaultUnchecked">{{'auth.tncs:'|__}}<a href=""> {{'auth.read_here'|__}} </a></label>
+
+  <!-- Sign in button -->
+  <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">{{ 'auth.register'|__ }}</button>
+</form>

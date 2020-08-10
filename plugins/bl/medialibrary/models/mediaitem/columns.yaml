@@ -1,0 +1,46 @@
+columns:
+    id:
+        label: "bl.medialibrary::lang.parameters.preview"
+        type: partial
+        path: ~/plugins/bl/medialibrary/models/mediaitem/_file_preview.htm
+    file_name:
+        label: "bl.medialibrary::lang.parameters.file_name"
+        type: text
+        searchable: true
+        sortable: true
+    attachment_name:
+        label: "bl.medialibrary::lang.medialibraries.name"
+        type: text
+        searchable: false
+        sortable: true
+        select: name
+        relation: media_library
+    file_type:
+        label: "bl.medialibrary::lang.parameters.type"
+        type: partial
+        searchable: false
+        sortable: true
+        path: ~/plugins/bl/medialibrary/models/mediaitem/_file_type.htm
+    category_name:
+        label: "bl.medialibrary::lang.parameters.category"
+        type: text
+        searchable: false
+        sortable: true
+        select: name
+        relation: category
+    tag_names:
+        label: "bl.medialibrary::lang.parameters.tags"
+        type: text
+        searchable: true
+        sortable: true
+        select: name
+        relation: tags
+    file_size:
+        label: "bl.medialibrary::lang.parameters.file_size"
+        type: partial
+        path: ~/plugins/bl/medialibrary/models/mediaitem/_file_size.htm
+    content_type:
+        label: "bl.medialibrary::lang.parameters.file_format"
+        type: text
+        searchable: true
+        sortable: true

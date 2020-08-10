@@ -1,0 +1,10 @@
+<?php
+use Backend\Facades\BackendAuth;
+
+if(BackendAuth::getUser()->team_id == $record->id){
+  echo e(trans('bl.teams::lang.options.Y'));
+} else {
+  echo e(trans('bl.teams::lang.options.N'));
+}
+?>
+

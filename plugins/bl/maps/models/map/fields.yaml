@@ -1,0 +1,6 @@
+fields:
+    name:
+        label: "bl.maps::lang.maps.field.name"
+        span: auto
+        type: text
+

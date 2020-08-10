@@ -1,0 +1,50 @@
+<div class="form-group  text-field span-right">
+    <label for="marker_description"><?= e(trans('bl.maps::lang.maps.field.description')) ?></label>
+
+    <?php if (count($listEnabledLocales) > 1): ?>
+    <div id="MLTextarea-formName-marker_description" data-control="multilingual" data-default-locale="<?= $defaultLocale ?>"
+         data-placeholder-field="#marker_description" class="field-multilingual field-multilingual-textarea dropdown">
+
+        <textarea
+            name="marker_description"
+            id="marker_description"
+            class="form-control field-textarea size-large"
+            autocomplete="off"
+            data-control="marker_description"
+        ></textarea>
+
+        <button class="btn btn-default ml-btn" data-toggle="dropdown" data-active-locale="" type="button"><?= $defaultLocale ?></button>
+
+        <!-- Individual values -->
+        <?php foreach ($listEnabledLocales as $localeKey=>$localeValue):
+        ?>
+            <input type="hidden" id="marker_description_<?= $localeKey ?>" name="RLTranslate[<?= $localeKey ?>][marker_description]" value="" data-locale-value="<?= $localeKey ?>">
+        <?php endforeach ?>
+
+        <!-- Language selector -->
+        <ul class="dropdown-menu pull-right ml-dropdown-menu" role="menu" data-locale-dropdown=""
+            data-dropdown-title="Select language">
+            <li class="dropdown-container">
+                <ul>
+                    <li class="dropdown-title">Select language</li>
+                    <?php foreach ($listEnabledLocales as $localeKey=>$localeValue):
+                    ?>
+                        <li role="presentation" class="first-item">
+                            <a role="menuitem" tabindex="-1" data-switch-locale="<?= $localeKey ?>" href="javascript:;">
+                                <?= $localeValue ?> </a>
+                        </li>
+                    <?php endforeach ?>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <?php else: ?>
+        <textarea
+            name="[marker_description]"
+            id="marker_description"
+            class="form-control field-textarea size-large"
+            autocomplete="off"
+            data-control="marker_description"
+        ></textarea>
+    <?php endif ?>
+</div>

@@ -1,0 +1,53 @@
+<div class="form-group  text-field span-left">
+    <label for="marker_title"><?= e(trans('bl.maps::lang.maps.field.title')) ?></label>
+
+    <?php if (count($listEnabledLocales) > 1): ?>
+
+    <div id="MLText-formName-marker_title" data-control="multilingual" data-default-locale="<?= $defaultLocale ?>"
+         data-placeholder-field="#marker_title" class="field-multilingual field-multilingual-text dropdown">
+
+        <input
+            type="text"
+            name="marker_title"
+            id="marker_title"
+            class="form-control"
+            autocomplete="off"
+            data-control="marker_title"
+        />
+
+        <button class="btn btn-default ml-btn" data-toggle="dropdown" data-active-locale="" type="button"><?= $defaultLocale ?></button>
+
+        <!-- Individual values -->
+        <?php foreach ($listEnabledLocales as $localeKey=>$localeValue):
+        ?>
+            <input type="hidden" id="marker_title_<?= $localeKey ?>" name="RLTranslate[<?= $localeKey ?>][marker_title]" value="" data-locale-value="<?= $localeKey ?>">
+        <?php endforeach ?>
+
+        <!-- Language selector -->
+        <ul class="dropdown-menu pull-right ml-dropdown-menu" role="menu" data-locale-dropdown=""
+            data-dropdown-title="Select language">
+            <li class="dropdown-container">
+                <ul>
+                    <li class="dropdown-title">Select language</li>
+                    <?php foreach ($listEnabledLocales as $localeKey=>$localeValue):
+                    ?>
+                        <li role="presentation" class="first-item">
+                            <a role="menuitem" tabindex="-1" data-switch-locale="<?= $localeKey ?>" href="javascript:;">
+                                <?= $localeValue ?> </a>
+                        </li>
+                    <?php endforeach ?>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <?php else: ?>
+        <input
+            type="text"
+            name="[marker_title]"
+            id="marker_title"
+            class="form-control"
+            autocomplete="off"
+            data-control="marker_title"
+        />
+    <?php endif ?>
+</div>

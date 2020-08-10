@@ -53,3 +53,6 @@ tabs:
             type: partial
             path: field_communities
             tab: Relationships
+        _position:
+            tab: "bl.regionalinvestment::lang.tabs.map"
+            type: mapmarkers

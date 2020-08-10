@@ -1,0 +1,13 @@
+list: $/bl/medialibrary/models/mediaitem/columns.yaml
+modelClass: BL\MediaLibrary\Models\MediaItem
+title: 'bl.medialibrary::lang.mediaitems.name'
+noRecordsMessage: "backend::lang.list.no_records"
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+filter: config_filter.yaml
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: "backend::lang.list.search_prompt"
+recordUrl: "bl/medialibrary/mediaitemcontroller/update/:id"

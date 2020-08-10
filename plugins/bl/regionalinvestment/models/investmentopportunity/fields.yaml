@@ -17,6 +17,18 @@ fields:
             field: name
             type: slug
         type: text
+    category:
+        label: "bl.regionalinvestment::lang.categories.name"
+        span: left
+        type: relation
+    tags:
+        label: "bl.regionalinvestment::lang.parameters.tags"
+        mode: relation
+        separator: comma
+        customTags: true
+        span: right
+        type: taglist
+        nameFrom: name
     short_description:
         label: "Short summary"
         size: large
@@ -121,19 +133,6 @@ tabs:
             span: auto
             type: relation
             tab: Relations
-        category:
-            label: "bl.regionalinvestment::lang.categories.name"
-            span: left
-            type: relation
-            tab: "bl.regionalinvestment::lang.categories.comment"
-        tags:
-            label: "bl.regionalinvestment::lang.parameters.tags"
-            mode: relation
-            separator: comma
-            customTags: true
-            span: left
-            type: taglist
-            nameFrom: name
         _position:
             tab: "bl.regionalinvestment::lang.tabs.map"
             type: mapmarkers

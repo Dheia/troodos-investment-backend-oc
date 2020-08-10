@@ -1,14 +1,14 @@
 fields:
     primary:
-        label: 'Make this the primary region'
+        label: "Make this the primary region"
         span: auto
         type: switch
     published:
-        label: 'Publish details'
+        label: "Publish details"
         span: auto
         type: checkbox
     name:
-        label: 'Region name'
+        label: "Region name"
         span: full
         required: 1
         type: text
@@ -20,6 +20,18 @@ fields:
             field: name
             type: slug
         type: text
+    category:
+        label: "bl.regionalinvestment::lang.categories.name"
+        span: left
+        type: relation
+    tags:
+        label: "bl.regionalinvestment::lang.parameters.tags"
+        mode: relation
+        separator: comma
+        customTags: true
+        span: right
+        type: taglist
+        nameFrom: name
     description:
         label: Description
         size: large
@@ -29,71 +41,58 @@ fields:
     photo:
         label: Photo
         mode: image
-        imageWidth: '100'
-        imageHeight: '100'
+        imageWidth: "100"
+        imageHeight: "100"
         span: auto
         type: mediafinder
     video_id:
-        label: 'Youtube video id'
+        label: "Youtube video id"
         span: auto
         type: text
     website:
-        label: 'External website'
+        label: "External website"
         span: full
         type: text
     photos:
-        label: 'Photo gallery'
-        prompt: 'Add new item'
+        label: "Photo gallery"
+        prompt: "Add new item"
         span: full
         type: repeater
         form:
             fields:
                 photos:
-                    label: 'Gallery photo'
+                    label: "Gallery photo"
                     mode: file
                     span: full
                     type: mediafinder
     sections:
-        label: 'Additional sections'
-        prompt: 'Add new item'
+        label: "Additional sections"
+        prompt: "Add new item"
         span: full
         type: repeater
         form:
             fields:
                 name:
-                    label: 'Section name'
+                    label: "Section name"
                     span: full
                     type: text
                 slug:
                     label: Slug
                     span: full
                     type: text
-                    comment: 'Must be a unique identified without spaces'
+                    comment: "Must be a unique identified without spaces"
                 photo:
-                    label: 'Optional: section photo'
+                    label: "Optional: section photo"
                     mode: file
                     span: full
                     type: mediafinder
                 description:
-                    label: 'Section description'
-                    size: ''
+                    label: "Section description"
+                    size: ""
                     span: full
                     type: richeditor
 tabs:
     fields:
-        category:
-            label: "bl.regionalinvestment::lang.categories.name"
-            span: left
-            type: relation
-            tab: "bl.regionalinvestment::lang.categories.comment"
-        tags:
-            label: "bl.regionalinvestment::lang.parameters.tags"
-            mode: relation
-            separator: comma
-            customTags: true
-            span: left
-            type: taglist
-            nameFrom: name
         _position:
             tab: "bl.regionalinvestment::lang.tabs.map"
             type: mapmarkers

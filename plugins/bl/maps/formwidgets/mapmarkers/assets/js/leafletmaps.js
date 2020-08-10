@@ -45,10 +45,14 @@ function markersMapImageAddMarkers(result) {
             var southWest = imarkersMap.unproject([0, this.height], imarkersMap.getMaxZoom() - 1);
             var northEast = imarkersMap.unproject([this.width, 0], imarkersMap.getMaxZoom() - 1);
             var bounds = new L.LatLngBounds(southWest, northEast);
-            var image = L.imageOverlay(result.map.image.full_path, bounds).addTo(imarkersMap);
+
+            // igorbel: difference is here was full_path, now path. See also Map.php.
+            var image = L.imageOverlay(result.map.image.path, bounds).addTo(imarkersMap);
+
             imarkersMap.setMaxBounds(bounds);
         }
-        img.src = result.map.image.full_path;
+        // igorbel: difference is here was full_path, now path. See also Map.php.
+        img.src = result.map.image.path;
 
         defaultLocaleCode = result.defaultLocale.code;
 

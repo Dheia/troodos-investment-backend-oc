@@ -9,8 +9,10 @@ tabs:
             label: "bl.maps::lang.maps.fields.image"
             comment: "bl.maps::lang.maps.fields.image_comment"
             span: full
-            type: partial
-            path: field_image
+            type: fileupload
+            mode: image
+            imageHeight: 260
+            imageWidth: 260
             tab: "bl.maps::lang.maps.tabs.map_details"
         image_preview:
             type: partial

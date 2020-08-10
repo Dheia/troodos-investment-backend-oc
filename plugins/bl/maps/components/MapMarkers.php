@@ -46,6 +46,7 @@ class MapMarkers extends ComponentBase
 
     public function determineMarkerUrl($marker)
     {
+        /*
         $team = $this->param('team');
         $guide = $this->param('id');
         $path =  '/guide/' . $team . '/' . $guide . '/';
@@ -56,6 +57,7 @@ class MapMarkers extends ComponentBase
             $path =  $path . 'page/' . $marker->model_id;
         }
         return $path;
+        */
     }
 
     /**

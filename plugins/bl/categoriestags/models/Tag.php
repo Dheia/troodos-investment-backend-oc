@@ -2,9 +2,7 @@
 
 namespace BL\CategoriesTags\Models;
 
-use Backend\Facades\BackendAuth;
 use Model;
-use BL\Teams\Scopes\TeamScope;
 
 /**
  * Model

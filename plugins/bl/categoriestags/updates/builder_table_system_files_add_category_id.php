@@ -1,6 +1,6 @@
 <?php
 
-namespace cs\Backendteams\Updates;
+namespace BL\CategoriesTags\Updates;
 
 use Illuminate\Support\Facades\DB;
 use Schema;

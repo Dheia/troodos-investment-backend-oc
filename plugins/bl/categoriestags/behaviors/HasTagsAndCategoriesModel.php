@@ -2,10 +2,8 @@
 
 namespace BL\CategoriesTags\Behaviors;
 
-use October\Rain\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use October\Rain\Extension\ExtensionBase;
-use BL\Teams\Models\Team;
 
 /**
  * Base class for model behaviors.

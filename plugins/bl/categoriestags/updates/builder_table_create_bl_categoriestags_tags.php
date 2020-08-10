@@ -14,16 +14,10 @@ class BuilderTableCreateBlCategoriesTagsTags extends Migration
             Schema::create('bl_categoriestags_tags', function ($table) {
                 $table->engine = 'InnoDB';
                 $table->bigIncrements('id');
-                $table->unsignedBigInteger('team_id')->nullable();
                 $table->text('name');
                 $table->text('slug');
                 $table->integer('sort_order')->default(0);
             });
-            if (Schema::hasTable('bl_teams_teams')) {
-                Schema::table('bl_categoriestags_tags', function ($table) {
-                    $table->foreign('team_id')->references('id')->on('bl_teams_teams')->onDelete('cascade')->onUpdate('cascade');
-                });
-            }
         }
     }
 

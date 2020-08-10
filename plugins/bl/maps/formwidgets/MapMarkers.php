@@ -36,13 +36,9 @@ class MapMarkers extends FormWidgetBase
         clearstatcache();
 
         $this->vars['model_id'] = $this->model->id;
-        if ($this->model->isClassExtendedWith('BL.Teams.Behaviors.TeamOwnedModel'))
-            $this->vars['maps'] = Map::where('team_id', $this->model->team_id)->get();
-        else
-            $this->vars['maps'] = Map::all();
-        $teamId = BackendAuth::getUser()->team_id;
-        $defaultLocale = Locale::where(['is_default' => 1, 'team_id' => $teamId])->first();
-        $listEnabled = Locale::where(['is_enabled' => 1, 'team_id' => $teamId])->order()->pluck('name', 'code')->all();
+        $this->vars['maps'] = Map::all();
+        $defaultLocale = Locale::where(['is_default' => 1])->first();
+        $listEnabled = Locale::where(['is_enabled' => 1])->order()->pluck('name', 'code')->all();
         $this->vars['defaultLocale'] = $defaultLocale->code;
         $this->vars['listEnabledLocales'] = $listEnabled;
     }
@@ -99,7 +95,8 @@ class MapMarkers extends FormWidgetBase
         $this->addJs('/plugins/bl/maps/formwidgets/mapmarkers/assets/js/leafletmaps.js');
     }
 
-    public function getMarkers() {
+    public function getMarkers()
+    {
         $mapId = request('map_id');
         if ($mapId) {
             if (in_array('Bl.Maps.Behaviors.PositionableOnMapModel', $this->model->implement))
@@ -142,7 +139,8 @@ class MapMarkers extends FormWidgetBase
         return ['status' => 'error'];
     }
 
-    public function refreshMarkerList() {
+    public function refreshMarkerList()
+    {
         $markers = $this->getMarkers();
         return [
             '#marker-list' => $this->makePartial('marker_list', [
@@ -176,7 +174,7 @@ class MapMarkers extends FormWidgetBase
                 $marker = Position::where('id', request('marker_id'))->first();
                 $model = $marker->model_type::findOrFail($marker->model_id);
             } else {
-                if (request('can_create') == '0' ) {
+                if (request('can_create') == '0') {
                     return ['status' => 'error', 'message' => Lang::get('bl.maps::lang.maps.cant_create')];
                 }
                 $model = $this->model;
@@ -196,28 +194,29 @@ class MapMarkers extends FormWidgetBase
                 'marker_id' => $markerId,
                 'message' => Lang::get('bl.maps::lang.maps.data_saved'),
                 '#marker-list' => $this->makePartial('marker_list', [
-                            'items' => $this->getMarkers()
-                        ])
+                    'items' => $this->getMarkers()
+                ])
             ];
         }
         return ['status' => 'error'];
     }
 
-    public function onDeleteMarker() {
+    public function onDeleteMarker()
+    {
         $mapId = request('map_id');
         if ($mapId) {
 
-//            $markerId = request('marker_id');
-//            try {
-//                request()->validate([
-//                    'marker_id' => 'required',
-//                ]);
-//            } catch (Exception $ex) {
-//                return [
-//                    'status' => 'error',
-//                    'message' => Lang::get('bl.maps::lang.maps.marker_id_is_required')
-//                ];
-//            }
+            //            $markerId = request('marker_id');
+            //            try {
+            //                request()->validate([
+            //                    'marker_id' => 'required',
+            //                ]);
+            //            } catch (Exception $ex) {
+            //                return [
+            //                    'status' => 'error',
+            //                    'message' => Lang::get('bl.maps::lang.maps.marker_id_is_required')
+            //                ];
+            //            }
 
             // We can save not only current $this->model but also any other positionable model because
             // we can change active marker in the widget on the frontend. Therefore we have switch to the
@@ -236,5 +235,4 @@ class MapMarkers extends FormWidgetBase
         }
         return ['status' => 'error'];
     }
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace BL\CHDB\Updates;
+namespace BL\CategoriesTags\Updates;
 
 use Schema;
 use October\Rain\Database\Updates\Migration;

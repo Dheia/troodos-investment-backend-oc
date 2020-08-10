@@ -14,18 +14,12 @@ class CreateBlMapsMaps extends Migration
             Schema::create('bl_maps_maps', function ($table) {
                 $table->engine = 'InnoDB';
                 $table->bigIncrements('id');
-                $table->bigInteger('team_id')->unsigned();
                 $table->string('name');
                 $table->text('coords')->nullable();
                 $table->string('type')->nullable();
                 $table->integer('image_id')->unsigned()->nullable();
                 $table->foreign('image_id')->references('id')->on('system_files')->onDelete('set null')->onUpdate('cascade');
             });
-            if (Schema::hasTable('bl_teams_teams')) {
-                Schema::table('bl_maps_maps', function ($table) {
-                    $table->foreign('team_id')->references('id')->on('bl_teams_teams')->onDelete('cascade')->onUpdate('cascade');
-                });
-            }
         }
     }
 

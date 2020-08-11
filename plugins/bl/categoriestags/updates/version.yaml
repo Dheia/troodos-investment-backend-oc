@@ -8,4 +8,8 @@
 1.0.3:
     - "Add category ids"
     - builder_table_system_files_add_category_id.php
-    - builder_table_update_bl_chdb_items_add_category_id.php
+1.0.4:
+    - "Add category ids"
+    - builder_table_update_bl_communities_add_category_id.php
+    - builder_table_update_bl_regions_add_category_id.php
+    - builder_table_update_bl_investment_opportunities_add_category_id.php

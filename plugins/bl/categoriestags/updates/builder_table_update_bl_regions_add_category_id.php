@@ -5,12 +5,12 @@ namespace BL\CategoriesTags\Updates;
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
-class BuilderTableUpdateBlChdbItemsAddCategoryId extends Migration
+class BuilderTableUpdateBlRegionsAddCategoryId extends Migration
 {
     public function up()
     {
-        if (Schema::hasTable('bl_chdb_items') && !Schema::hasColumn('bl_chdb_items', 'category_id')) {
-            Schema::table('bl_chdb_items', function ($table) {
+        if (Schema::hasTable('bl_regionalinvestment_regions') && !Schema::hasColumn('bl_regionalinvestment_regions', 'category_id')) {
+            Schema::table('bl_regionalinvestment_regions', function ($table) {
                 $table->bigInteger('category_id')->nullable()->unsigned();
                 $table->foreign('category_id')->references('id')->on('bl_categoriestags_categories')->onDelete('set null')->onUpdate('cascade');
             });
@@ -19,8 +19,8 @@ class BuilderTableUpdateBlChdbItemsAddCategoryId extends Migration
 
     public function down()
     {
-        if (Schema::hasTable('bl_chdb_items') && Schema::hasColumn('bl_chdb_items', 'category_id')) {
-            Schema::table('bl_chdb_items', function ($table) {
+        if (Schema::hasTable('bl_regionalinvestment_regions') && Schema::hasColumn('bl_regionalinvestment_regions', 'category_id')) {
+            Schema::table('bl_regionalinvestment_regions', function ($table) {
                 $table->dropColumn('category_id');
             });
         }

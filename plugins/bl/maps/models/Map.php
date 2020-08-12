@@ -34,6 +34,11 @@ class Map extends Model
 
     public $hasMany = [];
 
+    public $attachOne = [
+        'image' => ['System\Models\File']
+    ];
+
+
     /**
      * @var array Validation rules
      */
@@ -49,8 +54,10 @@ class Map extends Model
     public function getImagePathAttribute()
     {
         if ($this->image) {
-            return $this->image->full_path;
+            // igorbel: difference is here was full_path, now path. See also leafletmaps.js.
+            return $this->image->path;
         }
         return "";
     }
+
 }

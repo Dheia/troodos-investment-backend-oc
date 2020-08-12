@@ -12,7 +12,6 @@ class BuilderTableUpdateBlInvestmentOpportunitiesAddCategoryId extends Migration
         if (Schema::hasTable('bl_regionalinvestment_investment_opportunities') && !Schema::hasColumn('bl_regionalinvestment_investment_opportunities', 'category_id')) {
             Schema::table('bl_regionalinvestment_investment_opportunities', function ($table) {
                 $table->bigInteger('category_id')->nullable()->unsigned();
-                $table->foreign('category_id')->references('id')->on('bl_categoriestags_categories')->onDelete('set null')->onUpdate('cascade');
             });
         }
     }

@@ -9,7 +9,7 @@
         </div>
         {% for opportunity in opportunities %}
             <div class="col-lg-4 col-md-6 col-xs-12">
-                {% component 'investmentCard' item=opportunity type='opportunity' modal=true %}
+                {% partial '@investmentCard' opportunity=opportunity type='opportunity' modal=true %}
             </div>
         {% endfor %}
     </div>

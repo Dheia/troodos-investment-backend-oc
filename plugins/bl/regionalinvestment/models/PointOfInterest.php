@@ -32,7 +32,8 @@ class PointOfInterest extends Model
     public $table = 'bl_regionalinvestment_points_of_interest';
 
     public $belongsTo = [
-        'region' => 'BL\RegionalInvestment\Models\Region'
+        'region' => 'BL\RegionalInvestment\Models\Region',
+//        'map' => 'BL\Maps\Models\Map'
     ];
 
     public $belongsToMany = [
@@ -82,4 +83,9 @@ class PointOfInterest extends Model
         Cache::forget("all.PointsOfInteresten");
         Cache::forget("all.PointsOfInterestel");
     }
+
+    public static function getMapSlug() {
+        return "point_of_interest_map";
+    }
+
 }

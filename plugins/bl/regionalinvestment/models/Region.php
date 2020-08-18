@@ -95,4 +95,8 @@ class Region extends Model
         Cache::forget("all.Regionsen");
         Cache::forget("all.Regionsel");
     }
+
+    public static function getMapSlug() {
+        return "regions_map";
+    }
 }

@@ -25,6 +25,11 @@ class InvestmentOpportunity extends Model
         'Bl.Maps.Behaviors.PositionableOnMapModel'
     ];
 
+    public $belongsTo = [
+//        'map' => 'BL\Maps\Models\Map'
+    ];
+
+
     public $belongsToMany = [
         'communities' => [
             'BL\RegionalInvestment\Models\Community',
@@ -97,4 +102,9 @@ class InvestmentOpportunity extends Model
         Cache::forget("all.Opportunitiesen");
         Cache::forget("all.Opportunitiesel");
     }
+
+    public static function getMapSlug() {
+        return "investment_opportunity_map";
+    }
+
 }

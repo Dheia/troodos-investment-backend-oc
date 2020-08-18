@@ -1,20 +1,23 @@
 1.0.1:
-    - 'create_bl_maps_maps'
+    - create_bl_maps_maps
     - create_bl_maps_maps.php
 1.0.2:
-    - 'create_bl_maps_positons'
+    - create_bl_maps_positons
     - create_bl_maps_positons.php
 1.0.3:
-    - 'update_bl_maps_maps_coords'
+    - update_bl_maps_maps_coords
     - update_bl_maps_maps_coords.php
-    - 'update_bl_maps_positions_coords'
+    - update_bl_maps_positions_coords
     - update_bl_maps_positions_coords.php
 1.0.4:
-    - 'update_bl_maps_maps_sort_order'
+    - update_bl_maps_maps_sort_order
     - update_bl_maps_maps_sort_order.php
 1.0.5:
-    - 'update_bl_maps_maps_sort_zoom'
+    - update_bl_maps_maps_sort_zoom
     - update_bl_maps_maps_sort_zoom.php
 1.0.6:
-    - 'update_bl_maps_positions_remove_url'
+    - update_bl_maps_positions_remove_url
     - update_bl_maps_positions_remove_url.php
+1.0.7:
+    - 'Updated table bl_maps_maps'
+    - builder_table_update_bl_maps_maps.php

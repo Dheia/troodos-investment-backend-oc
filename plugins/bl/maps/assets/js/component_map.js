@@ -12,9 +12,15 @@ const iconUrl2 = "http://maps.google.com/mapfiles/ms/micons/";
 
 function mapComponentInit()
 {
+    var opts = {}
+    if ($('#mapId').length > 0) {
+        opts.mapId = $('#mapId').val();
+    } else if ($('#mapSlug').length > 0) {
+        opts.mapSlug = $('#mapSlug').val();
+    }
     //load settings and markers
     $(this).request('onDataLoad', {
-        data: {mapId: $('#mapId').val()},
+        data: opts,
         success: function (data) {
             addMarkersToMap(data);
             addMarkersToTable(data);

@@ -41,3 +41,30 @@
     - builder_table_update_bl_regionalinvestment_regions_add_category_id.php
     - builder_table_update_bl_regionalinvestment_communities_add_category_id.php
     - builder_table_update_bl_regionalinvestment_investment_opportunities_add_category_id.php
+1.0.15:
+    - 'Updated table bl_regionalinvestment_communities'
+    - builder_table_update_bl_regionalinvestment_communities.php
+1.0.16:
+    - 'Updated table bl_regionalinvestment_communities'
+    - builder_table_update_bl_regionalinvestment_communities_2.php
+1.0.17:
+    - 'Updated table bl_regionalinvestment_investment_opportunities'
+    - builder_table_update_bl_regionalinvestment_investment_opportunities_2.php
+1.0.18:
+    - 'Updated table bl_regionalinvestment_points_of_interest'
+    - builder_table_update_bl_regionalinvestment_points_of_interest.php
+1.0.19:
+    - 'Updated table bl_regionalinvestment_success_stories'
+    - builder_table_update_bl_regionalinvestment_success_stories.php
+1.0.20:
+    - 'Updated table bl_regionalinvestment_communities'
+    - builder_table_update_bl_regionalinvestment_communities_3.php
+1.0.21:
+    - 'Updated table bl_regionalinvestment_investment_opportunities'
+    - builder_table_update_bl_regionalinvestment_investment_opportunities_3.php
+1.0.22:
+    - 'Updated table bl_regionalinvestment_points_of_interest'
+    - builder_table_update_bl_regionalinvestment_points_of_interest_2.php
+1.0.23:
+    - 'Updated table bl_regionalinvestment_success_stories'
+    - builder_table_update_bl_regionalinvestment_success_stories_2.php

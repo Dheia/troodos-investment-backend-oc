@@ -32,7 +32,8 @@ class SuccessStory extends Model
     public $table = 'bl_regionalinvestment_success_stories';
 
     public $belongsTo = [
-        'region' => 'BL\RegionalInvestment\Models\Region'
+        'region' => 'BL\RegionalInvestment\Models\Region',
+//        'map' => 'BL\Maps\Models\Map'
     ];
 
     public $belongsToMany = [
@@ -82,4 +83,9 @@ class SuccessStory extends Model
         Cache::forget("all.SuccessStoriesen");
         Cache::forget("all.SuccessStoriesel");
     }
+
+    public static function getMapSlug() {
+        return "success_story_map";
+    }
+
 }

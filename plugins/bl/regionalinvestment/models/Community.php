@@ -33,7 +33,8 @@ class Community extends Model
     public $table = 'bl_regionalinvestment_communities';
 
     public $belongsTo = [
-        'region' => 'BL\RegionalInvestment\Models\Region'
+        'region' => 'BL\RegionalInvestment\Models\Region',
+//        'map' => 'BL\Maps\Models\Map'
     ];
 
     public $belongsToMany = [
@@ -72,6 +73,10 @@ class Community extends Model
             return self::where('published', 1)->get()->toArray();
         });
         return collect($communities);
+    }
+
+    public static function getMapSlug() {
+        return "community_map";
     }
 
     public function afterSave()

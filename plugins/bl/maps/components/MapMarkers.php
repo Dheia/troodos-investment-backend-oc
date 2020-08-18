@@ -36,6 +36,11 @@ class MapMarkers extends ComponentBase
                 'description' => 'bl.maps::lang.maps.name',
                 'type'        => 'string',
             ],
+            'mapSlug' => [
+                'title'       => 'bl.maps::lang.maps.name',
+                'description' => 'bl.maps::lang.maps.name',
+                'type'        => 'string',
+            ],
             'itemIds' => [
                 'title'       => 'bl.maps::lang.maps.item_ids',
                 'description' => 'bl.maps::lang.maps.item_ids',
@@ -112,13 +117,23 @@ class MapMarkers extends ComponentBase
             $mapId = $this->param('mapId');
         if (!$mapId)
             $mapId = request('mapId');
+        $mapSlug = $this->property('mapSlug');
+        if (!$mapSlug)
+            $mapSlug = $this->param('mapSlug');
+        if (!$mapSlug)
+            $mapSlug = request('mapSlug');
         $itemIds = $this->property('itemIds');
         if (!$itemIds)
             $itemIds = request()->get('item_ids');
         if ($itemIds)
             $itemIds = explode(',', $itemIds);
-        if ($mapId) {
-            $map = Map::where('id', $mapId)->with('image')->first();
+        if ($mapId || $mapSlug) {
+            if ($mapId) {
+                $map = Map::where('id', $mapId)->with('image')->first();
+            } else {
+                $map = Map::where('slug', $mapSlug)->with('image')->first();
+                $mapId = $map->id;
+            }
             $markers = Position::where('map_id', $mapId);
             if ($itemIds)
                 $markers->whereIn('model_id', $itemIds);

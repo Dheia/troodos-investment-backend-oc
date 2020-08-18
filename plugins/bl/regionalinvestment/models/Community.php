@@ -75,10 +75,6 @@ class Community extends Model
         return collect($communities);
     }
 
-    public static function getMapSlug() {
-        return "community_map";
-    }
-
     public function afterSave()
     {
         Cache::forget("all.Communitiesen");

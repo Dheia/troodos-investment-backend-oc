@@ -231,7 +231,7 @@ function addMarkersToTable(data)
             $('.marker-item').each(function (idx) {
                 $(this).parent().css('background-color', '');
             })
-            $(this).parent().css('background-color', data.guide_style['accent_color']);
+            $(this).parent().css('background-color', '#2BBBAD');
             activateMarkerWithId($(this).attr('data-id'));
         })
         $td.append($markerItem);

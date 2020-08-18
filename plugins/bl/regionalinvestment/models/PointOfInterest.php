@@ -84,8 +84,4 @@ class PointOfInterest extends Model
         Cache::forget("all.PointsOfInterestel");
     }
 
-    public static function getMapSlug() {
-        return "point_of_interest_map";
-    }
-
 }

@@ -103,8 +103,4 @@ class InvestmentOpportunity extends Model
         Cache::forget("all.Opportunitiesel");
     }
 
-    public static function getMapSlug() {
-        return "investment_opportunity_map";
-    }
-
 }

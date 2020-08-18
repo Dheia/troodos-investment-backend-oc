@@ -84,8 +84,4 @@ class SuccessStory extends Model
         Cache::forget("all.SuccessStoriesel");
     }
 
-    public static function getMapSlug() {
-        return "success_story_map";
-    }
-
 }

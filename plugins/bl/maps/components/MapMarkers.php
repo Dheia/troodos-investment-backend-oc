@@ -51,18 +51,20 @@ class MapMarkers extends ComponentBase
 
     public function determineMarkerUrl($marker)
     {
-        /*
-        $team = $this->param('team');
-        $guide = $this->param('id');
-        $path =  '/guide/' . $team . '/' . $guide . '/';
-        if ($marker->model_type == 'BL\CHDB\Models\Item') {
-            $path =  $path . 'item/' . $marker->model_id;
-        }
-        if ($marker->model_type == 'BL\CHDB\Models\Page') {
-            $path =  $path . 'page/' . $marker->model_id;
+        $path =  '/investment-platform/';
+        $model = $marker->model_type::findOrFail($marker->model_id);
+        if ($marker->model_type == 'BL\RegionalInvestment\Models\Community') {
+            $path =  $path . 'community/' . $model->slug;
+        } else if ($marker->model_type == 'BL\RegionalInvestment\Models\Region') {
+            $path =  $path . 'region/' . $model->slug;
+        } else if ($marker->model_type == 'BL\RegionalInvestment\Models\InvestmentOpportunity') {
+            $path =  $path . 'opportunity/' . $model->slug;
+        } else if ($marker->model_type == 'BL\RegionalInvestment\Models\SuccessStory') {
+            $path =  $path . 'successStory/' . $model->slug;
+        } else if ($marker->model_type == 'BL\RegionalInvestment\Models\PointOfInterest') {
+            $path =  $path . 'pointOfInterest/' . $model->slug;
         }
         return $path;
-        */
     }
 
     /**

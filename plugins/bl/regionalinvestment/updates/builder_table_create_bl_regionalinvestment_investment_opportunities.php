@@ -40,7 +40,7 @@ class BuilderTableCreateBlRegionalinvestmentInvestmentOpportunities extends Migr
 
     public function down()
     {
-        if (!Schema::hasTable('bl_regionalinvestment_investment_opportunities')) {
+        if (Schema::hasTable('bl_regionalinvestment_investment_opportunities')) {
             DB::statement('SET FOREIGN_KEY_CHECKS = 0');
             Schema::dropIfExists('bl_regionalinvestment_investment_opportunities');
             DB::statement('SET FOREIGN_KEY_CHECKS = 1');

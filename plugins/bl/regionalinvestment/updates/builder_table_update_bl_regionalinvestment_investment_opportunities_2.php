@@ -1,4 +1,6 @@
-<?php namespace BL\RegionalInvestment\Updates;
+<?php
+
+namespace BL\RegionalInvestment\Updates;
 
 use Schema;
 use October\Rain\Database\Updates\Migration;
@@ -7,19 +9,29 @@ class BuilderTableUpdateBlRegionalinvestmentInvestmentOpportunities2 extends Mig
 {
     public function up()
     {
-        Schema::table('bl_regionalinvestment_investment_opportunities', function($table)
-        {
-            $table->bigInteger('map_id')->nullable()->unsigned();
-            $table->text('photos')->nullable();
-        });
+        if (!Schema::hasColumn('bl_regionalinvestment_investment_opportunities', 'photos')) {
+            Schema::table('bl_regionalinvestment_investment_opportunities', function ($table) {
+                $table->text('photos')->nullable();
+            });
+        }
+        if (!Schema::hasColumn('bl_regionalinvestment_investment_opportunities', 'map_id')) {
+            Schema::table('bl_regionalinvestment_investment_opportunities', function ($table) {
+                $table->bigInteger('map_id')->nullable()->unsigned();
+            });
+        }
     }
-    
+
     public function down()
     {
-        Schema::table('bl_regionalinvestment_investment_opportunities', function($table)
-        {
-            $table->dropColumn('map_id');
-            $table->dropColumn('photos');
-        });
+        if (Schema::hasColumn('bl_regionalinvestment_investment_opportunities', 'photos')) {
+            Schema::table('bl_regionalinvestment_investment_opportunities', function ($table) {
+                $table->dropColumn('photos');
+            });
+        }
+        if (Schema::hasColumn('bl_regionalinvestment_investment_opportunities', 'map_id')) {
+            Schema::table('bl_regionalinvestment_investment_opportunities', function ($table) {
+                $table->dropColumn('map_id');
+            });
+        }
     }
 }

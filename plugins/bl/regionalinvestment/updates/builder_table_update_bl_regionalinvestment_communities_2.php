@@ -7,17 +7,21 @@ class BuilderTableUpdateBlRegionalinvestmentCommunities2 extends Migration
 {
     public function up()
     {
-        Schema::table('bl_regionalinvestment_communities', function($table)
-        {
-            $table->text('photos')->nullable();
-        });
+        if (Schema::hasTable('bl_regionalinvestment_communities') && !Schema::hasColumn('bl_regionalinvestment_communities', 'photos')) {
+            Schema::table('bl_regionalinvestment_communities', function($table)
+            {
+                $table->text('photos')->nullable();
+            });
+        }
     }
     
     public function down()
     {
-        Schema::table('bl_regionalinvestment_communities', function($table)
-        {
-            $table->dropColumn('photos');
-        });
+        if (Schema::hasTable('bl_regionalinvestment_communities') && Schema::hasColumn('bl_regionalinvestment_communities', 'photos')) {
+            Schema::table('bl_regionalinvestment_communities', function($table)
+            {
+                $table->dropColumn('photos');
+            });
+        }
     }
 }

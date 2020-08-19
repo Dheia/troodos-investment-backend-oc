@@ -17,6 +17,8 @@ is_hidden = 0
 [regionsList]
 
 [featured]
+
+[mapMarkers]
 ==
 <?php
 
@@ -25,7 +27,8 @@ is_hidden = 0
     use BL\RegionalInvestment\Models\InvestmentOpportunity;
     use BL\RegionalInvestment\Models\SuccessStory;
     use BL\RegionalInvestment\Models\PointOfInterest;
-    
+    use BL\Maps\Models\Map;
+
     function onStart(){
       $type = $this->param('type');
       $name = $this->param('name');
@@ -63,6 +66,7 @@ is_hidden = 0
     }
 ?>
 ==
+
 <input type="hidden" name="locale" value="{{activeLocale}}" ref="locale">
   <div class="platform-content">
     {% partial 'site/nav' useVue=true twoBarNav=true featured=featured type=type %}
@@ -80,6 +84,15 @@ is_hidden = 0
         </a>
         {% component 'opportunitiesList' opportunities=opportunities type=type %}
       </div>
+      <div v-if="tab=='opportunities' && view=='map'">
+        <a class="btn-floating btn-lg btn-default" @click="switchView">
+          <i v-if="view=='list'" class="fa fa-map"></i>
+          <i v-if="view=='map'" class="fa fa-list"></i>
+        </a>
+          <input type="hidden" id="mapSlug" value="investment_opportunity_map">
+          {% component 'mapMarkers' mapSlug='investment_opportunity_map' %}
+      </div>
+
       <div v-if="tab=='regions' && view=='list'">
         <a class="btn-floating btn-lg btn-default" @click="switchView">
           <i v-if="view=='list'" class="fa fa-map"></i>
@@ -87,6 +100,15 @@ is_hidden = 0
         </a>
         {% component 'regionsList' regions=regions type=type %}
       </div>
+      <div v-if="tab=='regions' && view=='map'">
+        <a class="btn-floating btn-lg btn-default" @click="switchView">
+          <i v-if="view=='list'" class="fa fa-map"></i>
+          <i v-if="view=='map'" class="fa fa-list"></i>
+        </a>
+          <input type="hidden" id="mapSlug" value="regions_map">
+          {% component 'mapMarkers' mapSlug='regions_map' %}
+      </div>
+
       <div v-if="tab=='communities' && view=='list'">
         <a class="btn-floating btn-lg btn-default" @click="switchView">
           <i v-if="view=='list'" class="fa fa-map"></i>
@@ -94,6 +116,15 @@ is_hidden = 0
         </a>
         {% component 'communitiesList' communities=communities type=type %}
       </div>
+      <div v-if="tab=='communities' && view=='map'">
+        <a class="btn-floating btn-lg btn-default" @click="switchView">
+          <i v-if="view=='list'" class="fa fa-map"></i>
+          <i v-if="view=='map'" class="fa fa-list"></i>
+        </a>
+          <input type="hidden" id="mapSlug" value="community_map">
+          {% component 'mapMarkers' mapSlug='community_map' %}
+      </div>
+
       <div v-if="tab=='pointsOfInterest' && view=='list'">
         <a class="btn-floating btn-lg btn-default" @click="switchView">
           <i v-if="view=='list'" class="fa fa-map"></i>
@@ -101,17 +132,19 @@ is_hidden = 0
         </a>
         {% component 'pointsOfInterestList' pointsOfInterest=pointsOfInterest type=type %}
       </div>
-      <div v-if="tab=='successStories'">
-        {% component 'successStoriesList' successStories=successStories type=type %}
-      </div>
-
-      <div v-if="view=='map' && (tab=='regions' || tab=='opportunities' || tab=='communities' || tab=='pointsOfInterest')">
+      <div v-if="tab=='pointsOfInterest' && view=='map'">
         <a class="btn-floating btn-lg btn-default" @click="switchView">
           <i v-if="view=='list'" class="fa fa-map"></i>
           <i v-if="view=='map'" class="fa fa-list"></i>
         </a>
-        <img src="/themes/blupath-theme/assets/images/map_background.jpg" />
+          <input type="hidden" id="mapSlug" value="point_of_interest_map">
+          {% component 'mapMarkers' mapSlug='point_of_interest_map' %}
       </div>
+
+      <div v-if="tab=='successStories'">
+        {% component 'successStoriesList' successStories=successStories type=type %}
+      </div>
+
 
     {% else %}
       <div class="container mt-5">

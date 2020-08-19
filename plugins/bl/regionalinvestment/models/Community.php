@@ -33,7 +33,8 @@ class Community extends Model
     public $table = 'bl_regionalinvestment_communities';
 
     public $belongsTo = [
-        'region' => 'BL\RegionalInvestment\Models\Region'
+        'region' => 'BL\RegionalInvestment\Models\Region',
+//        'map' => 'BL\Maps\Models\Map'
     ];
 
     public $belongsToMany = [

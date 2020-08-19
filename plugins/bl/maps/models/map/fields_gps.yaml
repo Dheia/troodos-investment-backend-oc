@@ -6,6 +6,11 @@ tabs:
             type: text
             comment: "bl.maps::lang.maps.field.namecomment"
             tab: "bl.maps::lang.maps.tabs.map_details"
+        slug:
+            label: "bl.maps::lang.maps.field.slug"
+            span: right
+            type: text
+            tab: "bl.maps::lang.maps.tabs.map_details"
         map:
             type: partial
             path: $/bl/maps/controllers/mapscontroller/_field_map.htm

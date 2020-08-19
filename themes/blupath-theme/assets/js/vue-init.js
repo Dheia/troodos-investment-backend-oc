@@ -10,6 +10,7 @@ var app = new Vue({
     methods: {
         setTab: function(tab) {
             this.tab = tab;
+            this.view = 'list';
         },
         getInitRootParams: function() {
             let uri = window.location.search.substring(1);
@@ -19,8 +20,11 @@ var app = new Vue({
             this.locale = this.$refs.locale.value;
         },
         switchView: function() {
-            if (this.view == "list") {
+            if (this.view === "list") {
                 this.view = "map";
+                Vue.nextTick(function () {
+                    mapComponentInit();
+                })
             } else {
                 this.view = "list";
             }

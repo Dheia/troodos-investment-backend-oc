@@ -31,6 +31,7 @@
         ],
         'field' => [
             'name' => 'Map name',
+            'slug' => 'Slug',
             'namecomment' => 'If you associate this map with one of your guides, this is the map name that guide users will see',
             'gpsmap' => 'Define map - double click to set map center',
             'gpsmapcomment' => 'Define the area that your map should cover. Zoom and drag the map to your desired location. You must double click on the map to set the map center and retain the map location when saving the map. ',

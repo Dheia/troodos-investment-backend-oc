@@ -20,7 +20,7 @@ class Map extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['name', 'type', 'coord_x', 'coord_y', 'zoom'];
+    protected $fillable = ['name', 'slug', 'type', 'coord_x', 'coord_y', 'zoom'];
 
     public $translatable = ['name'];
 

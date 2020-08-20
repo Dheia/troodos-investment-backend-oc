@@ -77,36 +77,22 @@ is_hidden = 0
       <div v-if="tab=='featured'">
         {% component 'featured' featured=featured type=type %}
       </div>
+
       <div v-if="tab=='opportunities' && view=='list'">
         <a class="btn-floating btn-lg btn-default" @click="switchView">
           <i v-if="view=='list'" class="fa fa-map"></i>
           <i v-if="view=='map'" class="fa fa-list"></i>
         </a>
-        {% component 'opportunitiesList' opportunities=opportunities type=type %}
+        {% partial 'site/page-layout' items=opportunities type='opportunity' map='false' title=('tabs.opportunities'|__) %}
       </div>
+      
       <div v-if="tab=='opportunities' && view=='map'">
         <a class="btn-floating btn-lg btn-default" @click="switchView">
           <i v-if="view=='list'" class="fa fa-map"></i>
           <i v-if="view=='map'" class="fa fa-list"></i>
         </a>
           <input type="hidden" id="mapSlug" value="investment_opportunity_map">
-          {% component 'mapMarkers' mapSlug='investment_opportunity_map' %}
-      </div>
-
-      <div v-if="tab=='regions' && view=='list'">
-        <a class="btn-floating btn-lg btn-default" @click="switchView">
-          <i v-if="view=='list'" class="fa fa-map"></i>
-          <i v-if="view=='map'" class="fa fa-list"></i>
-        </a>
-        {% component 'regionsList' regions=regions type=type %}
-      </div>
-      <div v-if="tab=='regions' && view=='map'">
-        <a class="btn-floating btn-lg btn-default" @click="switchView">
-          <i v-if="view=='list'" class="fa fa-map"></i>
-          <i v-if="view=='map'" class="fa fa-list"></i>
-        </a>
-          <input type="hidden" id="mapSlug" value="regions_map">
-          {% component 'mapMarkers' mapSlug='regions_map' %}
+          {% partial 'site/page-layout' items=opportunities type='opportunity' map='true' mapslug='investment_opportunity_map' title=('tabs.opportunities'|__) %}
       </div>
 
       <div v-if="tab=='communities' && view=='list'">
@@ -114,7 +100,7 @@ is_hidden = 0
           <i v-if="view=='list'" class="fa fa-map"></i>
           <i v-if="view=='map'" class="fa fa-list"></i>
         </a>
-        {% component 'communitiesList' communities=communities type=type %}
+        {% partial 'site/page-layout' items=communities type='community' map='false' title=('tabs.communities'|__) %}
       </div>
       <div v-if="tab=='communities' && view=='map'">
         <a class="btn-floating btn-lg btn-default" @click="switchView">
@@ -122,7 +108,7 @@ is_hidden = 0
           <i v-if="view=='map'" class="fa fa-list"></i>
         </a>
           <input type="hidden" id="mapSlug" value="community_map">
-          {% component 'mapMarkers' mapSlug='community_map' %}
+          {% partial 'site/page-layout' items=communities type='community' map='true' mapSlug='community_map' title=('tabs.communities'|__) %}
       </div>
 
       <div v-if="tab=='pointsOfInterest' && view=='list'">
@@ -130,7 +116,7 @@ is_hidden = 0
           <i v-if="view=='list'" class="fa fa-map"></i>
           <i v-if="view=='map'" class="fa fa-list"></i>
         </a>
-        {% component 'pointsOfInterestList' pointsOfInterest=pointsOfInterest type=type %}
+        {% partial 'site/page-layout' items=pointsOfInterest type='pointOfInterest' map='false' title=('tabs.pointsOfInterest'|__) %}
       </div>
       <div v-if="tab=='pointsOfInterest' && view=='map'">
         <a class="btn-floating btn-lg btn-default" @click="switchView">
@@ -138,13 +124,24 @@ is_hidden = 0
           <i v-if="view=='map'" class="fa fa-list"></i>
         </a>
           <input type="hidden" id="mapSlug" value="point_of_interest_map">
-          {% component 'mapMarkers' mapSlug='point_of_interest_map' %}
+          {% partial 'site/page-layout' items=pointsOfInterest type='pointOfInterest' map='true' mapSlug='point_of_interest_map' title=('tabs.pointsOfInterest'|__) %}
       </div>
 
-      <div v-if="tab=='successStories'">
-        {% component 'successStoriesList' successStories=successStories type=type %}
+      <div v-if="tab=='successStories' && view=='list'">
+        <a class="btn-floating btn-lg btn-default" @click="switchView">
+          <i v-if="view=='list'" class="fa fa-map"></i>
+          <i v-if="view=='map'" class="fa fa-list"></i>
+        </a>
+        {% partial 'site/page-layout' items=successStories type='successStory' map='false' title=('tabs.successStories'|__) %}
       </div>
-
+      <div v-if="tab=='successStories' && view=='map'">
+        <a class="btn-floating btn-lg btn-default" @click="switchView">
+          <i v-if="view=='list'" class="fa fa-map"></i>
+          <i v-if="view=='map'" class="fa fa-list"></i>
+        </a>
+          <input type="hidden" id="mapSlug" value="success_stories_map">
+          {% partial 'site/page-layout' items=successStories type='successStory' map='true' mapSlug='success_stories_map' title=('tabs.successStories'|__) %}
+      </div>
 
     {% else %}
       <div class="container mt-5">

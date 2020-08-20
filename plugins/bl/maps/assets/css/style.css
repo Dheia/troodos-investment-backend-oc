@@ -1,6 +1,6 @@
 .mapcontainer {
     width: auto;
-    height: 520px;
+    height: 720px;
     padding: 20px;
 }
 .mapcontainer #markersmap {
@@ -16,15 +16,14 @@
 
 .mapcontainer-small {
     width: auto;
-    height: 520px;
+    height: 720px;
     padding: 10px;
 }
 
 #Form-field-Map-coord_x-group,
 #Form-field-Map-coord_y-group,
 #Form-field-Map-zoom-group,
-[data-field-name='full_path'][id*="MediaItem"]
-{
+[data-field-name="full_path"][id*="MediaItem"] {
     visibility: hidden;
     height: 1px;
     padding-bottom: 0;

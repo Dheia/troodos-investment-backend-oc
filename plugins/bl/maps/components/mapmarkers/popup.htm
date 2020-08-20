@@ -1,9 +1,12 @@
 <div class="map-popup row">
-    <div class="col-12">
+    <div class="col-12" style="font-size: 1.2em">
     <h4>{{ marker.title }}</h4>
     {{ marker.description|raw }}
     <p class="mt-2">
-        <a href="{{ marker.markerUrl }}" target="_blank">{{"Details"|_}}</a>
+        <a href="{{ marker.markerUrl }}" target="_blank" class="mr-2">{{"DETAILS"|_}}</a>
+        {% if marker.external_url %}
+        <a href="{{ marker.external_url }}" target="_blank">{{"FIND IN GOOGLE"|_}}</a>
+        {% endif %}
     </p>
     </div>
 </div>

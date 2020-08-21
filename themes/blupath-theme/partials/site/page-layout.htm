@@ -3,26 +3,23 @@
     <div class="row">
 
         <!--Main column-->
-        <div class="col-lg-12">  
-            <h1>{% if(primary != true) %}{{featured.name}}: {% endif %}{{title}}</h1>          
+        <div class="col-lg-12">
+            <h1>{% if(primary != true) %}{{featured.name}}: {% endif %}{{title}}</h1>
             <hr class="pb-2">
         </div>
 
         {% if map=='false' %}
-            {% if type=='opportunity' %}
-                {% for opportunity in items %}
-                    <div class="col-lg-4 col-md-6 col-xs-12">
-                        {% partial 'site/investmentCard' opportunity=opportunity type='opportunity' modal=true %}
-                    </div>
-                {% endfor %}
-            {% else %}
-                {% for item in items %}
-                    {% partial 'site/horizontalCard' item=item type=type %}
-                {% endfor %}
-            {% endif %}
-
+        <div id="pagination_content" class="row">
+            {% set itemsData = items.data ? items.data : items %}
+            {% partial "components/pagination_content" items=itemsData type=type %}
+        </div>
         {% else %}
             {% component 'mapMarkers' mapSlug=mapSlug %}
         {% endif %}
     </div>
+    {% if map=='false' and items.data %}
+        <div id="pagination_nav" class="row">
+            {% partial "components/pagination_nav" results=items %}
+        </div>
+    {% endif %}
 </div>

@@ -1,0 +1,11 @@
+{% if type=='opportunity' %}
+    {% for opportunity in items %}
+        <div class="col-lg-4 col-md-6 col-xs-12">
+            {% partial 'site/investmentCard' opportunity=opportunity type='opportunity' modal=true %}
+        </div>
+    {% endfor %}
+{% else %}
+    {% for item in items %}
+        {% partial 'site/horizontalCard' item=item type=type %}
+    {% endfor %}
+{% endif %}

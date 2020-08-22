@@ -21,6 +21,16 @@ var app = new Vue({
         },
         switchView: function() {
             if (this.view === "list") {
+
+                var item_ids = '';
+                $('[name="model_id"]').each(function (index, item) {
+                    item_ids += $(item).val() + ','
+                })
+                if (item_ids.length > 0) {
+                    item_ids = item_ids.substring(0, item_ids.length - 1);
+                    $('#model_ids').val(item_ids);
+                }
+
                 this.view = "map";
                 Vue.nextTick(function () {
                     mapComponentInit();

@@ -78,6 +78,8 @@ is_hidden = 0
         {% component 'featured' featured=featured type=type %}
       </div>
 
+      <input type="hidden" id="model_ids"/>
+
       <div v-if="tab=='opportunities' && view=='list'">
         <a class="btn-floating btn-lg btn-default" @click="switchView">
           <i v-if="view=='list'" class="fa fa-map"></i>

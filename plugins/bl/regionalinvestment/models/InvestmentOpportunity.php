@@ -94,9 +94,11 @@ class InvestmentOpportunity extends Model
         if (array_key_exists('_token', $input_all)) unset($input_all['_token']);
         if (array_key_exists('_session_key', $input_all)) unset($input_all['_session_key']);
         if (!array_key_exists('page', $input_all)) $input_all['page'] = 1;
-        if (!array_key_exists('per_page', $input_all)) $input_all['per_page'] = 1;
+        // See also perPageDefault in pagination_nav.htm
+        $perPageDefault = 1;
+        if (!array_key_exists('per_page', $input_all)) $input_all['per_page'] = $perPageDefault;
         $page = Input::get('page', 1);
-        $per_page = Input::get('per_page', 1);
+        $per_page = Input::get('per_page', $perPageDefault);
         $cache_key = md5(serialize($input_all));
 
         $opportunities = Cache::rememberForever("community." . $community_id . ".Opportunities." . $cache_key . "." . App::getLocale(), function () use ($page, $per_page, $community_id) {

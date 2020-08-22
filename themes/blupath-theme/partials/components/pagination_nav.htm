@@ -3,13 +3,16 @@
 
 {% if lastPage > 1 %}
 
+{# See also perPageDefault in InvestmentOpportunity #}
+{% set perPageDefault = 1 %}
+
 <form class="w-100">
 <nav aria-label="Page navigation" class="w-100">
     <div class="float-left" style="display: inline-block;">
         <span>Show per page</span>
         <select name="per_page" class="browser-default custom-select" data-request="onFilterItems"
                        data-request-data="page: '1'" data-request-form="form">
-          <option selected value="1">1</option>
+          <option selected value="{{perPageDefault}}">{{perPageDefault}}</option>
           <option value="25">25</option>
           <option value="50">50</option>
         </select>

@@ -1,6 +1,7 @@
 {% if type=='opportunity' %}
     {% for opportunity in items %}
         <div class="col-lg-4 col-md-6 col-xs-12">
+            <input type="hidden" name="model_id" value="{{opportunity.id}}"/>
             {% partial 'site/investmentCard' opportunity=opportunity type='opportunity' modal=true %}
         </div>
     {% endfor %}

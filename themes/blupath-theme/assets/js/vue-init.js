@@ -11,6 +11,23 @@ var app = new Vue({
         setTab: function(tab) {
             this.tab = tab;
             this.view = 'list';
+            //https://designlink.work/en-US/bootstrap-material-datepicker/
+            //https://github.com/AlexandrM/bootstrap-material-datetimepicker#readme
+            if (tab === 'opportunities' || tab === 'communities') {
+                Vue.nextTick(function () {
+                    $('#available_since').bootstrapMaterialDatePicker({
+                        format: 'DD/MM/YYYY',
+                        time: false,
+                        weekStart: 1
+                    });
+                    $('#collapse_form').on('shown.bs.collapse', function () {
+                        $('#expand_collapse_icon').text('expand_less');
+                    });
+                    $('#collapse_form').on('hidden.bs.collapse', function () {
+                        $('#expand_collapse_icon').text('expand_more');
+                    })
+                });
+            }
         },
         getInitRootParams: function() {
             let uri = window.location.search.substring(1);

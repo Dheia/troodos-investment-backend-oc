@@ -9,7 +9,7 @@
         </div>
 
         {% if map=='false' %}
-        <div class="row">
+        <div class="row w-100">
             <div class="{% if type =='opportunity' or type=='community' %} col-12 col-md-8 order-last order-md-first  {% else %} col-12 {% endif %}">
                 <div id="pagination_content" class="row">
                     {% set itemsData = items.data ? items.data : items %}

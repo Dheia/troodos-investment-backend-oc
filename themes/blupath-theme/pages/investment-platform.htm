@@ -35,7 +35,7 @@ is_hidden = 0
 
       $communities = Community::getLocalized();
       $successStories =  SuccessStory::getLocalized();
-      $opportunities = InvestmentOpportunity::getLocalizedByCommunitySlug($name);
+      $opportunities = empty($name) ? InvestmentOpportunity::getLocalized() :  InvestmentOpportunity::getLocalizedByCommunitySlug($name);
       $pointsOfInterest = PointOfInterest::getLocalized();
       $primary = false;
 

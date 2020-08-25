@@ -18,6 +18,9 @@ function mapComponentInit()
     } else if ($('#mapSlug').length > 0) {
         opts.mapSlug = $('#mapSlug').val();
     }
+    if ($('#model_ids').length > 0) {
+        opts.item_ids = $('#model_ids').val();
+    }
     //load settings and markers
     $(this).request('onDataLoad', {
         data: opts,

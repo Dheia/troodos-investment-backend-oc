@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
             collapsed: "(min-width: 550px)"
         }
     });
+
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -13,3 +14,4 @@ document.addEventListener("DOMContentLoaded", () => {
         extensions: ["popup"]
     });
 });
+

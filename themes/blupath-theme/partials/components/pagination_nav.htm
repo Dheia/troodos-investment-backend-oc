@@ -19,52 +19,50 @@
     </div>
 
     <div class="float-right" style="display: inline-block;">
-    <ul class="pagination pg-teal justify-content-end">
+        <ul class="pagination pg-teal justify-content-end">
 
-        {% if currentPage > 1 %}
-        <li class="page-item">
-            <a class="page-link " href="#" data-request="onFilterItems"
-               data-request-data="page: '{{currentPage - 1}}'" data-request-form="form">Previous</a>
-        </li>
+            {% if currentPage > 1 %}
+                <li class="page-item">
+                    <a class="page-link " href="#" data-request="onFilterItems"
+                    data-request-data="page: '{{currentPage - 1}}'" data-request-form="form">Previous</a>
+                </li>
+            {% endif %}
+            {% set left_border = currentPage <= 3 ? 3 : currentPage - 2  %}
+            {% set right_border = currentPage > lastPage - 3 ? lastPage - 3 : currentPage + 2  %}
+            {% set open = false %}
+            {% set close = false %}
+            {% for page in 1..lastPage %}
+                {% if (page <= 4) or ((page >= left_border ) and (page <= right_border )) or (page > lastPage - 4)   %}
+                    {% set open = true %}
+                    {% set close = false %}
+                    <li class="page-item {{ currentPage == page ? 'active' : null }}">
+                        <a
+                                class="page-link"
+                                href="#" data-request="onFilterItems"
+                                data-request-data="page: '{{page}}'" data-request-form="form">
+                            {{ page }} <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                {%else%}
+                    {% set close = true %}
+                {%endif%}
 
-        {% endif %}
-        {% set left_border = currentPage <= 3 ? 3 : currentPage - 2  %}
-        {% set right_border = currentPage > lastPage - 3 ? lastPage - 3 : currentPage + 2  %}
-        {% set open = false %}
-        {% set close = false %}
-        {% for page in 1..lastPage %}
-        {% if (page <= 4) or ((page >= left_border ) and (page <= right_border )) or (page > lastPage - 4)   %}
-        {% set open = true %}
-        {% set close = false %}
-        <li class="page-item {{ currentPage == page ? 'active' : null }}">
-            <a
-                    class="page-link"
-                    href="#" data-request="onFilterItems"
-                    data-request-data="page: '{{page}}'" data-request-form="form">
-                {{ page }} <span class="sr-only">(current)</span>
-            </a>
-        </li>
-        {%else%}
-        {% set close = true %}
-        {%endif%}
-        {% if (open and close) %}
-        {% set open = false %}
-        {% set close = false %}
-        <li class="page-item disabled">
-            <span>...</span>
-        </li>
-        {% endif %}
-        {% endfor %}
+                {% if (open and close) %}
+                {% set open = false %}
+                {% set close = false %}
+                <li class="page-item disabled">
+                    <span>...</span>
+                </li>
+                {% endif %}
+            {% endfor %}
 
-        {% if lastPage > currentPage %}
-        <li class="page-item">
-            <a href="#" data-request="onFilterItems"
-               data-request-data="page: '{{currentPage + 1}}'" data-request-form="form" class="page-link">Next</a>
-        </li>
-
-        {% endif %}
-
-    </ul>
+            {% if lastPage > currentPage %}
+                <li class="page-item">
+                    <a href="#" data-request="onFilterItems"
+                    data-request-data="page: '{{currentPage + 1}}'" data-request-form="form" class="page-link">Next</a>
+                </li>
+            {% endif %}
+        </ul>
     </div>
 </nav>
 </form>

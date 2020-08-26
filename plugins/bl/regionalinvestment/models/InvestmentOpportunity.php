@@ -118,11 +118,15 @@ class InvestmentOpportunity extends Model
 
     public static function getLocalizedByRegion($region_id)
     {
-        $opportunities = self::getLocalized();
-        $ids = DB::table('bl_regionalinvestment_i_o_region')
-            ->where('r_id', $region_id)
-            ->pluck('i_o_id');
-        return $opportunities->whereIn('id', $ids);
+        $input = self::getInput();
+        $opportunities = Cache::tags(['opportunities'])->rememberForever("region." . $region_id . ".Opportunities." . $input['cache_key'] . "." . App::getLocale(), function () use ($input, $region_id) {
+            $q =  self::with('business_types')->where('published', 1);
+            $ids = DB::table('bl_regionalinvestment_i_o_region')
+                ->where('r_id', $region_id)
+                ->pluck('i_o_id');
+            return $q->whereIn('id', $ids)->paginate($input['per_page'], $input['page'])->toArray();
+        });
+        return $opportunities;
     }
 
     public function afterSave()

@@ -1,25 +1,26 @@
 {% set lastPage = results.last_page %}
 {% set currentPage = results.current_page %}
 
-{% if lastPage > 1 %}
 
 {# See also perPageDefault in InvestmentOpportunity #}
 {% set perPageDefault = 1 %}
 
 <form class="w-100">
 <nav aria-label="Page navigation" class="w-100">
-    <div class="float-left" style="display: inline-block;">
+    <div class="float-left mb-3" style="display: inline-block;">
         <span>Show per page</span>
         <select name="per_page" class="browser-default custom-select" data-request="onFilterItems"
                        data-request-data="page: '1'" data-request-form="form">
-          <option selected value="{{perPageDefault}}">{{perPageDefault}}</option>
-          <option value="25">25</option>
-          <option value="50">50</option>
+          <option {{per_page == perPageDefault ? 'selected' : ''}} value="{{perPageDefault}}">{{perPageDefault}}</option>
+          <option {{per_page == 25 ? 'selected' : ''}} value="25">25</option>
+          <option {{per_page == 50 ? 'selected' : ''}} value="50">50</option>
         </select>
     </div>
 
-    <div class="float-right" style="display: inline-block;">
-        <ul class="pagination pg-teal justify-content-end">
+    {% if lastPage > 1 %}
+
+    <div class="float-right mb-3" style="display: inline-block;">
+        <ul class="pagination pg-teal justify-content-end mb-0" style="padding-top: .375rem; padding-bottom: .375rem;">
 
             {% if currentPage > 1 %}
                 <li class="page-item">
@@ -64,6 +65,9 @@
             {% endif %}
         </ul>
     </div>
+
+    {% endif %}
+
 </nav>
 </form>
-{% endif %}
+

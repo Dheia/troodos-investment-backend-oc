@@ -4,6 +4,7 @@ namespace BL\RegionalInvestment\Components;
 
 use BL\RegionalInvestment\Models\InvestmentOpportunity;
 use CMS\Classes\ComponentBase;
+use Illuminate\Support\Facades\Input;
 
 class OpportunitiesList extends ComponentBase
 {
@@ -18,6 +19,7 @@ class OpportunitiesList extends ComponentBase
 
     public function onRun()
     {
+        $this->page['per_page'] = Input::get('per_page');
     }
 
     public function init()
@@ -28,6 +30,8 @@ class OpportunitiesList extends ComponentBase
     {
         $type = $this->param('type');
         $name = $this->param('name');
+
+        $this->page['per_page'] = Input::get('per_page');
 
         $results = empty($name) ? InvestmentOpportunity::getLocalized() :  InvestmentOpportunity::getLocalizedByCommunitySlug($name);
         $items = $results["data"];

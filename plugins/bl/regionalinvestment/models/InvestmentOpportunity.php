@@ -75,7 +75,6 @@ class InvestmentOpportunity extends Model
         if (array_key_exists('_session_key', $input_all)) unset($input_all['_session_key']);
         if (!array_key_exists('page', $input_all)) $input_all['page'] = 1;
         // See also perPageDefault in pagination_nav.htm
-        $perPageDefault = 1;
         if (!array_key_exists('per_page', $input_all)) $input_all['per_page'] = self::$perPageDefault;
         return [
             'input_all' => $input_all,

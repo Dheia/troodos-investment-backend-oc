@@ -77,7 +77,6 @@ class InvestmentOpportunity extends Model
         $opportunities = Cache::rememberForever("all.Opportunities." . App::getLocale(), function () {
             return self::with('business_types')->where('published', 1)->get()->toArray();
         });
-
         return collect($opportunities);
     }
 
@@ -88,15 +87,18 @@ class InvestmentOpportunity extends Model
             return self::getLocalizedByCommunity($community->id);
         return [];
     }
+
     public static function getLocalizedByCommunity($community_id)
     {
         $input_all = Input::all();
+        $perPageDefault = 1;
+
         if (array_key_exists('_token', $input_all)) unset($input_all['_token']);
         if (array_key_exists('_session_key', $input_all)) unset($input_all['_session_key']);
         if (!array_key_exists('page', $input_all)) $input_all['page'] = 1;
         // See also perPageDefault in pagination_nav.htm
-        $perPageDefault = 1;
         if (!array_key_exists('per_page', $input_all)) $input_all['per_page'] = $perPageDefault;
+        
         $page = Input::get('page', 1);
         $per_page = Input::get('per_page', $perPageDefault);
         $cache_key = md5(serialize($input_all));

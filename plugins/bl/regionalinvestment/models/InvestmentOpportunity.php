@@ -26,10 +26,7 @@ class InvestmentOpportunity extends Model
         'Bl.Maps.Behaviors.PositionableOnMapModel'
     ];
 
-    public $belongsTo = [
-//        'map' => 'BL\Maps\Models\Map'
-    ];
-
+    public static $perPageDefault = 1;
 
     public $belongsToMany = [
         'communities' => [
@@ -72,22 +69,28 @@ class InvestmentOpportunity extends Model
         'gallery' => 'System\Models\File'
     ];
 
-    public static function getLocalized()
-    {
+    public static function getInput(){
         $input_all = Input::all();
         if (array_key_exists('_token', $input_all)) unset($input_all['_token']);
         if (array_key_exists('_session_key', $input_all)) unset($input_all['_session_key']);
         if (!array_key_exists('page', $input_all)) $input_all['page'] = 1;
         // See also perPageDefault in pagination_nav.htm
         $perPageDefault = 1;
-        if (!array_key_exists('per_page', $input_all)) $input_all['per_page'] = $perPageDefault;
-        $page = Input::get('page', 1);
-        $per_page = Input::get('per_page', $perPageDefault);
-        $cache_key = md5(serialize($input_all));
+        if (!array_key_exists('per_page', $input_all)) $input_all['per_page'] = self::$perPageDefault;
+        return [
+            'input_all' => $input_all,
+            'page' => Input::get('page', 1),
+            'per_page' => Input::get('per_page', self::$perPageDefault),
+            'cache_key' => md5(serialize($input_all))
+        ];
+    }
 
-        $opportunities = Cache::remember("all.Opportunities." . $cache_key . "." . App::getLocale(), 1, function () use ($page, $per_page) {
+    public static function getLocalized()
+    {
+        $input = self::getInput();
+        $opportunities = Cache::remember("all.Opportunities." . $input['cache_key'] . "." . App::getLocale(), 1, function () use ($input) {
             return self::with('business_types')
-                ->where('published', 1)->paginate($per_page, $page)->toArray();
+                ->where('published', 1)->paginate($input['per_page'], $input['page'])->toArray();
         });
         return collect($opportunities);
     }
@@ -102,25 +105,13 @@ class InvestmentOpportunity extends Model
 
     public static function getLocalizedByCommunity($community_id)
     {
-        $input_all = Input::all();
-        $perPageDefault = 1;
-
-        if (array_key_exists('_token', $input_all)) unset($input_all['_token']);
-        if (array_key_exists('_session_key', $input_all)) unset($input_all['_session_key']);
-        if (!array_key_exists('page', $input_all)) $input_all['page'] = 1;
-        // See also perPageDefault in pagination_nav.htm
-        if (!array_key_exists('per_page', $input_all)) $input_all['per_page'] = $perPageDefault;
-        
-        $page = Input::get('page', 1);
-        $per_page = Input::get('per_page', $perPageDefault);
-        $cache_key = md5(serialize($input_all));
-
-        $opportunities = Cache::remember("community." . $community_id . ".Opportunities." . $cache_key . "." . App::getLocale(), 1, function () use ($page, $per_page, $community_id) {
+        $input = self::getInput();
+        $opportunities = Cache::remember("community." . $community_id . ".Opportunities." . $input['cache_key'] . "." . App::getLocale(), 1, function () use ($input, $community_id) {
             $q =  self::with('business_types')->where('published', 1);
             $ids = DB::table('bl_regionalinvestment_community_i_o')
                 ->where('c_id', $community_id)
                 ->pluck('i_o_id');
-            return $q->whereIn('id', $ids)->paginate($per_page, $page)->toArray();
+            return $q->whereIn('id', $ids)->paginate($input['per_page'], $input['page'])->toArray();
         });
         return $opportunities;
     }

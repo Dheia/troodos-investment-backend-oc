@@ -88,7 +88,7 @@ class InvestmentOpportunity extends Model
     public static function getLocalized()
     {
         $input = self::getInput();
-        $opportunities = Cache::remember("all.Opportunities." . $input['cache_key'] . "." . App::getLocale(), 1, function () use ($input) {
+        $opportunities = Cache::tags(['opportunities'])->rememberForever("all.Opportunities." . $input['cache_key'] . "." . App::getLocale(), function () use ($input) {
             return self::with('business_types')
                 ->where('published', 1)->paginate($input['per_page'], $input['page'])->toArray();
         });
@@ -106,7 +106,7 @@ class InvestmentOpportunity extends Model
     public static function getLocalizedByCommunity($community_id)
     {
         $input = self::getInput();
-        $opportunities = Cache::remember("community." . $community_id . ".Opportunities." . $input['cache_key'] . "." . App::getLocale(), 1, function () use ($input, $community_id) {
+        $opportunities = Cache::tags(['opportunities'])->rememberForever("community." . $community_id . ".Opportunities." . $input['cache_key'] . "." . App::getLocale(), function () use ($input, $community_id) {
             $q =  self::with('business_types')->where('published', 1);
             $ids = DB::table('bl_regionalinvestment_community_i_o')
                 ->where('c_id', $community_id)
@@ -127,8 +127,7 @@ class InvestmentOpportunity extends Model
 
     public function afterSave()
     {
-        Cache::forget("all.Opportunitiesen");
-        Cache::forget("all.Opportunitiesel");
+        Cache::tags(['opportunities'])->flush();
     }
 
 }

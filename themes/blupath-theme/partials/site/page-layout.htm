@@ -9,13 +9,13 @@
 
         {% if map=='false' %}
         <div class="row w-100">
-            <div class="{% if type =='opportunity' or type=='community' %} col-12 col-md-8 order-last order-md-first  {% else %} col-12 {% endif %}">
+            <div class="{% if type =='opportunity' %} col-12 col-md-8 order-last order-md-first  {% else %} col-12 {% endif %}">
                 <div id="pagination_content" class="row">
                     {% set itemsData = items.data ? items.data : items %}
                     {% partial "components/pagination_content" items=itemsData type=type %}
                 </div>
             </div>
-            <div class="{% if type =='opportunity' or type=='community' %} col-12 col-md-4 order-first order-md-last {% else %} d-none {% endif %}">
+            <div class="{% if type =='opportunity' %} col-12 col-md-4 order-first order-md-last {% else %} d-none {% endif %}">
 
                 <h4>FILTER OPTIONS</h4>
                 <div class="md-form">
@@ -63,8 +63,10 @@
         {% endif %}
     </div>
     {% if map=='false' and items.data %}
-        <div id="pagination_nav" class="row">
-            {% partial "components/pagination_nav" results=items %}
+        <div class="row">
+            <div class="col-12 col-md-8" id="pagination_nav" >
+                {% partial "components/pagination_nav" results=items %}
+            </div>
         </div>
     {% endif %}
 </div>

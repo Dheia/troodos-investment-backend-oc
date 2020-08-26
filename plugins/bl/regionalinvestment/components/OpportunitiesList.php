@@ -29,7 +29,7 @@ class OpportunitiesList extends ComponentBase
         $type = $this->param('type');
         $name = $this->param('name');
 
-        $results = InvestmentOpportunity::getLocalizedByCommunitySlug($name);
+        $results = empty($name) ? InvestmentOpportunity::getLocalized() :  InvestmentOpportunity::getLocalizedByCommunitySlug($name);
         $items = $results["data"];
         return [
             '#pagination_content' => $this->renderPartial('components/pagination_content', [

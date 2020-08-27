@@ -111,6 +111,7 @@ function createGoogleMap(data)
         //bind marker click to show info box
         gMarker.addListener('click', function () {
             var clickedMarker = this;
+            activateMarkerWithId(clickedMarker.marker_id);
             $(this).request('onMarkerClicked', {
                 data: {marker_id: clickedMarker.marker_id},
                 success: function (data) {
@@ -235,7 +236,15 @@ function addMarkersToTable(data)
                 $(this).parent().css('background-color', '');
             })
             $(this).parent().css('background-color', '#2BBBAD');
-            activateMarkerWithId($(this).attr('data-id'));
+            var selectedMarkerId = $(this).attr('data-id');
+            activateMarkerWithId(selectedMarkerId);
+            $(this).request('onMarkerClicked', {
+                data: {marker_id: selectedMarkerId},
+                success: function (data) {
+                    markersMapInfoBox.setContent(data.result);
+                    markersMapInfoBox.open(markersMap, marker);
+                }
+            });
         })
         $td.append($markerItem);
         $tr.append($td);

@@ -8,62 +8,66 @@ var app = new Vue({
         locale: ""
     },
     methods: {
+        initMaterialControls() {
+            $('#available_since').bootstrapMaterialDatePicker({
+                format: 'DD.MM.YYYY',
+                time: false,
+                weekStart: 1,
+                clearButton: true
+            });
+            $('#collapse_form').on('shown.bs.collapse', function () {
+                $('#expand_collapse_icon').text('expand_less');
+            });
+            $('#collapse_form').on('hidden.bs.collapse', function () {
+                $('#expand_collapse_icon').text('expand_more');
+            })
+
+
+            // Material Select
+            // MAD-SELECT
+            var madSelectHover = 0;
+            $(".mad-select").each(function() {
+              var $input = $(this).find("input"),
+                  $ul = $(this).find("> ul"),
+                  $ulDrop =  $ul.clone().addClass("mad-select-drop");
+
+              $(this)
+                .append('<i class="material-icons">arrow_drop_down</i>', $ulDrop)
+                .on({
+                hover : function() { madSelectHover ^= 1; },
+                click : function() { $ulDrop.toggleClass("show"); }
+              });
+
+              // PRESELECT
+              $ul.add($ulDrop).find("li[data-value='"+ $input.val() +"']").addClass("selected");
+
+              // MAKE SELECTED
+              $ulDrop.on("click", "li", function(evt) {
+                evt.stopPropagation();
+                $input.val($(this).data("value")); // Update hidden input value
+                $ul.find("li").eq($(this).index()).add(this).addClass("selected")
+                  .siblings("li").removeClass("selected");
+              });
+              // UPDATE LIST SCROLL POSITION
+              $ul.on("click", function() {
+                var liTop = $ulDrop.find("li.selected").position().top;
+                $ulDrop.scrollTop(liTop + $ulDrop[0].scrollTop);
+              });
+            });
+
+            $(document).on("mouseup", function(){
+              if(!madSelectHover) $(".mad-select-drop").removeClass("show");
+            });
+        },
         setTab: function(tab) {
             this.tab = tab;
             this.view = 'list';
+            var self = this;
             //https://designlink.work/en-US/bootstrap-material-datepicker/
             //https://github.com/AlexandrM/bootstrap-material-datetimepicker#readme
             if (tab === 'opportunities') {
                 Vue.nextTick(function () {
-                    $('#available_since').bootstrapMaterialDatePicker({
-                        format: 'DD.MM.YYYY',
-                        time: false,
-                        weekStart: 1,
-                        clearButton: true
-                    });
-                    $('#collapse_form').on('shown.bs.collapse', function () {
-                        $('#expand_collapse_icon').text('expand_less');
-                    });
-                    $('#collapse_form').on('hidden.bs.collapse', function () {
-                        $('#expand_collapse_icon').text('expand_more');
-                    })
-
-
-                    // Material Select
-                    // MAD-SELECT
-                    var madSelectHover = 0;
-                    $(".mad-select").each(function() {
-                      var $input = $(this).find("input"),
-                          $ul = $(this).find("> ul"),
-                          $ulDrop =  $ul.clone().addClass("mad-select-drop");
-
-                      $(this)
-                        .append('<i class="material-icons">arrow_drop_down</i>', $ulDrop)
-                        .on({
-                        hover : function() { madSelectHover ^= 1; },
-                        click : function() { $ulDrop.toggleClass("show"); }
-                      });
-
-                      // PRESELECT
-                      $ul.add($ulDrop).find("li[data-value='"+ $input.val() +"']").addClass("selected");
-
-                      // MAKE SELECTED
-                      $ulDrop.on("click", "li", function(evt) {
-                        evt.stopPropagation();
-                        $input.val($(this).data("value")); // Update hidden input value
-                        $ul.find("li").eq($(this).index()).add(this).addClass("selected")
-                          .siblings("li").removeClass("selected");
-                      });
-                      // UPDATE LIST SCROLL POSITION
-                      $ul.on("click", function() {
-                        var liTop = $ulDrop.find("li.selected").position().top;
-                        $ulDrop.scrollTop(liTop + $ulDrop[0].scrollTop);
-                      });
-                    });
-
-                    $(document).on("mouseup", function(){
-                      if(!madSelectHover) $(".mad-select-drop").removeClass("show");
-                    });
+                    self.initMaterialControls();
                 });
             }
         },
@@ -87,11 +91,17 @@ var app = new Vue({
                 }
 
                 this.view = "map";
+
                 Vue.nextTick(function () {
                     mapComponentInit();
                 })
             } else {
                 this.view = "list";
+
+                var self = this;
+                Vue.nextTick(function () {
+                    self.initMaterialControls();
+                })
             }
         }
     },

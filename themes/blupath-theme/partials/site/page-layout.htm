@@ -9,7 +9,7 @@
 
         {% if map=='false' %}
         <div class="row no-gutters w-100">
-            <div class="{% if type =='opportunity' %} col-12 col-md-8 order-last order-md-first  {% else %} col-12 {% endif %}">
+            <div class="{% if type =='opportunity' %} col-12 col-md-8 pr-md-5 order-last order-md-first  {% else %} col-12 {% endif %}">
                 <div id="pagination_content" class="row">
                     {% set itemsData = items.data ? items.data : items %}
                     {% partial "components/pagination_content" items=itemsData type=type %}

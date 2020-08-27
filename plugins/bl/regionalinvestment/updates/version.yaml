@@ -68,3 +68,6 @@
 1.0.23:
     - 'Updated table bl_regionalinvestment_success_stories'
     - builder_table_update_bl_regionalinvestment_success_stories_2.php
+1.0.24:
+    - 'Updated table bl_regionalinvestment_investment_opportunities'
+    - builder_table_update_bl_regionalinvestment_investment_opportunities_4.php

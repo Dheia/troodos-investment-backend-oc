@@ -24,6 +24,7 @@ is_hidden = 0
 
     use BL\RegionalInvestment\Models\Region;
     use BL\RegionalInvestment\Models\Community;
+    use BL\RegionalInvestment\Models\BusinessType;
     use BL\RegionalInvestment\Models\InvestmentOpportunity;
     use BL\RegionalInvestment\Models\SuccessStory;
     use BL\RegionalInvestment\Models\PointOfInterest;
@@ -38,6 +39,22 @@ is_hidden = 0
       $opportunities = empty($name) ? InvestmentOpportunity::getLocalized() :  InvestmentOpportunity::getLocalizedByCommunitySlug($name);
       $pointsOfInterest = PointOfInterest::getLocalized();
       $primary = false;
+
+      $translator = RainLab\Translate\Classes\Translator::instance();
+      $locale = $translator->getLocale();
+      $businessTypes = BusinessType::all();
+      $businessTypesLocalized = [];
+      foreach ($businessTypes as $item) {
+        $businessTypesLocalized[$item->id] = $item->getAttributeTranslated('name', $locale);
+      }
+      $communityObjs = Community::where('published',1)->get();
+      $communitiesLocalized = [];
+      $selectedCommunityId = '';
+      foreach ($communityObjs as $item) {
+        $communitiesLocalized[$item->id] = ["name"=>$item->getAttributeTranslated('name', $locale), "slug"=>$item->slug];
+        if ($item->slug == $name)
+            $selectedCommunityId = $item->id;
+      }
 
       if($type =='region'){
         $featured = Region::where('slug', $name)->first();
@@ -63,6 +80,9 @@ is_hidden = 0
       $this['successStories'] = $successStories;
       $this['pointsOfInterest'] = $pointsOfInterest;
       $this['primary'] = $primary;
+      $this['businessTypesLocalized'] = $businessTypesLocalized;
+      $this['communitiesLocalized'] = $communitiesLocalized;
+      $this['selectedCommunityId'] = $selectedCommunityId;
     }
 ?>
 ==

@@ -76,16 +76,6 @@ class PositionableOnMapModel extends ExtensionBase
         foreach ($knownMaps as $mapId) {
             $this->storePositionableData($mapId);
         }
-
-
-        /*
-         * Restore positionable values to models originals
-         */
-        $original = $this->model->getOriginal();
-        $attributes = $this->model->getAttributes();
-        $positionable = $this->getPositionableAttributes();
-        $originalValues = array_intersect_key($original, array_flip($positionable));
-        $this->model->attributes = array_merge($attributes, $originalValues);
     }
 
     /**

@@ -123,7 +123,7 @@ class InvestmentOpportunity extends Model
             $q->transWhere('name', '%' . $input['input_all']['opportunity_name'] . '%', null, 'like');
         }
         if (!empty($input['input_all']['investment_target'])) {
-            $q->where('investment_target', '>=', $input['input_all']['investment_target']);
+            $q->where('investment_target', '<', $input['input_all']['investment_target']);
         }
         if (!empty($input['input_all']['available_since'])) {
             $q->whereDate('date_available', '>=', date('Y-m-d', strtotime($input['input_all']['available_since'])));

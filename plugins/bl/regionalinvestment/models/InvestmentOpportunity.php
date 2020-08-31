@@ -26,7 +26,7 @@ class InvestmentOpportunity extends Model
         'Bl.Maps.Behaviors.PositionableOnMapModel'
     ];
 
-    public static $perPageDefault = 1;
+    public static $perPageDefault = 10;
 
     public $belongsToMany = [
         'communities' => [
@@ -69,7 +69,8 @@ class InvestmentOpportunity extends Model
         'gallery' => 'System\Models\File'
     ];
 
-    public static function getInput(){
+    public static function getInput()
+    {
         $input_all = Input::all();
         if (array_key_exists('_token', $input_all)) unset($input_all['_token']);
         if (array_key_exists('_session_key', $input_all)) unset($input_all['_session_key']);
@@ -77,7 +78,7 @@ class InvestmentOpportunity extends Model
         // See also perPageDefault in pagination_nav.htm
         if (!array_key_exists('per_page', $input_all)) $input_all['per_page'] = self::$perPageDefault;
         $business_types = [];
-        foreach ($input_all as $key=>$value) {
+        foreach ($input_all as $key => $value) {
             if (preg_match('#^business_type#', $key) === 1) {
                 $business_types[] = $value;
             }
@@ -110,7 +111,8 @@ class InvestmentOpportunity extends Model
         return [];
     }
 
-    public static function getFilterQuery($input) {
+    public static function getFilterQuery($input)
+    {
         $q =  self::with('business_types');
         if (count($input['business_types']) > 0) {
             $q->whereHas('business_types', function ($q) use ($input) {
@@ -164,5 +166,4 @@ class InvestmentOpportunity extends Model
     {
         Cache::tags(['opportunities'])->flush();
     }
-
 }

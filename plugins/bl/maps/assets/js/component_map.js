@@ -42,10 +42,12 @@ function addMarkersToMap(data)
         return;
     }
 
-    if (data.map.type === 'gps') {
-        createGoogleMap(data)
-    } else if (data.map.type === 'img') {
-        createLeafletMap(data)
+    if (data.map) {
+        if (data.map.type === 'gps') {
+            createGoogleMap(data)
+        } else if (data.map.type === 'img') {
+            createLeafletMap(data)
+        }
     }
 }
 
@@ -224,31 +226,33 @@ function addMarkersToTable(data)
     if (data == undefined) {
         return;
     }
-    for (var i = 0; i < data.markers.length; i++) {
-        $tr = $('<tr></tr>')
-        $td = $('<td></td>')
-        $markerItem = $('<a class="marker-item"></a>');
-        $markerItem.text(data.markers[i].title)
-        $markerItem.attr('data-id', data.markers[i].id)
-        $markerItem.on('click', function (e) {
-            e.preventDefault();
-            $('.marker-item').each(function (idx) {
-                $(this).parent().css('background-color', '');
+    if (data.markers) {
+        for (var i = 0; i < data.markers.length; i++) {
+            $tr = $('<tr></tr>')
+            $td = $('<td></td>')
+            $markerItem = $('<a class="marker-item"></a>');
+            $markerItem.text(data.markers[i].title)
+            $markerItem.attr('data-id', data.markers[i].id)
+            $markerItem.on('click', function (e) {
+                e.preventDefault();
+                $('.marker-item').each(function (idx) {
+                    $(this).parent().css('background-color', '');
+                })
+                $(this).parent().css('background-color', '#2BBBAD');
+                var selectedMarkerId = $(this).attr('data-id');
+                activateMarkerWithId(selectedMarkerId);
+                $(this).request('onMarkerClicked', {
+                    data: {marker_id: selectedMarkerId},
+                    success: function (data) {
+                        markersMapInfoBox.setContent(data.result);
+                        markersMapInfoBox.open(markersMap, marker);
+                    }
+                });
             })
-            $(this).parent().css('background-color', '#2BBBAD');
-            var selectedMarkerId = $(this).attr('data-id');
-            activateMarkerWithId(selectedMarkerId);
-            $(this).request('onMarkerClicked', {
-                data: {marker_id: selectedMarkerId},
-                success: function (data) {
-                    markersMapInfoBox.setContent(data.result);
-                    markersMapInfoBox.open(markersMap, marker);
-                }
-            });
-        })
-        $td.append($markerItem);
-        $tr.append($td);
-        $('#tablebody').append($tr);
+            $td.append($markerItem);
+            $tr.append($td);
+            $('#tablebody').append($tr);
+        }
     }
 }
 

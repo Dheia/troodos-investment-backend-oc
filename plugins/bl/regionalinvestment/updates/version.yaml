@@ -71,3 +71,6 @@
 1.0.24:
     - 'Updated table bl_regionalinvestment_investment_opportunities'
     - builder_table_update_bl_regionalinvestment_investment_opportunities_4.php
+1.0.25:
+    - 'Updated table bl_regionalinvestment_investment_opportunities'
+    - builder_table_update_bl_regionalinvestment_investment_opportunities_5.php

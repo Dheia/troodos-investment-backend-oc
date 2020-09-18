@@ -20,6 +20,7 @@ class OpportunitiesList extends ComponentBase
     public function onRun()
     {
         $this->page['per_page'] = Input::get('per_page');
+        $this->addCss('/plugins/bl/regionalinvestment/assets/css/opportunities-list.css');
     }
 
     public function init()

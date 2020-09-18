@@ -641,3 +641,36 @@ MAD-SELECT by Roko CB
   background: rgba(0, 0, 0, 0.04);
 }
 
+.investment-card-img-top {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media (min-width: 576px) {
+  .investment-card-img-top {
+    height: 250px;
+  }
+}
+
+@media (min-width: 768px) {
+  .investment-card-img-top {
+    height: 150px;
+  }
+
+  .investment-card-body {
+    height: 350px;
+    overflow: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .investment-card-img-top {
+    height: 150px;
+  }
+
+  .investment-card-body {
+    height: 350px;
+    overflow: auto;
+  }
+}
+

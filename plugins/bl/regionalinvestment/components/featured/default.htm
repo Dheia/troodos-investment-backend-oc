@@ -17,9 +17,12 @@
       <h4 class="card-title"><strong>{{featured.name}}</strong></h4>
 
       <hr>
-      {% for business_type in featured.business_types %}
-        {{ business_type.name }}
-      {% endfor %}
+      {% if featured.business_types %}
+        <strong>Type: </strong>
+        {% for business_type in featured.business_types %}
+          {{ business_type.name }}
+        {% endfor %}
+      {% endif %}
 
       {% if featured.investment_target %}
         <strong>{{'investment.investmentTarget'|__}}</strong> €{{featured.investment_target}}

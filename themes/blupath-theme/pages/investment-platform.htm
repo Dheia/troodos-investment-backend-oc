@@ -34,9 +34,9 @@ is_hidden = 0
       $type = $this->param('type');
       $name = $this->param('name');
 
-      $communities = Community::getLocalized();
+      $communities = [];
       $successStories =  SuccessStory::getLocalized();
-      $opportunities = empty($name) ? InvestmentOpportunity::getLocalized() :  InvestmentOpportunity::getLocalizedByCommunitySlug($name);
+      $opportunities = [];
       $pointsOfInterest = PointOfInterest::getLocalized();
       $primary = false;
 
@@ -58,17 +58,27 @@ is_hidden = 0
 
       if($type =='region'){
         $featured = Region::where('slug', $name)->first();
+        $opportunities = InvestmentOpportunity::getLocalized();
+        $communities = Community::getLocalized();
       } elseif( $type =='community') {
         $featured = Community::where('slug', $name)->first();
+        $opportunities = InvestmentOpportunity::getLocalizedByCommunitySlug($name);
+        $communities = Community::getLocalized();
       } elseif( $type =='pointOfInterest') {
         $featured = PointOfInterest::where('slug', $name)->first();
+        $opportunities = InvestmentOpportunity::getLocalized();
+        $communities = Community::getLocalized();
       } elseif( $type =='successStory') {
         $featured = Organization::where('slug', $name)->first();
+        $opportunities = InvestmentOpportunity::getLocalized();
+        $communities = Community::getLocalized();
       } elseif( $type =='opportunity') {
         $featured = InvestmentOpportunity::with('business_types')->where('slug', $name)->first();
       } else {
         $type = 'platform';
         $featured = Region::getLocalized()->where('primary', 1)->first();
+        $opportunities = InvestmentOpportunity::getLocalized();
+        $communities = Community::getLocalized();
         $primary = true;
       }
 

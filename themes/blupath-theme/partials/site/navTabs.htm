@@ -1,32 +1,68 @@
 <ul class="nav nav-tabs navbar-tabs" id="myTab" role="tablist">
     <li class="nav-item" @click="setTab('featured')">
-        <a 
-            class="nav-link active" 
-            id="featured-tab" 
-            data-toggle="tab" 
-            href="#home" 
-            role="tab" 
+        <a
+            class="nav-link active"
+            id="featured-tab"
+            data-toggle="tab"
+            href="#home"
+            role="tab"
             aria-controls="home"
-            aria-selected="false">
-            {% if(featured) %}{{featured.name}} {% else %} 
-                {{'tabs.home'|__}}
-            {% endif %}
+            aria-selected="false"
+        >
+            {% if(featured) %}{{featured.name}} {% else %} {{'tabs.home'|__}} {%
+            endif %}
         </a>
     </li>
+    {% if opportunities %}
     <li class="nav-item" @click="setTab('opportunities')">
-        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-        aria-selected="true">{{'tabs.opportunities'|__}}</a>
+        <a
+            class="nav-link"
+            id="contact-tab"
+            data-toggle="tab"
+            href="#contact"
+            role="tab"
+            aria-controls="contact"
+            aria-selected="true"
+            >{{'tabs.opportunities'|__}}</a
+        >
     </li>
+    {% endif %} 
+    {% if communities %}
     <li class="nav-item" @click="setTab('communities')">
-        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-        aria-selected="false">{{'tabs.communities'|__}}</a>
+        <a
+            class="nav-link"
+            id="contact-tab"
+            data-toggle="tab"
+            href="#contact"
+            role="tab"
+            aria-controls="contact"
+            aria-selected="false"
+            >{{'tabs.communities'|__}}</a
+        >
     </li>
+    {% endif %}
     <li class="nav-item" @click="setTab('pointsOfInterest')">
-        <a class="nav-link" id="pointOfInterest-tab" data-toggle="tab" href="#pointOfInterest" role="tab" aria-controls="contact"
-        aria-selected="false">{{'tabs.pointsOfInterest'|__}}</a>
+        <a
+            class="nav-link"
+            id="pointOfInterest-tab"
+            data-toggle="tab"
+            href="#pointOfInterest"
+            role="tab"
+            aria-controls="contact"
+            aria-selected="false"
+            >{{'tabs.pointsOfInterest'|__}}</a
+        >
     </li>
     <li class="nav-item" @click="setTab('successStories')">
-        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-        aria-selected="false">{{'tabs.successStories'|__}}</a>
+        <a
+            class="nav-link"
+            id="contact-tab"
+            data-toggle="tab"
+            href="#contact"
+            role="tab"
+            aria-controls="contact"
+            aria-selected="false"
+            >{{'tabs.successStories'|__}}</a
+        >
     </li>
 </ul>

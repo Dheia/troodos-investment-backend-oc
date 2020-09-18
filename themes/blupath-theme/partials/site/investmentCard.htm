@@ -15,11 +15,12 @@
         <strong>{{'investment.investmentTarget'|__}}</strong> €{{opportunity.investment_target}}
         <br>
       {% endif %}
+      <strong>Type: </strong>
+      {% for business_type in opportunity.business_types %}
+        {{ business_type.name }} 
+      {% endfor %}
       <hr>
       {{ str_limit(opportunity.short_description, 256)|raw}}
-      {% for business_type in opportunity.business_types %}
-        {{ business_type.name }}
-      {% endfor %}
     </div>
     <!-- Button -->
     {% if modal %}

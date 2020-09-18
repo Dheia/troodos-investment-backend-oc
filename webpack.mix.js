@@ -52,3 +52,10 @@ mix.sass('./themes/blupath-theme/assets/sass/style.scss', 'css')
 //   terser: {}, // Terser-specific options. https://github.com/webpack-contrib/terser-webpack-plugin#options
 //   postCss: [] // Post-CSS options: https://github.com/postcss/postcss/blob/master/docs/plugins.md
 // });
+
+mix.combine ([
+    "node_modules/jquery/dist/jquery.min.js",
+    "node_modules/popper.js/dist/umd/popper.min.js",
+    "node_modules/bootstrap/dist/js/bootstrap.min.js",
+], './themes/blupath-theme/assets/js/app.jquerybootstrap.js');
+

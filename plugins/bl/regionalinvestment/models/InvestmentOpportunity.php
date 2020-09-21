@@ -46,6 +46,18 @@ class InvestmentOpportunity extends Model
             'table'    => 'bl_regionalinvestment_business_type_i_o',
             'key'      => 'i_o_id',
             'otherKey' => 'b_t_id'
+        ],
+        'success_stories' => [
+            'BL\RegionalInvestment\Models\SuccessStory',
+            'table'    => 'bl_regionalinvestment_i_o_s_s',
+            'key'      => 'i_o_id',
+            'otherKey' => 's_s_id'
+        ],
+        'points_of_interest' => [
+            'BL\RegionalInvestment\Models\PointOfInterest',
+            'table'    => 'bl_regionalinvestment_i_o_p_o_i',
+            'key'      => 'i_o_id',
+            'otherKey' => 'p_o_i_id'
         ]
     ];
 

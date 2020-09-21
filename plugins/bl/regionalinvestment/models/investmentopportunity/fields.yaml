@@ -145,6 +145,20 @@ tabs:
             span: auto
             type: relation
             tab: Relations
+        success_stories:
+            label: "Related success stories"
+            nameFrom: name
+            descriptionFrom: description
+            span: auto
+            type: relation
+            tab: Relations
+        points_of_interest:
+            label: "Related points of interest"
+            nameFrom: name
+            descriptionFrom: description
+            span: auto
+            type: relation
+            tab: Relations
         _position:
             tab: "bl.regionalinvestment::lang.tabs.map"
             type: mapmarkers

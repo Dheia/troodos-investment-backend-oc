@@ -26,8 +26,7 @@
             >{{'tabs.opportunities'|__}}</a
         >
     </li>
-    {% endif %} 
-    {% if communities %}
+    {% endif %} {% if communities %}
     <li class="nav-item" @click="setTab('communities')">
         <a
             class="nav-link"
@@ -40,7 +39,7 @@
             >{{'tabs.communities'|__}}</a
         >
     </li>
-    {% endif %}
+    {% endif %} {% if pointsOfInterest %}
     <li class="nav-item" @click="setTab('pointsOfInterest')">
         <a
             class="nav-link"
@@ -53,6 +52,7 @@
             >{{'tabs.pointsOfInterest'|__}}</a
         >
     </li>
+    {% endif %} {% if successStories %}
     <li class="nav-item" @click="setTab('successStories')">
         <a
             class="nav-link"
@@ -65,4 +65,5 @@
             >{{'tabs.successStories'|__}}</a
         >
     </li>
+    {% endif %}
 </ul>

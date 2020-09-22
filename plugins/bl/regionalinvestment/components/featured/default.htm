@@ -27,107 +27,114 @@
       {% if featured.investment_target %}
         <strong>{{'investment.investmentTarget'|__}}</strong> €{{featured.investment_target}}
         <br>
-      {% endif %}
-
-      {% if featured.video_id %}
-        {% partial '@youtube' id=featured.video_id %}
-      {% endif %}
-      
+      {% endif %}      
       <hr>
 
-      <!-- Subtitle -->
-      <div class='card-text text-left'>
-        {{featured.description|raw}}
-      </div>
-      <div class="text">
-        {% if (featured.website) %}
-          <a class="btn btn-outline-accent btn-flat" href="{{featured.website}}">{{'common.visitSite'|__}}</a>
-        {% endif %}
-        <a class="btn btn-outline-accent btn-flat">{{'common.save'|__}}</a>
-        <a class="btn btn-outline-accent btn-flat">{{'common.email'|__}}</a>
-      </div>
-      
-      <!-- Card tabs -->
-      {% set x = 1 %}
-      {% set y = 1 %}
+      <!-- Tabs -->
+      <ul class="nav nav-tabs md-tabs" id="featuredTabs" role="tablist">
 
-      {% if featured.sections or featured.photos %}
-        <ul class="nav nav-tabs" id="featuredTabs" role="tablist">
-          {% if featured.sections %}
-            {% for section in featured.sections %}
-              <li class="nav-featured">
-                <a 
-                  class="nav-link {% if x == 1 %} active {% endif %}" 
-                  id="{{section.slug}}-tab" 
-                  data-toggle="tab" 
-                  href="#{{section.slug}}" 
-                  role="tab" 
-                  aria-controls="{{section.slug}}" 
-                  aria-selected="true">
-                  {{section.name}}
-                </a>
-              </li>
-              {% set x = x + 1 %}
-            {% endfor %}
-          {% endif %}
+        <li class="nav-item waves-effect waves-light">
+          <a 
+            class="nav-link active" 
+            id="overview-tab" 
+            data-toggle="tab" 
+            href="#overview" 
+            role="tab" 
+            aria-controls="overview" 
+            aria-selected="true">
+            Overview
+          </a>
+        </li>
 
-          {% if featured.photos %}
-            <li class="nav-featured">
+        {% if featured.sections %}
+          {% for section in featured.sections %}
+            <li class="nav-item waves-effect waves-light">
               <a 
-                class="nav-link {% if x == 1 %} active {% endif %}" 
-                id="gallery-tab" 
+                class="nav-link" 
+                id="{{section.slug}}-tab" 
                 data-toggle="tab" 
-                href="#gallery" 
+                href="#{{section.slug}}" 
                 role="tab" 
-                aria-controls="gallery" 
+                aria-controls="{{section.slug}}" 
                 aria-selected="true">
-                {{'common.gallery'|__}}
+                {{section.name}}
               </a>
             </li>
-            {% set x = x + 1 %}
-          {% endif %}
+          {% endfor %}
+        {% endif %}
 
-        </ul>
-      {% endif %}
+        {% if featured.photos %}
+          <li class="nav-item waves-effect waves-light">
+            <a 
+              class="nav-link" 
+              id="gallery-tab" 
+              data-toggle="tab" 
+              href="#gallery" 
+              role="tab" 
+              aria-controls="gallery" 
+              aria-selected="true">
+              {{'common.gallery'|__}}
+            </a>
+          </li>
+        {% endif %}
+      </ul>
 
-      {% if featured.sections or featured.photos %}
-        <div class="tab-content" id="myTabContent">
-          {% if featured.sections %}
-            {% for section in featured.sections %}
-              <div 
-                class="tab-pane fade show text-left card-text {% if y == 1 %} active {% endif %}" 
-                id="{{section.slug}}" 
-                role="tabpanel" 
-                aria-labelledby="{{section.slug}}-tab">
-              {{section.description|raw}}
-              </div>
-              {% set y = y + 1 %}
-            {% endfor %}
-          {% endif %}
+      <!-- Tab content -->
+      <div class="tab-content my-3" id="myTabContent">
+        <div 
+          class="tab-pane fade show text-left card-text active" 
+          id="overview" 
+          role="tabpanel" 
+          aria-labelledby="overview-tab">
 
-          {% if featured.photos %}
-            {% put scripts %}
-              <script type="text/javascript" src="/themes/blupath-theme/assets/js/masonry-init.js"></script>
-            {% endput %}
+          <div class='card-text text-left'>
+            {% if featured.video_id %}
+              {% partial '@youtube' id=featured.video_id %}<br>
+            {% endif %}
+            {{featured.description|raw}}
+          </div>
+          <div class="text text-center">
+            {% if (featured.website) %}
+              <a class="btn btn-outline-accent btn-flat" href="{{featured.website}}">{{'common.visitSite'|__}}</a>
+            {% endif %}
+            <a class="btn btn-outline-accent btn-flat">{{'common.save'|__}}</a>
+            <a class="btn btn-outline-accent btn-flat">{{'common.email'|__}}</a>
+          </div>
+        </div>
+      
+        {% if featured.sections %}
+          {% for section in featured.sections %}
             <div 
-              class="tab-pane fade show {% if y == 1 %} active {% endif %}" 
-              id="gallery" 
+              class="tab-pane fade show text-left card-text" 
+              id="{{section.slug}}" 
               role="tabpanel" 
-              aria-labelledby="gallery-tab">
-              <div class="wrapper-masonry">
-                <div id="masonry-image">
-                {% for photo in featured.photos %}
-                  <img class="image" style="cursor: pointer;" data-featherlight="{{photo.photos|media}}" src="{{photo.photos|media}}" />
-                {% endfor %}
-                </div>
+              aria-labelledby="{{section.slug}}-tab">
+            {{section.description|raw}}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        {% if featured.photos %}
+          {% put scripts %}
+            <script type="text/javascript" src="/themes/blupath-theme/assets/js/masonry-init.js"></script>
+          {% endput %}
+          <div 
+            class="tab-pane fade show" 
+            id="gallery" 
+            role="tabpanel" 
+            aria-labelledby="gallery-tab">
+            <div class="wrapper-masonry">
+              <div id="masonry-image">
+              {% for photo in featured.photos %}
+                <img class="image" style="cursor: pointer;" data-featherlight="{{photo.photos|media}}" src="{{photo.photos|media}}" />
+              {% endfor %}
               </div>
             </div>
-            {% set y = y + 1 %}
-          {% endif %}
+          </div>
+          {% set y = y + 1 %}
+        {% endif %}
 
-        </div>
-      {% endif %}
-      
+      </div>
     </div>
   </div>
 </div>

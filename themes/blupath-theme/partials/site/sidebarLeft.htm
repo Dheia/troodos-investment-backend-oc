@@ -25,14 +25,14 @@ forceUrl = 0
         <li class="list-icon list-user">
           <span>{{'side-nav.investor-pages'|__}}</span>
           <ul>
-            {% if user %}
-              <li><a href="/profile">{{'user.profile'|__}}</a></li>
-              <li><a data-request="onLogout" data-request-data="redirect: '/login'">{{'user.logout'|__}}</a></li>
-            {% else %}
-              <li><a href="/register">{{'user.register'|__}}</a></li>
-              <li><a href="/login">{{'user.login'|__}}</a></li>
-              <li><a href="/forgot-password">{{'user.forgot password'|__}}</a></li>
-            {% endif %}
+          {% if user %}
+            <li><a href="/investor">{{'user.investor-profile-sibebar'|__}}</a></li>
+            <li><a data-request="onLogout" data-request-data="redirect: '/'">{{'user.logout'|__}}</a></li>
+          {% else %}
+            <li><a href="/register">{{'user.register'|__}}</a></li>
+            <li><a href="/login">{{'user.login'|__}}</a></li>
+            <li><a href="/forgot-password">{{'user.forgot password'|__}}</a></li>
+          {% endif %}
           </ul>
         </li>
 

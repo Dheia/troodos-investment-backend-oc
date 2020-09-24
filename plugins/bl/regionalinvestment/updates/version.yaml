@@ -78,3 +78,6 @@
     - 'Created new investment opportunity relationships'
     - builder_table_create_bl_regionalinvestment_investment_opportunity_point_of_interest.php
     - builder_table_create_bl_regionalinvestment_investment_opportunity_success_story.php
+1.0.27:
+    - 'Updated table bl_regionalinvestment_communities'
+    - builder_table_update_bl_regionalinvestment_communities_4.php

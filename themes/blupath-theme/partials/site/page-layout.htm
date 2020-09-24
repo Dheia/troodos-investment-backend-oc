@@ -132,7 +132,9 @@
                 </form>
             </div>
         </div>
-        {% else %} {% component 'mapMarkers' mapSlug=mapSlug %} {% endif %}
+        {% else %} 
+            {% component 'mapMarkers' mapSlug=mapSlug %}
+        {% endif %}
     </div>
     {% if map=='false' and items.data %}
     <div class="row">

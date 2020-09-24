@@ -4,22 +4,6 @@ layout = "app-theme"
 description = "The single page investment platform application"
 is_hidden = 0
 
-[communitiesList]
-
-[successStoriesList]
-
-[pointsOfInterestList]
-
-[opportunitiesList]
-
-[investmentSearch]
-
-[regionsList]
-
-[featured]
-
-[featuredOpportunity]
-
 [mapMarkers]
 ==
 <?php
@@ -118,9 +102,9 @@ is_hidden = 0
 
       <div v-if="tab=='featured'">
         {% if type == 'opportunity' %}
-          {% component 'featuredOpportunity' featured=featured type=type %}
+          {% partial 'site/featuredOpportunity' featured=featured type=type mapslug='investment_opportunity_map' %}
         {% else %}
-          {% component 'featured' featured=featured type=type %}
+          {% partial 'site/featured' featured=featured type=type %}
         {% endif %}
       </div>
 

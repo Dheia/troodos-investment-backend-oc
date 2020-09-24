@@ -61,6 +61,19 @@
         </li>
         {% endif %}
 
+        <li class="nav-item waves-effect waves-light">
+          <a 
+            class="nav-link" 
+            id="location-tab" 
+            data-toggle="tab" 
+            href="#location" 
+            role="tab" 
+            aria-controls="location" 
+            aria-selected="true">
+            {{'featured.location'|__}}
+          </a>
+        </li>
+
         {% if featured.sections %}
           {% for section in featured.sections %}
             <li class="nav-item waves-effect waves-light">
@@ -136,7 +149,7 @@
 
           <div class='card-text text-left mt-5'>
             {% if featured.video_id %}
-              {% partial '@youtube' id=featured.video_id %}<br>
+              {% partial 'components/youtube' id=featured.video_id %}<br>
             {% endif %}
             {{featured.description|raw}}
           </div>
@@ -150,9 +163,17 @@
         </div>
       
         {% if featured.email or featured.phone or featured.contact_details %}
-          {% partial '@investmentContact' featured=featured %}<br>
+          {% partial 'site/investmentContact' featured=featured %}<br>
         {% endif %}
       
+          <div 
+            class="tab-pane fade show" 
+            id="location" 
+            role="tabpanel" 
+            aria-labelledby="location-tab">
+            {% component 'mapMarkers' mapSlug=mapSlug %}
+          </div>
+
         {% if featured.sections %}
           {% for section in featured.sections %}
             <div 
@@ -171,7 +192,7 @@
             id="pois" 
             role="tabpanel" 
             aria-labelledby="pois-tab">
-            {% partial '@accordion' sections=featured.points_of_interest title='pois-accordion' %}
+            {% partial 'components/accordion' sections=featured.points_of_interest title='pois-accordion' %}
           </div>
         {% endif %}
 
@@ -181,12 +202,12 @@
             id="success" 
             role="tabpanel" 
             aria-labelledby="success-tab">
-            {% partial '@accordion' sections=featured.success_stories title='success-stores-accordion' %}
+            {% partial 'components/accordion' sections=featured.success_stories title='success-stores-accordion' %}
           </div>
         {% endif %}
 
         {% if featured.photos %}
-          {% partial '@featuredGallery' photos=featured.photos %}<br>
+          {% partial 'site/featuredGallery' photos=featured.photos %}<br>
         {% endif %}
 
       </div>

@@ -11,6 +11,7 @@ class Plugin extends PluginBase
         return [
             'BL\RegionalInvestment\Components\CommunitiesList' => 'communitiesList',
             'BL\RegionalInvestment\Components\Featured' => 'featured',
+            'BL\RegionalInvestment\Components\FeaturedOpportunity' => 'featuredOpportunity',
             'BL\RegionalInvestment\Components\InvestmentSearch' => 'investmentSearch',
             'BL\RegionalInvestment\Components\OpportunitiesList' => 'opportunitiesList',
             'BL\RegionalInvestment\Components\PointsOfInterestList' => 'pointsOfInterestList',

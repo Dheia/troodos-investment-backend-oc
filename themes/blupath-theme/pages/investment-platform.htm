@@ -98,7 +98,11 @@ is_hidden = 0
 {% if featured %}
 
   <div v-if="tab=='featured'">
-    {% component 'featured' featured=featured type=type %}
+    {% if type == 'opportunity' %}
+      {% partial 'site/featuredOpportunity' featured=featured type=type mapslug='investment_opportunity_map' %}
+    {% else %}
+      {% partial 'site/featured' featured=featured type=type %}
+    {% endif %}
   </div>
 
   <input type="hidden" id="model_ids"/>

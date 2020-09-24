@@ -40,18 +40,19 @@ forceUrl = 0
           <span>{{'side-nav.investment-platform'|__}}</span>
           <ul>
               <li><a href="/investment-platform">{{'platform.main-page'|__}}</a></li>
-              <li><span style="padding-left: 20px;">{{'platform.communities'|__}}</span>
+              {% for community in communities %}
+                {% if community.primary == 1 %}
+                  <li><a href="{{ 'investment-platform'|page({ type: 'community', name: community.slug}) }}/">{{community.name}}</a></li>
+                {% endif %}
+              {% endfor %}
+
+              <li><span style="padding-left: 20px;">{{'platform.other_communities'|__}}</span>
                 <ul>
-                  {% for community in communities %}
+                {% for community in communities %}
+                  {% if community.primary == 0 %}
                     <li><a href="{{ 'investment-platform'|page({ type: 'community', name: community.slug}) }}/">{{community.name}}</a></li>
-                  {% endfor %}
-                </ul>
-              </li>
-              <li><span style="padding-left: 20px;">{{'platform.investmentOpportunities'|__}}</span>
-                <ul>
-                  {% for opportunity in opportunities %}
-                    <li><a href="{{ 'investment-platform'|page({ type: 'opportunity', name: opportunity.slug }) }}">{{opportunity.name}}</a></li>
-                  {% endfor %}
+                  {% endif %}
+                {% endfor %}
                 </ul>
               </li>
           </ul>

@@ -4,20 +4,6 @@ layout = "app-theme"
 description = "The Troodos Investment network is a platform showcasing investment opportunities in the mountain communities of Troodos, the green heart of Cyprus."
 is_hidden = 0
 
-[communitiesList]
-
-[successStoriesList]
-
-[pointsOfInterestList]
-
-[opportunitiesList]
-
-[investmentSearch]
-
-[regionsList]
-
-[featured]
-
 [mapMarkers]
 ==
 <?php
@@ -35,18 +21,20 @@ is_hidden = 0
       $name = $this->param('name');
 
       $communities = [];
-      $successStories =  SuccessStory::getLocalized();
+      $successStories =  [];
       $opportunities = [];
-      $pointsOfInterest = PointOfInterest::getLocalized();
+      $pointsOfInterest = [];
       $primary = false;
 
       $translator = RainLab\Translate\Classes\Translator::instance();
       $locale = $translator->getLocale();
+      
       $businessTypes = BusinessType::all();
       $businessTypesLocalized = [];
       foreach ($businessTypes as $item) {
         $businessTypesLocalized[$item->id] = $item->getAttributeTranslated('name', $locale);
       }
+
       $communityObjs = Community::where('published',1)->get();
       $communitiesLocalized = [];
       $selectedCommunityId = '';
@@ -58,26 +46,34 @@ is_hidden = 0
 
       if($type =='region'){
         $featured = Region::where('slug', $name)->first();
+        $successStories =  SuccessStory::getLocalized();
         $opportunities = InvestmentOpportunity::getLocalized();
+        $pointsOfInterest = PointOfInterest::getLocalized();
         $communities = Community::getLocalized();
       } elseif( $type =='community') {
         $featured = Community::where('slug', $name)->first();
+        $successStories =  SuccessStory::getLocalized();
         $opportunities = InvestmentOpportunity::getLocalizedByCommunitySlug($name);
+        $pointsOfInterest = PointOfInterest::getLocalized();
         $communities = Community::getLocalized();
       } elseif( $type =='pointOfInterest') {
         $featured = PointOfInterest::where('slug', $name)->first();
         $opportunities = InvestmentOpportunity::getLocalized();
+        $pointsOfInterest = PointOfInterest::getLocalized();
         $communities = Community::getLocalized();
       } elseif( $type =='successStory') {
         $featured = Organization::where('slug', $name)->first();
+        $successStories =  SuccessStory::getLocalized();
         $opportunities = InvestmentOpportunity::getLocalized();
         $communities = Community::getLocalized();
       } elseif( $type =='opportunity') {
-        $featured = InvestmentOpportunity::with('business_types')->where('slug', $name)->first();
+        $featured = InvestmentOpportunity::with('business_types')->with('success_stories')->with('points_of_interest')->where('slug', $name)->first();
       } else {
         $type = 'platform';
+        $successStories =  SuccessStory::getLocalized();
         $featured = Region::getLocalized()->where('primary', 1)->first();
         $opportunities = InvestmentOpportunity::getLocalized();
+        $pointsOfInterest = PointOfInterest::getLocalized();
         $communities = Community::getLocalized();
         $primary = true;
       }

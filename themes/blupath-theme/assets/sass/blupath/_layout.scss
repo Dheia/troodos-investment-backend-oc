@@ -16,3 +16,51 @@
 .hidden {
     display: none;
 }
+.tab-pane {
+    margin: 0 2em;
+}
+.accordion {
+    border-left: 1px solid $black-lighter-4;
+    border-right: 1px solid $black-lighter-4;
+}
+.accordion-header {
+    border-top: 1px solid $black-lighter-4;
+}
+.accordion-header-button {
+    color: $primary !important;
+    font-size: 1.1em;
+    padding: 0.5em;
+}
+.accordion-header-button:hover,
+.accordion-header-button:focus,
+.accordion-header-button:active {
+    text-decoration: none;
+}
+.md-tabs {
+    position: relative;
+    z-index: 1;
+    padding: 0.7rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    background-color: $primary;
+    border: 0;
+    border-radius: 0.25rem;
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18),
+        0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18),
+        0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+.md-tabs .nav-link.active,
+.md-tabs .nav-item.open .nav-link {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 0.25rem;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+}
+.md-tabs .nav-link {
+    color: #fff;
+    border: 0;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+}

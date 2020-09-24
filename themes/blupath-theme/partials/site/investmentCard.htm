@@ -37,10 +37,9 @@
 
 {% if modal %}
 <!-- Modal -->
-<div class="modal fade" id="{{opportunity.slug}}Modal" tabindex="-1" role="dialog" aria-labelledby="{{opportunity.slug}}Label"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
+<div class="modal fade" id="{{opportunity.slug}}Modal" tabindex="-1" role="dialog" aria-labelledby="{{opportunity.slug}}Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document" style="max-width: 1200px">
+    <div class="modal-content px-2 py-2">
       <div class="modal-header">
         <h5 class="modal-title" id="{{opportunity.slug}}Label">{{opportunity.name}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -48,11 +47,7 @@
         </button>
       </div>
       <div class="modal-body">
-        {% if opportunity.photo %}
-        <img src="{{opportunity.photo|media}}" style="width: 100%;" class="mb-2"/>
-        {% endif %}
         <div style="font-size: 0.9em">
-          <h5>{{opportunity.name}}</h5>
           <div class="card-text">
             {% if opportunity.investment_target %}
               <strong>{{'investment.investmentTarget'|__}}</strong> €{{opportunity.investment_target}}

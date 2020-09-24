@@ -1,0 +1,16 @@
+{% put scripts %}
+  <script type="text/javascript" src="/themes/blupath-theme/assets/js/masonry-init.js"></script>
+{% endput %}
+<div 
+  class="tab-pane fade show" 
+  id="gallery" 
+  role="tabpanel" 
+  aria-labelledby="gallery-tab">
+  <div class="wrapper-masonry">
+    <div id="masonry-image">
+    {% for photo in photos %}
+      <img class="image" style="cursor: pointer;" data-featherlight="{{photo.photos|media}}" src="{{photo.photos|media}}" />
+    {% endfor %}
+    </div>
+  </div>
+</div>

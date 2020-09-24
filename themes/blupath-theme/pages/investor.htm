@@ -3,14 +3,81 @@ url = "/investor"
 layout = "app-theme"
 description = "The Troodos Investment network is a platform showcasing investment opportunities in the mountain communities of Troodos, the green heart of Cyprus."
 is_hidden = 0
-
-==
-<?php
-
-    function onStart(){}
-?>
 ==
 
-
+<div class="platform-content" style="padding-top: 50px;">
 {% partial 'site/nav' useVue=true twoBarNav=false %}
 {% partial 'site/sidebarLeft' useVue=true %}
+
+  <div class="card card-cascade wider reverse mb-5">
+    <!-- Card image -->
+    <div class="view view-cascade overlay card-no-shadow">
+        <img
+            class="card-img-top card-no-shadow"
+            style="width: 100%; max-height: 620px; object-fit: cover;"
+            src="{{ 'Troodos-bg1.jpg'|media }}"
+            alt="Card image cap"
+        />
+        <a href="#!">
+            <div class="mask rgba-white-slight"></div>
+        </a>
+    </div>
+  <div class="container">
+      <!-- Card content -->
+      <div class="card-body card-body-cascade text-center">
+          <!-- Title -->
+          <h4 class="card-title">
+              <strong>{{'investor.profile_title'|__}}</strong>
+          </h4>
+          <hr />
+
+          <!-- Tabs -->
+          <ul class="nav nav-tabs" id="featuredTabs" role="tablist">
+              <li class="nav-item waves-effect waves-light">
+                  <a
+                      class="nav-link active"
+                      id="favorites-tab"
+                      data-toggle="tab"
+                      href="#favorites"
+                      role="tab"
+                      aria-controls="favorites"
+                      aria-selected="true"
+                  >
+                      {{'investor.favorites-tab'|__}}
+                  </a>
+              </li>
+
+              <li class="nav-item waves-effect waves-light">
+                  <a
+                      class="nav-link"
+                      id="alerts-tab"
+                      data-toggle="tab"
+                      href="#alerts"
+                      role="tab"
+                      aria-controls="alerts"
+                      aria-selected="true"
+                  >
+                      {{'investor.alerts-tab'|__}}
+                  </a>
+              </li>
+          </ul>
+
+          <!-- Tab content -->
+          <div class="tab-content my-3" id="myTabContent">
+              <div
+                  class="tab-pane fade show text-left card-text active"
+                  id="favorites"
+                  role="tabpanel"
+                  aria-labelledby="favorites-tab"
+              ></div>
+
+              <div
+                  class="tab-pane fade show text-left card-text active"
+                  id="alerts"
+                  role="tabpanel"
+                  aria-labelledby="alerts-tab"
+              ></div>
+          </div>
+      </div>
+  </div>
+</div>

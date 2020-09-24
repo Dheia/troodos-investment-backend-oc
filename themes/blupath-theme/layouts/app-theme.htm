@@ -15,10 +15,8 @@ security = "all"
 {% partial 'site/head' useVue=true %}
 <div id="app">
   <input type="hidden" name="locale" value="{{activeLocale}}" ref="locale">
-  <div class="platform-content">
-    {% page %}
-    {% partial 'site/footer' useVue=true %}
-  </div>
+  {% page %}
+  {% partial 'site/footer' useVue=true %}
 </div>
 {% partial 'site/foot' useVue=true %}
 {% component 'session' %}

@@ -42,9 +42,24 @@
             role="tab" 
             aria-controls="overview" 
             aria-selected="true">
-            Overview
+            {{'featured.overview'|__}}
           </a>
         </li>
+
+        {% if featured.email or featured.phone or featured.contact_details %}
+        <li class="nav-item waves-effect waves-light">
+          <a 
+            class="nav-link" 
+            id="contact-tab" 
+            data-toggle="tab" 
+            href="#contact" 
+            role="tab" 
+            aria-controls="contact" 
+            aria-selected="true">
+            {{'featured.contact_details'|__}}
+          </a>
+        </li>
+        {% endif %}
 
         {% if featured.sections %}
           {% for section in featured.sections %}
@@ -63,6 +78,36 @@
           {% endfor %}
         {% endif %}
 
+        {% if featured.points_of_interest and featured.points_of_interest != '[]' %}
+          <li class="nav-item waves-effect waves-light">
+            <a 
+              class="nav-link" 
+              id="success-tab" 
+              data-toggle="tab" 
+              href="#pois" 
+              role="tab" 
+              aria-controls="pois" 
+              aria-selected="true">
+              {{'featured.pois_title'|__}}
+            </a>
+          </li>
+        {% endif %}
+
+        {% if featured.success_stories and featured.success_stories != '[]' %}
+          <li class="nav-item waves-effect waves-light">
+            <a 
+              class="nav-link" 
+              id="success-tab" 
+              data-toggle="tab" 
+              href="#success" 
+              role="tab" 
+              aria-controls="success" 
+              aria-selected="true">
+              {{'featured.success_stories_tab_title'|__}}
+            </a>
+          </li>
+        {% endif %}
+
         {% if featured.photos %}
           <li class="nav-item waves-effect waves-light">
             <a 
@@ -77,17 +122,19 @@
             </a>
           </li>
         {% endif %}
+
       </ul>
 
       <!-- Tab content -->
       <div class="tab-content my-3" id="myTabContent">
+        
         <div 
           class="tab-pane fade show text-left card-text active" 
           id="overview" 
           role="tabpanel" 
           aria-labelledby="overview-tab">
 
-          <div class='card-text text-left'>
+          <div class='card-text text-left mt-5'>
             {% if featured.video_id %}
               {% partial '@youtube' id=featured.video_id %}<br>
             {% endif %}
@@ -102,6 +149,10 @@
           </div>
         </div>
       
+        {% if featured.email or featured.phone or featured.contact_details %}
+          {% partial '@investmentContact' featured=featured %}<br>
+        {% endif %}
+      
         {% if featured.sections %}
           {% for section in featured.sections %}
             <div 
@@ -114,24 +165,28 @@
           {% endfor %}
         {% endif %}
 
-        {% if featured.photos %}
-          {% put scripts %}
-            <script type="text/javascript" src="/themes/blupath-theme/assets/js/masonry-init.js"></script>
-          {% endput %}
+        {% if featured.points_of_interest and featured.points_of_interest != '[]' %}
           <div 
             class="tab-pane fade show" 
-            id="gallery" 
+            id="pois" 
             role="tabpanel" 
-            aria-labelledby="gallery-tab">
-            <div class="wrapper-masonry">
-              <div id="masonry-image">
-              {% for photo in featured.photos %}
-                <img class="image" style="cursor: pointer;" data-featherlight="{{photo.photos|media}}" src="{{photo.photos|media}}" />
-              {% endfor %}
-              </div>
-            </div>
+            aria-labelledby="pois-tab">
+            {% partial '@accordion' sections=featured.points_of_interest title='pois-accordion' %}
           </div>
-          {% set y = y + 1 %}
+        {% endif %}
+
+        {% if featured.success_stories %}
+          <div 
+            class="tab-pane fade show" 
+            id="success" 
+            role="tabpanel" 
+            aria-labelledby="success-tab">
+            {% partial '@accordion' sections=featured.success_stories title='success-stores-accordion' %}
+          </div>
+        {% endif %}
+
+        {% if featured.photos %}
+          {% partial '@featuredGallery' photos=featured.photos %}<br>
         {% endif %}
 
       </div>

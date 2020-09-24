@@ -57,13 +57,38 @@
   display: none;
 }
 
+.tab-pane {
+  margin: 0 2em;
+}
+
+.accordion {
+  border-left: 1px solid #f2f2f2;
+  border-right: 1px solid #f2f2f2;
+}
+
+.accordion-header {
+  border-top: 1px solid #f2f2f2;
+}
+
+.accordion-header-button {
+  color: #4c8ba7 !important;
+  font-size: 1.1em;
+  padding: 0.5em;
+}
+
+.accordion-header-button:hover,
+.accordion-header-button:focus,
+.accordion-header-button:active {
+  text-decoration: none;
+}
+
 .md-tabs {
   position: relative;
   z-index: 1;
   padding: 0.7rem;
   margin-right: 1rem;
   margin-left: 1rem;
-  background-color: #2bbbad;
+  background-color: #4c8ba7;
   border: 0;
   border-radius: 0.25rem;
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
@@ -228,7 +253,7 @@ ul.post-list {
 }
 
 .btn-primary:hover {
-  background-color: #00bcd4 !important;
+  background-color: #4c8ba7 !important;
 }
 
 .btn-accent {
@@ -334,6 +359,10 @@ ul.post-list {
   transition: all 0.2s ease-in-out;
   width: 47px;
   height: 47px;
+}
+
+.btn-default {
+  background-color: #4c8ba7;
 }
 
 .img-fluid {

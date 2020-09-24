@@ -1,0 +1,19 @@
+<div 
+  class="tab-pane fade show text-left card-text" 
+  id="contact" 
+  role="tabpanel" 
+  aria-labelledby="contact-tab">
+  <div class='card-text text-center mt-5'>
+    {% if featured.phone %}
+      <p><strong>{{'featured.primary_phone'|__}}:</strong> {{featured.phone}}</p>
+    {% endif %}
+    {% if featured.email %}
+      <p><strong>{{'featured.email'|__}}:</strong> {{featured.email}}</p>
+    {% endif %}
+    {% if featured.contact_details %}
+      <hr>
+      <p><strong>{{'featured.other_contact_details'|__}}</strong></p>
+      <p>{{featured.contact_details|raw}}</p>
+    {% endif %}
+  </div>
+</div>

@@ -28,7 +28,7 @@ is_hidden = 0
 
       $translator = RainLab\Translate\Classes\Translator::instance();
       $locale = $translator->getLocale();
-      
+
       $businessTypes = BusinessType::all();
       $businessTypesLocalized = [];
       foreach ($businessTypes as $item) {
@@ -102,6 +102,7 @@ is_hidden = 0
 
       <div v-if="tab=='featured'">
         {% if type == 'opportunity' %}
+          <input type="hidden" id="mapSlug" value="investment_opportunity_map">
           {% partial 'site/featuredOpportunity' featured=featured type=type mapslug='investment_opportunity_map' %}
         {% else %}
           {% partial 'site/featured' featured=featured type=type %}

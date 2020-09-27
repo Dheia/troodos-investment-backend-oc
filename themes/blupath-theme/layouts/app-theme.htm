@@ -1,7 +1,12 @@
 description = "Theme to power Vue based single page app"
 
+[staticMenu]
+code = "main-menu"
+
 [localePicker]
 forceUrl = 0
+
+[viewBag]
 
 [session]
 security = "all"
@@ -9,7 +14,9 @@ security = "all"
 ==
 {% partial 'site/head' useVue=true %}
 <div id="app">
+  <input type="hidden" id="activeLocale" name="locale" value="{{activeLocale}}" ref="locale">
   {% page %}
+  {% partial 'site/footer' useVue=true %}
 </div>
 {% partial 'site/foot' useVue=true %}
 {% component 'session' %}

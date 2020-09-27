@@ -14,6 +14,7 @@ let mix = require('laravel-mix');
 mix.setPublicPath('./themes/blupath-theme/assets')
 
 mix.sass('./themes/blupath-theme/assets/sass/style.scss', 'css')
+mix.js('./themes/blupath-theme/assets/js/components/vue.js', 'js')
 
 // Full API
 // mix.js(src, output);
@@ -58,4 +59,3 @@ mix.combine ([
     "node_modules/popper.js/dist/umd/popper.min.js",
     "node_modules/bootstrap/dist/js/bootstrap.min.js",
 ], './themes/blupath-theme/assets/js/app.jquerybootstrap.js');
-

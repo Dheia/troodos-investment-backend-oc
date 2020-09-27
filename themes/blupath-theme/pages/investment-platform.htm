@@ -1,7 +1,7 @@
 title = "Investment platform"
 url = "/investment-platform/:type?/:name?"
 layout = "app-theme"
-description = "The single page investment platform application"
+description = "The Troodos Investment network is a platform showcasing investment opportunities in the mountain communities of Troodos, the green heart of Cyprus."
 is_hidden = 0
 
 [mapMarkers]
@@ -93,95 +93,89 @@ is_hidden = 0
     }
 ?>
 ==
+<div class="platform-content">
+{% partial 'site/nav' useVue=true twoBarNav=true featured=featured type=type %}
+{% partial 'site/sidebarLeft' useVue=true %}
+{% if featured %}
 
-<input type="hidden" name="locale" value="{{activeLocale}}" ref="locale">
-  <div class="platform-content">
-    {% partial 'site/nav' useVue=true twoBarNav=true featured=featured type=type %}
-    {% partial 'site/sidebarLeft' useVue=true %}
-    {% partial 'site/searchBar' useVue=true %}
-    {% if featured %}
-
-      <div v-if="tab=='featured'">
-        {% if type == 'opportunity' %}
-          <input type="hidden" id="mapSlug" value="investment_opportunity_map">
-          {% partial 'site/featuredOpportunity' featured=featured type=type mapslug='investment_opportunity_map' %}
-        {% else %}
-          {% partial 'site/featured' featured=featured type=type %}
-        {% endif %}
-      </div>
-
-      <input type="hidden" id="model_ids"/>
-
-      <div v-if="tab=='opportunities' && view=='list'">
-        <a class="btn-floating btn-lg btn-default" @click="switchView">
-          <i v-if="view=='list'" class="fa fa-map"></i>
-          <i v-if="view=='map'" class="fa fa-list"></i>
-        </a>
-        {% partial 'site/page-layout' items=opportunities type='opportunity' map='false' title=('tabs.opportunities'|__) %}
-      </div>
-      <div v-if="tab=='opportunities' && view=='map'">
-        <a class="btn-floating btn-lg btn-default" @click="switchView">
-          <i v-if="view=='list'" class="fa fa-map"></i>
-          <i v-if="view=='map'" class="fa fa-list"></i>
-        </a>
-          <input type="hidden" id="mapSlug" value="investment_opportunity_map">
-          {% partial 'site/page-layout' items=opportunities type='opportunity' map='true' mapslug='investment_opportunity_map' title=('tabs.opportunities'|__) %}
-      </div>
-
-      <div v-if="tab=='communities' && view=='list'">
-        <a class="btn-floating btn-lg btn-default" @click="switchView">
-          <i v-if="view=='list'" class="fa fa-map"></i>
-          <i v-if="view=='map'" class="fa fa-list"></i>
-        </a>
-        {% partial 'site/page-layout' items=communities type='community' map='false' title=('tabs.communities'|__) %}
-      </div>
-      <div v-if="tab=='communities' && view=='map'">
-        <a class="btn-floating btn-lg btn-default" @click="switchView">
-          <i v-if="view=='list'" class="fa fa-map"></i>
-          <i v-if="view=='map'" class="fa fa-list"></i>
-        </a>
-          <input type="hidden" id="mapSlug" value="community_map">
-          {% partial 'site/page-layout' items=communities type='community' map='true' mapSlug='community_map' title=('tabs.communities'|__) %}
-      </div>
-
-      <div v-if="tab=='pointsOfInterest' && view=='list'">
-        <a class="btn-floating btn-lg btn-default" @click="switchView">
-          <i v-if="view=='list'" class="fa fa-map"></i>
-          <i v-if="view=='map'" class="fa fa-list"></i>
-        </a>
-        {% partial 'site/page-layout' items=pointsOfInterest type='pointOfInterest' map='false' title=('tabs.pointsOfInterest'|__) %}
-      </div>
-      <div v-if="tab=='pointsOfInterest' && view=='map'">
-        <a class="btn-floating btn-lg btn-default" @click="switchView">
-          <i v-if="view=='list'" class="fa fa-map"></i>
-          <i v-if="view=='map'" class="fa fa-list"></i>
-        </a>
-          <input type="hidden" id="mapSlug" value="point_of_interest_map">
-          {% partial 'site/page-layout' items=pointsOfInterest type='pointOfInterest' map='true' mapSlug='point_of_interest_map' title=('tabs.pointsOfInterest'|__) %}
-      </div>
-
-      <div v-if="tab=='successStories' && view=='list'">
-        <a class="btn-floating btn-lg btn-default" @click="switchView">
-          <i v-if="view=='list'" class="fa fa-map"></i>
-          <i v-if="view=='map'" class="fa fa-list"></i>
-        </a>
-        {% partial 'site/page-layout' items=successStories type='successStory' map='false' title=('tabs.successStories'|__) %}
-      </div>
-      <div v-if="tab=='successStories' && view=='map'">
-        <a class="btn-floating btn-lg btn-default" @click="switchView">
-          <i v-if="view=='list'" class="fa fa-map"></i>
-          <i v-if="view=='map'" class="fa fa-list"></i>
-        </a>
-          <input type="hidden" id="mapSlug" value="success_stories_map">
-          {% partial 'site/page-layout' items=successStories type='successStory' map='true' mapSlug='success_stories_map' title=('tabs.successStories'|__) %}
-      </div>
-
+  <div v-if="tab=='featured'">
+    {% if type == 'opportunity' %}
+      {% partial 'site/featuredOpportunity' featured=featured type=type mapslug='investment_opportunity_map' %}
     {% else %}
-      <div class="container mt-5">
-        <h1>{{'errors.whoopsWrongPath'|__}}</h1>
-        <hr>
-        <p>{{'errors.incorrectPath'|__}}</p>
-      </div>
+      {% partial 'site/featured' featured=featured type=type %}
     {% endif %}
-    {% partial 'site/footer' useVue=true %}
   </div>
+
+  <input type="hidden" id="model_ids"/>
+  <div v-if="tab=='opportunities' && view=='list'">
+    <a class="btn-floating btn-lg btn-default" @click="switchView">
+      <i v-if="view=='list'" class="fa fa-map"></i>
+      <i v-if="view=='map'" class="fa fa-list"></i>
+    </a>
+    {% partial 'site/page-layout' items=opportunities type='opportunity' map='false' title=('tabs.opportunities'|__) %}
+  </div>
+  <div v-if="tab=='opportunities' && view=='map'">
+    <a class="btn-floating btn-lg btn-default" @click="switchView">
+      <i v-if="view=='list'" class="fa fa-map"></i>
+      <i v-if="view=='map'" class="fa fa-list"></i>
+    </a>
+      <input type="hidden" id="mapSlug" value="investment_opportunity_map">
+      {% partial 'site/page-layout' items=opportunities type='opportunity' map='true' mapslug='investment_opportunity_map' title=('tabs.opportunities'|__) %}
+  </div>
+
+  <div v-if="tab=='communities' && view=='list'">
+    <a class="btn-floating btn-lg btn-default" @click="switchView">
+      <i v-if="view=='list'" class="fa fa-map"></i>
+      <i v-if="view=='map'" class="fa fa-list"></i>
+    </a>
+    {% partial 'site/page-layout' items=communities type='community' map='false' title=('tabs.communities'|__) %}
+  </div>
+  <div v-if="tab=='communities' && view=='map'">
+    <a class="btn-floating btn-lg btn-default" @click="switchView">
+      <i v-if="view=='list'" class="fa fa-map"></i>
+      <i v-if="view=='map'" class="fa fa-list"></i>
+    </a>
+      <input type="hidden" id="mapSlug" value="community_map">
+      {% partial 'site/page-layout' items=communities type='community' map='true' mapSlug='community_map' title=('tabs.communities'|__) %}
+  </div>
+
+  <div v-if="tab=='pointsOfInterest' && view=='list'">
+    <a class="btn-floating btn-lg btn-default" @click="switchView">
+      <i v-if="view=='list'" class="fa fa-map"></i>
+      <i v-if="view=='map'" class="fa fa-list"></i>
+    </a>
+    {% partial 'site/page-layout' items=pointsOfInterest type='pointOfInterest' map='false' title=('tabs.pointsOfInterest'|__) %}
+  </div>
+  <div v-if="tab=='pointsOfInterest' && view=='map'">
+    <a class="btn-floating btn-lg btn-default" @click="switchView">
+      <i v-if="view=='list'" class="fa fa-map"></i>
+      <i v-if="view=='map'" class="fa fa-list"></i>
+    </a>
+      <input type="hidden" id="mapSlug" value="point_of_interest_map">
+      {% partial 'site/page-layout' items=pointsOfInterest type='pointOfInterest' map='true' mapSlug='point_of_interest_map' title=('tabs.pointsOfInterest'|__) %}
+  </div>
+
+  <div v-if="tab=='successStories' && view=='list'">
+    <a class="btn-floating btn-lg btn-default" @click="switchView">
+      <i v-if="view=='list'" class="fa fa-map"></i>
+      <i v-if="view=='map'" class="fa fa-list"></i>
+    </a>
+    {% partial 'site/page-layout' items=successStories type='successStory' map='false' title=('tabs.successStories'|__) %}
+  </div>
+  <div v-if="tab=='successStories' && view=='map'">
+    <a class="btn-floating btn-lg btn-default" @click="switchView">
+      <i v-if="view=='list'" class="fa fa-map"></i>
+      <i v-if="view=='map'" class="fa fa-list"></i>
+    </a>
+      <input type="hidden" id="mapSlug" value="success_stories_map">
+      {% partial 'site/page-layout' items=successStories type='successStory' map='true' mapSlug='success_stories_map' title=('tabs.successStories'|__) %}
+  </div>
+
+{% else %}
+  <div class="container mt-5">
+    <h1>{{'errors.whoopsWrongPath'|__}}</h1>
+    <hr>
+    <p>{{'errors.incorrectPath'|__}}</p>
+  </div>
+{% endif %}
+</div>

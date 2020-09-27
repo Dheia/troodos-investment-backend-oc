@@ -5,7 +5,7 @@
 }
 
 .accent-text {
-  color: #ff4081;
+  color: #ff4081 !important;
 }
 
 .overlay-text {
@@ -59,6 +59,13 @@
 
 .tab-pane {
   margin: 0 2em;
+}
+
+.absolute-center {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
 }
 
 .accordion {

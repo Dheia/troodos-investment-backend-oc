@@ -81,3 +81,6 @@
 1.0.27:
     - 'Updated table bl_regionalinvestment_communities'
     - builder_table_update_bl_regionalinvestment_communities_4.php
+1.0.28:
+    - 'Create favorites table'
+    - builder_table_create_bl_regionalinvestment_favorites.php

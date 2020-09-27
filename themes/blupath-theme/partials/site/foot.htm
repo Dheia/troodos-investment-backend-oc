@@ -1,32 +1,17 @@
-    {% if useVue == true %}
 
-        <script src="{{ [
-            'assets/js/app.jquerybootstrap.js',
-            'assets/js/mdb.min.js',
-            'assets/mmenu/dist/mmenu.js',
-            'assets/mmenu/dist/mmenu.polyfills.js',
-            'assets/js/masonry-layout-vanilla.min.js',
-            'assets/js/moment.min.js',
-            'assets/js/bootstrap-material-datetimepicker.min.js',
-            'assets/js/app.js',
-            'assets/js/vue.js',
-            'assets/js/vue-init.js',
-            'assets/js/featherlight.js',
-        ]|theme }}"></script>
+    <script src="{{ [
+        'assets/js/app.jquerybootstrap.js',
+        'assets/js/mdb.min.js',
+        'assets/mmenu/dist/mmenu.js',
+        'assets/mmenu/dist/mmenu.polyfills.js',
+        'assets/js/masonry-layout-vanilla.min.js',
+        'assets/js/moment.min.js',
+        'assets/js/bootstrap-material-datetimepicker.min.js',
+        'assets/js/app.js',
+        'assets/js/featherlight.js',
+        'assets/js/vue.js',
+    ]|theme }}"></script>
 
-    {% else  %}
-
-        <script src="{{ [
-            'assets/js/app.jquerybootstrap.js',
-            'assets/js/mdb.min.js',
-            'assets/mmenu/dist/mmenu.js',
-            'assets/mmenu/dist/mmenu.polyfills.js',
-            'assets/js/moment.min.js',
-            'assets/js/bootstrap-material-datetimepicker.min.js',
-            'assets/js/app.js'
-        ]|theme }}"></script>
-
-    {% endif %}
     {% framework extras %}
     {% scripts %}
 

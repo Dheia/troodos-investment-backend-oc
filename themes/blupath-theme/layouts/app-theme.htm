@@ -14,7 +14,7 @@ security = "all"
 ==
 {% partial 'site/head' useVue=true %}
 <div id="app">
-  <input type="hidden" name="locale" value="{{activeLocale}}" ref="locale">
+  <input type="hidden" id="activeLocale" name="locale" value="{{activeLocale}}" ref="locale">
   {% page %}
   {% partial 'site/footer' useVue=true %}
 </div>

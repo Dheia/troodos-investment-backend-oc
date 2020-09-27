@@ -1,3 +1,4 @@
+==
 <div class="card card-cascade wider reverse mb-5">
   <!-- Card image -->
   <div class="view view-cascade overlay card-no-shadow">
@@ -152,13 +153,14 @@
               {% partial 'components/youtube' id=featured.video_id %}<br>
             {% endif %}
             {{featured.description|raw}}
+
+            <input type='hidden' id="ioid" value="{{featured.id}}" ref="ioid" >
           </div>
           <div class="text text-center">
             {% if (featured.website) %}
               <a class="btn btn-outline-accent btn-flat" href="{{featured.website}}">{{'common.visitSite'|__}}</a>
             {% endif %}
-            <a class="btn btn-outline-accent btn-flat">{{'common.save'|__}}</a>
-            <a class="btn btn-outline-accent btn-flat">{{'common.email'|__}}</a>
+            <save-favorites-button name=name></save-favorites-button>
           </div>
         </div>
       

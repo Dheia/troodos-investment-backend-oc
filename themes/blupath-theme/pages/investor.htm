@@ -70,11 +70,15 @@ redirect = "login"
                 <!-- Tab content -->
                 <div class="tab-content my-3" id="myTabContent">
                     <div
-                        class="tab-pane fade show text-left card-text active"
+                        class="tab-pane fade show text-left card-text active pt-3"
                         id="favorites"
                         role="tabpanel"
                         aria-labelledby="favorites-tab"
-                    ></div>
+                    >
+                        {{'investor.favorites-description'|__}}
+                        <hr>
+                        <favorites-table></favorites-table>
+                    </div>
 
                     <div
                         class="tab-pane fade show text-left card-text active"

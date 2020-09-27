@@ -1,3 +1,8 @@
+window.Vue = require("vue");
+
+Vue.component("save-favorites-button", require("./SaveFavoritesButton.vue").default);
+Vue.component("favorites-table", require("./FavoritesTable.vue").default);
+
 var app = new Vue({
     el: "#app",
     data: {

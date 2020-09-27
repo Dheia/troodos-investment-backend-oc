@@ -369,13 +369,6 @@ module.exports.default = axios;
 
 "use strict";
 
-/**
- * Check if a string starts with $ or _
- */
-function isReserved (str) {
-  var c = (str + '').charCodeAt(0);
-  return c === 0x24 || c === 0x5F
-}
 
 /**
  * A `Cancel` is an object that is thrown when an operation is canceled.
@@ -1229,15 +1222,6 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
     serializedParams = parts.join('&');
   }
-  // otherwise, render a fresh tree.
-  tree = cached[index] = this.$options.staticRenderFns[index].call(
-    this._renderProxy,
-    null,
-    this // for render fns generated for functional component templates
-  );
-  markStatic(tree, ("__static__" + index), false);
-  return tree
-}
 
   if (serializedParams) {
     var hashmarkIndex = url.indexOf('#');
@@ -1704,7 +1688,6 @@ function isPlainObject(val) {
   if (toString.call(val) !== '[object Object]') {
     return false;
   }
-}
 
   var prototype = Object.getPrototypeOf(val);
   return prototype === null || prototype === Object.prototype;
@@ -2984,7 +2967,6 @@ function normalizeComponent (
         : [hook]
     }
   }
-  callHook(vm, 'beforeMount');
 
   return {
     exports: scriptExports,
@@ -3571,30 +3553,6 @@ var isServerRendering = function () {
     } else {
       _isServer = false;
     }
-    if (props && hasOwn(props, key)) {
-      warn(
-        "The data property \"" + key + "\" is already declared as a prop. " +
-        "Use prop default value instead.",
-        vm
-      );
-    } else if (!isReserved(key)) {
-      proxy(vm, "_data", key);
-    }
-  }
-  // observe data
-  observe(data, true /* asRootData */);
-}
-
-function getData (data, vm) {
-  // #7573 disable dep collection when invoking data getters
-  pushTarget();
-  try {
-    return data.call(vm, vm)
-  } catch (e) {
-    handleError(e, vm, "data()");
-    return {}
-  } finally {
-    popTarget();
   }
   return _isServer
 };
@@ -4049,7 +4007,6 @@ function defineReactive$$1 (
   if (property && property.configurable === false) {
     return
   }
-}
 
   // cater for pre-defined getter/setters
   var getter = property && property.get;
@@ -4057,7 +4014,6 @@ function defineReactive$$1 (
   if ((!getter || setter) && arguments.length === 2) {
     val = obj[key];
   }
-}
 
   var childOb = !shallow && observe(val);
   Object.defineProperty(obj, key, {
@@ -4073,8 +4029,6 @@ function defineReactive$$1 (
             dependArray(value);
           }
         }
-        this.options[type + 's'][id] = definition;
-        return definition
       }
       return value
     },
@@ -4231,7 +4185,6 @@ function mergeData (to, from) {
     ) {
       mergeData(toVal, fromVal);
     }
-    return vnode || (slot && slot[0])
   }
   return to
 }
@@ -7753,8 +7706,6 @@ function initData (vm) {
           vm
         );
       }
-    } else {
-      refs[key] = ref;
     }
     if (props && hasOwn(props, key)) {
       warn(
@@ -8887,27 +8838,8 @@ function createPatchFunction (backend) {
       if (isDef(modules[j][hooks[i]])) {
         cbs[hooks[i]].push(modules[j][hooks[i]]);
       }
-      return
     }
-
-    // reuse element for static trees.
-    // note we only do this if the vnode is cloned -
-    // if the new node is not cloned it means the render functions have been
-    // reset by the hot-reload-api and we need to do a proper re-render.
-    if (isTrue(vnode.isStatic) &&
-      isTrue(oldVnode.isStatic) &&
-      vnode.key === oldVnode.key &&
-      (isTrue(vnode.isCloned) || isTrue(vnode.isOnce))
-    ) {
-      vnode.componentInstance = oldVnode.componentInstance;
-      return
-    }
-
-    var i;
-    var data = vnode.data;
-    if (isDef(data) && isDef(i = data.hook) && isDef(i = i.prepatch)) {
-      i(oldVnode, vnode);
-    }
+  }
 
   function emptyNodeAt (elm) {
     return new VNode(nodeOps.tagName(elm).toLowerCase(), {}, [], undefined, elm)
@@ -9015,7 +8947,6 @@ function createPatchFunction (backend) {
       insert(parentElm, vnode.elm, refElm);
     }
   }
-};
 
   function createComponent (vnode, insertedVnodeQueue, parentElm, refElm) {
     var i = vnode.data;
@@ -9088,11 +9019,6 @@ function createPatchFunction (backend) {
       } else {
         nodeOps.appendChild(parent, elm);
       }
-    };
-    if (isCreate) {
-      mergeVNodeHook(vnode, 'insert', callInsert);
-    } else {
-      callInsert();
     }
   }
 
@@ -9108,7 +9034,6 @@ function createPatchFunction (backend) {
       nodeOps.appendChild(vnode.elm, nodeOps.createTextNode(String(vnode.text)));
     }
   }
-}
 
   function isPatchable (vnode) {
     while (vnode.componentInstance) {
@@ -9152,18 +9077,13 @@ function createPatchFunction (backend) {
     ) {
       nodeOps.setStyleScope(vnode.elm, i);
     }
-  } else {
-    baseSetAttr(el, key, value);
   }
-}
 
   function addVnodes (parentElm, refElm, vnodes, startIdx, endIdx, insertedVnodeQueue) {
     for (; startIdx <= endIdx; ++startIdx) {
       createElm(vnodes[startIdx], insertedVnodeQueue, parentElm, refElm, false, vnodes, startIdx);
     }
-    el.setAttribute(key, value);
   }
-}
 
   function invokeDestroyHook (vnode) {
     var i, j;
@@ -9293,11 +9213,6 @@ function createPatchFunction (backend) {
       removeVnodes(oldCh, oldStartIdx, oldEndIdx);
     }
   }
-  if (removeFromMap) {
-    delete el.attrsMap[name];
-  }
-  return val
-}
 
   function checkDuplicateKeys (children) {
     var seenKeys = {};
@@ -9323,7 +9238,6 @@ function createPatchFunction (backend) {
       if (isDef(c) && sameVnode(node, c)) { return i }
     }
   }
-}
 
   function patchVnode (
     oldVnode,
@@ -9529,14 +9443,6 @@ function createPatchFunction (backend) {
       if (isDef(oldVnode)) { invokeDestroyHook(oldVnode); }
       return
     }
-    if (chr === 0x5B) { inBracket++; }
-    if (chr === 0x5D) { inBracket--; }
-    if (inBracket === 0) {
-      expressionEndPos = index$1;
-      break
-    }
-  }
-}
 
     var isInitialPatch = false;
     var insertedVnodeQueue = [];
@@ -9695,7 +9601,6 @@ function _update (oldVnode, vnode) {
       callInsert();
     }
   }
-}
 
   if (dirsWithPostpatch.length) {
     mergeVNodeHook(vnode, 'postpatch', function () {
@@ -9778,7 +9683,6 @@ function updateAttrs (oldVnode, vnode) {
   if (isDef(attrs.__ob__)) {
     attrs = vnode.data.attrs = extend({}, attrs);
   }
-};
 
   for (key in attrs) {
     cur = attrs[key];
@@ -9966,7 +9870,6 @@ function parseFilters (exp) {
       }
     }
   }
-}
 
   if (expression === undefined) {
     expression = exp.slice(0, i).trim();
@@ -10315,10 +10218,6 @@ function parseModel (val) {
         exp: val,
         key: null
       }
-      leaveCancelled && leaveCancelled(el);
-    } else {
-      rm();
-      afterLeave && afterLeave(el);
     }
   }
 
@@ -10412,7 +10311,6 @@ function model (
       );
     }
   }
-}
 
   if (el.component) {
     genComponentModel(el, value, modifiers);
@@ -10439,7 +10337,6 @@ function model (
       el.rawAttrsMap['v-model']
     );
   }
-}
 
   // ensure runtime directive metadata
   return true
@@ -10526,7 +10423,6 @@ function genDefaultModel (
       );
     }
   }
-} : {};
 
   var ref = modifiers || {};
   var lazy = ref.lazy;
@@ -10844,7 +10740,6 @@ function getStyle (vnode, checkChild) {
       }
     }
   }
-}
 
   if ((styleData = normalizeStyleData(vnode.data))) {
     extend(res, styleData);
@@ -10911,7 +10806,6 @@ function updateStyle (oldVnode, vnode) {
   ) {
     return
   }
-}
 
   var cur, name;
   var el = vnode.elm;
@@ -11928,6 +11822,7 @@ var Transition = {
         mergeVNodeHook(data, 'enterCancelled', performLeave);
         mergeVNodeHook(oldData, 'delayLeave', function (leave) { delayedLeave = leave; });
       }
+    }
 
     return rawChild
   }
@@ -14176,7 +14071,6 @@ function genFor (
       true /* tip */
     );
   }
-}
 
   el.forProcessed = true; // avoid recursion
   return (altHelper || '_l') + "((" + exp + ")," +
@@ -14911,8 +14805,6 @@ function createCompilerCreator (baseCompile) {
       compile: compile,
       compileToFunctions: createCompileToFunctionFn(compile)
     }
-
-    return (cache[key] = res)
   }
 }
 
@@ -15012,10 +14904,6 @@ Vue.prototype.$mount = function (
       if (config.performance && mark) {
         mark('compile');
       }
-      compiled.errors = errors;
-      compiled.tips = tips;
-      return compiled
-    }
 
       var ref = compileToFunctions(template, {
         outputSourceRange: "development" !== 'production',

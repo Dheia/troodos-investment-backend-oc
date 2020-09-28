@@ -64,6 +64,7 @@
         </li>
         {% endif %}
 
+        {% if featuredLocation %}
         <li class="nav-item waves-effect waves-light">
           <a
             class="nav-link"
@@ -76,6 +77,7 @@
             {{'featured.location'|__}}
           </a>
         </li>
+        {% endif %}
 
         {% if featured.sections %}
           {% for section in featured.sections %}
@@ -170,13 +172,15 @@
           {% partial 'site/investmentContact' featured=featured %}<br>
         {% endif %}
 
+        {% if featuredLocation %}
           <div
             class="tab-pane fade show"
             id="location"
             role="tabpanel"
             aria-labelledby="location-tab">
-            {% component 'mapMarkers' mapSlug=mapSlug itemIds="1" %}
+            {% component 'mapMarkers' mapSlug=mapSlug %}
           </div>
+        {% endif %}
 
         {% if featured.sections %}
           {% for section in featured.sections %}

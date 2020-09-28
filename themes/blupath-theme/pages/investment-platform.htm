@@ -14,12 +14,14 @@ is_hidden = 0
     use BL\RegionalInvestment\Models\InvestmentOpportunity;
     use BL\RegionalInvestment\Models\SuccessStory;
     use BL\RegionalInvestment\Models\PointOfInterest;
+    use BL\Maps\Models\Position;
     use BL\Maps\Models\Map;
 
     function onStart(){
       $type = $this->param('type');
       $name = $this->param('name');
 
+      $featuredLocation = false;
       $communities = [];
       $successStories =  [];
       $opportunities = [];
@@ -68,6 +70,9 @@ is_hidden = 0
         $communities = Community::getLocalized();
       } elseif( $type =='opportunity') {
         $featured = InvestmentOpportunity::with('business_types')->with('success_stories')->with('points_of_interest')->where('slug', $name)->first();
+        $map = Map::where('slug', 'investment_opportunity_map')->first();
+        $markers = $map ? Position::where('map_id', $map->id)->where('model_id', $featured->id)->get() : [];
+        $featuredLocation = count($markers) > 0 ? true : false;
       } else {
         $type = 'platform';
         $successStories =  SuccessStory::getLocalized();
@@ -86,10 +91,10 @@ is_hidden = 0
       $this['successStories'] = $successStories;
       $this['pointsOfInterest'] = $pointsOfInterest;
       $this['primary'] = $primary;
-      $this['itemIds'] = [1];
       $this['businessTypesLocalized'] = $businessTypesLocalized;
       $this['communitiesLocalized'] = $communitiesLocalized;
       $this['selectedCommunityId'] = $selectedCommunityId;
+      $this['featuredLocation'] = $featuredLocation;
     }
 ?>
 ==

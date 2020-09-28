@@ -1,7 +1,7 @@
 <div class="card card-cascade wider reverse mb-5">
   <!-- Card image -->
   <div class="view view-cascade overlay card-no-shadow">
-    <img class="card-img-top card-no-shadow" 
+    <img class="card-img-top card-no-shadow"
       style="width: 100%; max-height: 620px; object-fit: cover;"
       src="{{ featured.photo|media }}"
       alt="Card image cap">
@@ -27,20 +27,22 @@
       {% if featured.investment_target %}
         <strong>{{'investment.investmentTarget'|__}}</strong> €{{featured.investment_target}}
         <br>
-      {% endif %}      
+      {% endif %}
       <hr>
+
+      <input type="hidden" id="featured_model_id" value="{{featured.id}}" />
 
       <!-- Tabs -->
       <ul class="nav nav-tabs md-tabs" id="featuredTabs" role="tablist">
 
         <li class="nav-item waves-effect waves-light">
-          <a 
-            class="nav-link active" 
-            id="overview-tab" 
-            data-toggle="tab" 
-            href="#overview" 
-            role="tab" 
-            aria-controls="overview" 
+          <a
+            class="nav-link active"
+            id="overview-tab"
+            data-toggle="tab"
+            href="#overview"
+            role="tab"
+            aria-controls="overview"
             aria-selected="true">
             {{'featured.overview'|__}}
           </a>
@@ -48,13 +50,13 @@
 
         {% if featured.email or featured.phone or featured.contact_details %}
         <li class="nav-item waves-effect waves-light">
-          <a 
-            class="nav-link" 
-            id="contact-tab" 
-            data-toggle="tab" 
-            href="#contact" 
-            role="tab" 
-            aria-controls="contact" 
+          <a
+            class="nav-link"
+            id="contact-tab"
+            data-toggle="tab"
+            href="#contact"
+            role="tab"
+            aria-controls="contact"
             aria-selected="true">
             {{'featured.contact_details'|__}}
           </a>
@@ -62,13 +64,13 @@
         {% endif %}
 
         <li class="nav-item waves-effect waves-light">
-          <a 
-            class="nav-link" 
-            id="location-tab" 
-            data-toggle="tab" 
-            href="#location" 
-            role="tab" 
-            aria-controls="location" 
+          <a
+            class="nav-link"
+            id="location-tab"
+            data-toggle="tab"
+            href="#location"
+            role="tab"
+            aria-controls="location"
             aria-selected="true">
             {{'featured.location'|__}}
           </a>
@@ -77,13 +79,13 @@
         {% if featured.sections %}
           {% for section in featured.sections %}
             <li class="nav-item waves-effect waves-light">
-              <a 
-                class="nav-link" 
-                id="{{section.slug}}-tab" 
-                data-toggle="tab" 
-                href="#{{section.slug}}" 
-                role="tab" 
-                aria-controls="{{section.slug}}" 
+              <a
+                class="nav-link"
+                id="{{section.slug}}-tab"
+                data-toggle="tab"
+                href="#{{section.slug}}"
+                role="tab"
+                aria-controls="{{section.slug}}"
                 aria-selected="true">
                 {{section.name}}
               </a>
@@ -93,13 +95,13 @@
 
         {% if featured.points_of_interest and featured.points_of_interest != '[]' %}
           <li class="nav-item waves-effect waves-light">
-            <a 
-              class="nav-link" 
-              id="success-tab" 
-              data-toggle="tab" 
-              href="#pois" 
-              role="tab" 
-              aria-controls="pois" 
+            <a
+              class="nav-link"
+              id="success-tab"
+              data-toggle="tab"
+              href="#pois"
+              role="tab"
+              aria-controls="pois"
               aria-selected="true">
               {{'featured.pois_title'|__}}
             </a>
@@ -108,13 +110,13 @@
 
         {% if featured.success_stories and featured.success_stories != '[]' %}
           <li class="nav-item waves-effect waves-light">
-            <a 
-              class="nav-link" 
-              id="success-tab" 
-              data-toggle="tab" 
-              href="#success" 
-              role="tab" 
-              aria-controls="success" 
+            <a
+              class="nav-link"
+              id="success-tab"
+              data-toggle="tab"
+              href="#success"
+              role="tab"
+              aria-controls="success"
               aria-selected="true">
               {{'featured.success_stories_tab_title'|__}}
             </a>
@@ -123,13 +125,13 @@
 
         {% if featured.photos %}
           <li class="nav-item waves-effect waves-light">
-            <a 
-              class="nav-link" 
-              id="gallery-tab" 
-              data-toggle="tab" 
-              href="#gallery" 
-              role="tab" 
-              aria-controls="gallery" 
+            <a
+              class="nav-link"
+              id="gallery-tab"
+              data-toggle="tab"
+              href="#gallery"
+              role="tab"
+              aria-controls="gallery"
               aria-selected="true">
               {{'common.gallery'|__}}
             </a>
@@ -140,11 +142,11 @@
 
       <!-- Tab content -->
       <div class="tab-content my-3" id="myTabContent">
-        
-        <div 
-          class="tab-pane fade show text-left card-text active" 
-          id="overview" 
-          role="tabpanel" 
+
+        <div
+          class="tab-pane fade show text-left card-text active"
+          id="overview"
+          role="tabpanel"
           aria-labelledby="overview-tab">
 
           <div class='card-text text-left mt-5'>
@@ -161,25 +163,25 @@
             <a class="btn btn-outline-accent btn-flat">{{'common.email'|__}}</a>
           </div>
         </div>
-      
+
         {% if featured.email or featured.phone or featured.contact_details %}
           {% partial 'site/investmentContact' featured=featured %}<br>
         {% endif %}
-      
-          <div 
-            class="tab-pane fade show" 
-            id="location" 
-            role="tabpanel" 
+
+          <div
+            class="tab-pane fade show"
+            id="location"
+            role="tabpanel"
             aria-labelledby="location-tab">
             {% component 'mapMarkers' mapSlug=mapSlug %}
           </div>
 
         {% if featured.sections %}
           {% for section in featured.sections %}
-            <div 
-              class="tab-pane fade show text-left card-text" 
-              id="{{section.slug}}" 
-              role="tabpanel" 
+            <div
+              class="tab-pane fade show text-left card-text"
+              id="{{section.slug}}"
+              role="tabpanel"
               aria-labelledby="{{section.slug}}-tab">
             {{section.description|raw}}
             </div>
@@ -187,20 +189,20 @@
         {% endif %}
 
         {% if featured.points_of_interest and featured.points_of_interest != '[]' %}
-          <div 
-            class="tab-pane fade show" 
-            id="pois" 
-            role="tabpanel" 
+          <div
+            class="tab-pane fade show"
+            id="pois"
+            role="tabpanel"
             aria-labelledby="pois-tab">
             {% partial 'components/accordion' sections=featured.points_of_interest title='pois-accordion' %}
           </div>
         {% endif %}
 
         {% if featured.success_stories %}
-          <div 
-            class="tab-pane fade show" 
-            id="success" 
-            role="tabpanel" 
+          <div
+            class="tab-pane fade show"
+            id="success"
+            role="tabpanel"
             aria-labelledby="success-tab">
             {% partial 'components/accordion' sections=featured.success_stories title='success-stores-accordion' %}
           </div>

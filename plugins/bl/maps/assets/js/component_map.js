@@ -21,6 +21,10 @@ function mapComponentInit()
     if ($('#model_ids').length > 0) {
         opts.item_ids = $('#model_ids').val();
     }
+    if ($('#featured_model_id').length > 0) {
+        opts.item_ids = $('#featured_model_id').val();
+    }
+
     //load settings and markers
     $(this).request('onDataLoad', {
         data: opts,

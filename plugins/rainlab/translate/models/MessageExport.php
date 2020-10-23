@@ -1,4 +1,6 @@
-<?php namespace RainLab\Translate\Models;
+<?php
+
+namespace RainLab\Translate\Models;
 
 use Backend\Models\ExportModel;
 
@@ -19,9 +21,10 @@ class MessageExport extends ExportModel
      * @param null $sessionKey
      * @return mixed
      */
-    public function exportData($columns, $sessionKey = null)
+
+    public function exportData($columns, $sessionKey = null, $opts = null)
     {
-        return Message::all()->map(function($message) use($columns) {
+        return Message::all()->map(function ($message) use ($columns) {
             $data = $message->message_data;
 
             // Add code to data to simplify algorithm

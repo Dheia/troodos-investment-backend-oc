@@ -27,7 +27,7 @@ abstract class ExportModel extends Model
      *   [...]
      *
      */
-    abstract public function exportData($columns, $sessionKey = null);
+    abstract public function exportData($columns, $sessionKey = null, $opts = null);
 
     /**
      * Export data based on column names and labels.

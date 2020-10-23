@@ -21,7 +21,6 @@ class MessageExport extends ExportModel
      * @param null $sessionKey
      * @return mixed
      */
-
     public function exportData($columns, $sessionKey = null, $opts = null)
     {
         return Message::all()->map(function ($message) use ($columns) {
